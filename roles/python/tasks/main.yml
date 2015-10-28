@@ -1,0 +1,22 @@
+- name: Install Python packages
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+    state: latest
+  with_items:
+    - python-pip
+    - python-dev
+    - python-virtualenv
+  tags: [python]
+
+- name: Install pip packages
+  pip:
+    name: '{{item}}'
+    state: latest
+  with_items:
+    - pip
+    - pep8
+    - pyflakes
+    - fabric
+  tags: [python, pip]

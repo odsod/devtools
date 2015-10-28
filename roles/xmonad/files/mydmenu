@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec dmenu_run -i -nb "#073642" -nf "#657B83" -sb "#002b36" -sf "#93a1a1" -fn "10x20"

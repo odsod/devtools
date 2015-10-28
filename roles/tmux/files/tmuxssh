@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+usage() {
+  echo "Usage: tmuxssh HOSTNAME..." 1>&2
+}
+
+if [[ ! -t 0 ]]; then
+  hostnames=( $(xargs) )
+else
+  hostnames=( "$@" )
+fi
+
+[[ ${#hostnames[@]} -gt 0 ]] || { usage; exit 1; }
+
+tmux new-window -a "ssh ${hostnames[0]}"
+tmux rename-window "tmuxssh ${hostnames[0]:0:20}..."
+for server in "${hostnames[@]:1}"; do
+  tmux split-window "ssh ${server}"
+  tmux select-layout tiled
+done

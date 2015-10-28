@@ -1,0 +1,61 @@
+- name: Install packages
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+    state: latest
+  with_items:
+    - xorg
+    - arandr
+    - ttf-liberation
+    - rxvt-unicode
+  tags: [xorg, packages]
+
+- name: Create folder ~/.xkb/symbols
+  file:
+    path: ~/.xkb/symbols
+    state: directory
+  tags: [xorg, keyboard, folders]
+
+- name: Install keyboard layout ~/.xkb/symbols/poskeys
+  copy:
+    src: poskeys
+    dest: ~/.xkb/symbols/poskeys
+  tags: [xorg, dotfiles, keyboard]
+
+- name: Install script ~/.bin/setxkb
+  copy:
+    src: setxkb
+    dest: ~/.bin/setxkb
+    mode: 0755
+  tags: [xorg, bin, keyboard]
+
+- name: Install dotfile ~/.xinitrc
+  copy:
+    src: xinitrc
+    dest: ~/.xinitrc
+  tags: [xorg, dotfiles]
+
+- name: Install dotfile ~/.Xresources
+  copy:
+    src: Xresources
+    dest: ~/.Xresources
+  tags: [xorg, dotfiles]
+
+- name: Install dotfile ~/.fonts.conf
+  copy:
+    src: fonts.conf
+    dest: ~/.fonts.conf
+  tags: [xorg, dotfiles]
+
+- name: Install dotfile ~/.gtkrc-2.0
+  copy:
+    src: gtkrc-2.0
+    dest: ~/.gtkrc-2.0
+  tags: [xorg, dotfiles]
+
+- name: Install dotfile ~/.solarized
+  copy:
+    src: solarized
+    dest: ~/.solarized
+  tags: [xorg, dotfiles]

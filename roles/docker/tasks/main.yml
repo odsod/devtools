@@ -1,0 +1,30 @@
+- name: Add apt key get.docker.com
+  become: yes
+  become_user: root
+  apt_key:
+    keyserver: 'hkp://keyserver.ubuntu.com:80'
+    id: '36A1D7869245C8950F966E92D8576A8BA88D21E9'
+  tags: [docker, repositories]
+
+- name: Add repository get.docker.com
+  become: yes
+  become_user: root
+  apt_repository:
+    repo: 'deb https://get.docker.com/ubuntu docker main'
+    state: present
+  tags: [docker, repositories]
+
+- name: Install package lxc-docker
+  become: yes
+  become_user: root
+  apt: name=lxc-docker state=latest
+  tags: [docker, packages]
+
+- name: Add poscar to docker group
+  become: yes
+  become_user: root
+  user:
+    name: poscar
+    groups: docker
+    append: yes
+  tags: [docker]

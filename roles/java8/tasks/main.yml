@@ -1,0 +1,25 @@
+- name: Add PPA repository webupd8team/java
+  become: yes
+  become_user: root
+  apt_repository:
+    repo: 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main'
+    state: present
+  tags: [java8, repositories]
+
+- name: Accept Java8 license
+  become: yes
+  become_user: root
+  shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | tee /etc/oracle-java8-licence-acceptance | /usr/bin/debconf-set-selections
+  args:
+    creates: /etc/oracle-java8-licence-acceptance
+  tags: [java8]
+
+- name: Install Java8 packages
+  become: yes
+  become_user: root
+  apt: name={{item}} state=latest
+  with_items:
+    - oracle-java8-installer
+    - ca-certificates
+    - oracle-java8-set-default 
+  tags: [java8, packages]

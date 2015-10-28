@@ -1,0 +1,26 @@
+- name: Create folder ~/software/idea
+  file:
+    path: ~/software/idea
+    state: directory
+  tags: [idea, folders]
+
+- name: Download ideaIU-14.1.5.tar.gz
+  get_url:
+    url: http://download.jetbrains.com/idea/ideaIU-14.1.5.tar.gz
+    dest: ~/software/idea/ideaIU-14.1.5.tar.gz
+  tags: [idea]
+
+- name: Unarchive ideaIU-14.1.5.tar.gz
+  unarchive:
+    copy: no
+    src: ~/software/idea/ideaIU-14.1.5.tar.gz
+    dest: ~/software/idea
+    creates: ~/software/idea/idea-IU-141.2735.5/bin/idea.sh
+  tags: [idea]
+
+- name: Symlink ~/.bin/idea
+  file:
+    src: ~/software/idea/idea-IU-141.2735.5/bin/idea.sh
+    dest: ~/.bin/idea
+    state: link
+  tags: [idea]

@@ -1,0 +1,56 @@
+- name: Add pi-rho repository
+  become: yes
+  become_user: root
+  apt_repository:
+    repo: 'deb http://ppa.launchpad.net/pi-rho/dev/ubuntu trusty main'
+    state: present
+  tags: [tmux, repositories]
+
+- name: Install package tmux=2.0-1~ppa1~t
+  become: yes
+  become_user: root
+  apt:
+    name: tmux=2.0-1~ppa1~t
+    state: present
+    update_cache: yes
+  tags: [tmux, packages]
+
+- name: Install tpm v3.0.0
+  git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: /home/poscar/.tmux/plugins/tpm
+    update: no
+    version: v3.0.0
+    depth: 1
+    accept_hostkey: yes
+  tags: [tmux]
+
+- name: Install tmux plugins
+  shell: /home/poscar/.tmux/plugins/tpm/bin/install_plugins
+
+- name: Install ~/.tmux.conf
+  copy:
+    src: tmux.conf
+    dest: ~/.tmux.conf
+  tags: [tmux, dotfiles]
+
+- name: Install script tmuxssh
+  copy:
+    src: tmuxssh
+    dest: ~/.bin/tmuxssh
+    mode: 0755
+  tags: [tmux, bin]
+
+- name: Install script tmuxargs
+  copy:
+    src: tmuxargs
+    dest: ~/.bin/tmuxargs
+    mode: 0755
+  tags: [tmux, bin]
+
+- name: Install script urxvtmux
+  copy:
+    src: urxvtmux
+    dest: ~/.bin/urxvtmux
+    mode: 0755
+  tags: [tmux, bin]

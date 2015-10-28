@@ -1,0 +1,5 @@
+- name: Install package
+  apt:
+    name: chromium-browser
+    state: latest
+  tags: [chromium]

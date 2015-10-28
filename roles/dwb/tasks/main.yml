@@ -1,0 +1,5 @@
+- name: Install package
+  apt:
+    name: dwb
+    state: latest
+  tags: [dwb]

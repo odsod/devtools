@@ -1,0 +1,37 @@
+- name: Clone GitHub repo sstephenson/rbenv to ~/.rbenv
+  git:
+    repo: https://github.com/sstephenson/rbenv.git
+    dest: ~/.rbenv
+    update: no
+    accept_hostkey: yes
+  tags: [ruby, rbenv]
+
+- name: Clone GitHub repo sstephenson/ruby-build to ~/.rbenv/plugins
+  git:
+    repo: https://github.com/sstephenson/ruby-build.git
+    dest: ~/.rbenv/plugins/ruby-build
+    update: no
+    accept_hostkey: yes
+  tags: [ruby, rbenv]
+
+- name: Install 2.2.2
+  shell: $SHELL -lc 'eval "$(rbenv init -)" && rbenv install 2.2.2'
+  args:
+    creates: ~/.rbenv/versions/2.2.2
+  tags: [ruby, rbenv]
+
+- name: Set 2.2.2 as default
+  lineinfile:
+    line: 2.2.2
+    dest: ~/.rbenv/version
+    create: yes
+  tags: [ruby, rbenv]
+
+- name: Install gems
+  shell: $SHELL -lc 'eval "$(rbenv init -)" && gem install {{item}} --no-document'
+  with_items:
+    - puppet
+    - puppet-lint
+    - ruby-puppetdb
+    - mdl
+  tags: [ruby, gems]

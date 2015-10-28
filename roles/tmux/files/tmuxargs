@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+usage() {
+  echo "Usage: tmuxargs CMD" 1>&2
+}
+
+cmd="$*"
+args=( $(xargs) )
+
+[[ $cmd && ${#args[@]} -gt 0 ]] || { usage; exit 1; }
+
+tmux new-window -a "${cmd} ${args[0]}"
+tmux rename-window "tmuxargs ${cmd}"
+for arg in "${args[@]:1}"; do
+  tmux split-window "${cmd} ${arg}"
+  tmux select-layout tiled
+done

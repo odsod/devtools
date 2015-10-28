@@ -1,0 +1,54 @@
+- hosts: all
+  tasks:
+    - name: Create home folder directories
+      file:
+        path: ~/{{item}}
+        state: directory
+      with_items:
+        - download
+        - .fonts
+        - .bin
+        - gh
+        - ghe
+
+    - name: Install prerequisite setup packages
+      become: yes
+      become_user: root
+      apt:
+        name: '{{item}}'
+        state: latest
+      with_items:
+        - python-apt
+        - apt-transport-https
+        - python-software-properties
+        - software-properties-common
+
+    - name: Add Ubuntu Trusty backports repository
+      become: yes
+      become_user: root
+      apt_repository:
+        repo: 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
+        state: present
+
+    - name: Update APT cache
+      become: yes
+      become_user: root
+      apt: update_cache=yes
+
+  roles:
+    - shell
+    - tmux
+    - xorg
+    - xmonad
+    - nodejs
+    - docker
+    - java8
+    - idea
+    - clj
+    - fpp
+    - ruby
+    - python
+    - gcloud
+    - cpp
+    - dwb
+    - chromium

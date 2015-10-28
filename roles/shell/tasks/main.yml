@@ -1,0 +1,48 @@
+- name: Install shell packages
+  apt:
+    name: '{{item}}'
+    state: latest
+  with_items:
+    - sudo
+    - htop
+    - git
+    - unzip
+    - vim-gtk
+    - bash-completion
+    - xsel
+    - xclip
+    - curl
+    - jq
+    - shellcheck
+    - parallel
+  tags: [shell, packages]
+
+- name: Install dotfile ~/.bashrc
+  copy:
+    src: bashrc
+    dest: ~/.bashrc
+  tags: [shell, dotfiles]
+
+- name: Install dotfile ~/.inputrc
+  copy:
+    src: inputrc
+    dest: ~/.inputrc
+  tags: [shell, dotfiles]
+
+- name: Create folder ~/.bash
+  file:
+    path: ~/.bash
+    state: directory
+  tags: [shell, dotfiles, folders]
+
+- name: Install dotfile ~/.bash/theme.bash
+  copy:
+    src: theme.bash
+    dest: ~/.bash/theme.bash
+  tags: [shell, dotfiles]
+
+- name: Install dotfile ~/.bash/git_completion.bash
+  copy:
+    src: git_completion.bash
+    dest: ~/.bash/git_completion.bash
+  tags: [shell, dotfiles]

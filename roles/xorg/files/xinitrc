@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+xrdb -merge ~/.Xresources
+xrdb -merge ~/.solarized
+
+xsetroot -cursor_name 'left_ptr'
+xsetroot -solid '#002b36'
+
+setxkb 'poskeys'
+
+# power saving off
+xset -dpms &
+xset s noblank &
+xset s off &
+
+# rxvt daemon
+urxvtd -q -f -o
+
+VBoxClient --clipboard
+
+# autohide mouse cursor
+unclutter -root -idle 5 &
+
+exec xmonad
