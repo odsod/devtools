@@ -1,5 +1,31 @@
 - name: Install package
+  become: yes
+  become_user: root
   apt:
     name: dwb
     state: latest
-  tags: [dwb]
+  tags: [dwb, packages]
+
+- name: Create folder ~/.config/dwb
+  file:
+    path: ~/.config/dwb
+    state: directory
+  tags: [dwb, folders]
+
+- name: Install dotfile ~/.config/dwb/settings
+  copy:
+    src: settings
+    dest: ~/.config/dwb/settings
+  tags: [dwb, dotfiles]
+
+- name: Install dotfile ~/.config/dwb/searchengines
+  copy:
+    src: searchengines
+    dest: ~/.config/dwb/searchengines
+  tags: [dwb, dotfiles]
+
+- name: Install dotfile ~/.config/dwb/keys
+  copy:
+    src: keys
+    dest: ~/.config/dwb/keys
+  tags: [dwb, dotfiles]
