@@ -20,11 +20,10 @@
     creates: ~/.rbenv/versions/2.2.2
   tags: [ruby, rbenv]
 
-- name: Set 2.2.2 as default
-  lineinfile:
-    line: 2.2.2
+- name: Set global ruby version
+  copy:
+    src: version
     dest: ~/.rbenv/version
-    create: yes
   tags: [ruby, rbenv]
 
 - name: Install dotfile ~/.gemrc
