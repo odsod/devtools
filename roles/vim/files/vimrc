@@ -1,0 +1,95 @@
+" Enable Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+" Settings
+Plugin 'tpope/vim-sensible'
+" Colorscheme
+Plugin 'jwhitley/vim-colors-solarized'
+" Features
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/ListToggle'
+Plugin 'godlygeek/tabular'
+" Syntax hilighting
+Plugin 'rodjek/vim-puppet'
+Plugin 'groenewege/vim-less'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'autowitch/hive.vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'elzr/vim-json'
+Plugin 'elubow/cql-vim'
+Plugin 'smerrill/vcl-vim-plugin'
+Plugin 'ekalinin/Dockerfile.vim'
+call vundle#end()
+
+filetype plugin indent on
+
+set background=dark
+let g:solarized_termtrans=0
+silent! colorscheme solarized
+
+" Statusline
+set statusline=[%f]\ %r%=%y\ [%{strlen(&fenc)?&fenc:'none'}]\ [%p%%]
+
+" Config
+set cursorline
+set expandtab
+set hidden
+set hlsearch
+set ignorecase
+set nobackup
+set noswapfile
+set nowritebackup
+set number
+set shiftwidth=2
+set shortmess=atI
+set smartcase
+set smartindent
+set tabstop=2
+set title
+set wildignorecase
+set wildmode=list:longest,full
+
+" Keymaps
+imap uu <Esc><Esc>
+nnoremap <Space> <Nop>
+let mapleader = " "
+nnoremap <Leader>t :NERDTreeToggle<CR>
+nnoremap <Leader>y ggyG<C-O><C-O>
+nnoremap <Leader>i gg=G<C-O><C-O>
+
+" Plugin-based keymaps
+let g:lt_quickfix_list_toggle_map = '<leader>f'
+
+" Autocommands
+autocmd BufNewFile,BufRead *.hql setf hive
+autocmd BufNewFile,BufRead *.ngt setf html
+autocmd BufRead *.cql set syntax=cql
+autocmd FileType python set tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
+" Syntastic
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['java'] }
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_python_checkers = ['pep8', 'pyflakes']
+
+" Markdown
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_frontmatter=1
+autocmd FileType markdown setlocal textwidth=74
+
+" NERDTree
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrows=0
+let NERDTreeIgnore = ['\.pyc$']
+
+" Local rc
+if filereadable('~/.vimrc.local')
+  source ~/.vimrc.local
+endif

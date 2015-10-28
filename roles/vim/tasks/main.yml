@@ -1,0 +1,19 @@
+- name: Install dotfile ~/.vimrc
+  copy:
+    src: vimrc
+    dest: ~/.vimrc
+  tags: [vim, dotfiles]
+
+- name: Clone GitHub repo VundleVim/Vundle.vim
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: ~/.vim/bundle/Vundle.vim
+    update: no
+    accept_hostkey: yes
+  tags: [vim]
+
+- name: Install vim plugins
+  shell: vim +PluginInstall +qall
+  args:
+    creates: ~/.vim/bundle/vim-sensible
+  tags: [vim]
