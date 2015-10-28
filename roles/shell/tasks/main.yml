@@ -5,7 +5,6 @@
   with_items:
     - sudo
     - htop
-    - git
     - unzip
     - vim-gtk
     - bash-completion

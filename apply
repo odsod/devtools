@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-ansible-playbook pbox.yaml --ask-become-pass "$@"
+ansible-playbook pbox.yaml --ask-become-pass --extra-vars '@vars.json' "$@"

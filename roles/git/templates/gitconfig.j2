@@ -1,0 +1,29 @@
+[user]
+	name = {{name}}
+	email = {{email}}
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+[push]
+  default = simple
+[branch]
+  autosetuprebase = always
+[color]
+  ui = true
+[help]
+  autocorrect = 1
+[alias]
+  c = commit -v
+  ca = commit -v --amend
+  ic = commit --allow-empty -m 'Initial commit'
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  a = add -A
+  s = status --short --branch
+  d = diff --patch --stat
+  rom = !git fetch origin master && git checkout master && git reset --hard origin/master
+  rum = !git fetch upstream master && git checkout master && git reset --hard upstream/master && git push -f origin master
+  lb = for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'
+  f = fetch
+  fu = fetch upstream
+  po = !git push origin "$(git rev-parse --abbrev-ref HEAD)"
+  pfo = !git push -f origin "$(git rev-parse --abbrev-ref HEAD)"
