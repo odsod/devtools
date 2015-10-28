@@ -27,11 +27,26 @@
     create: yes
   tags: [ruby, rbenv]
 
-- name: Install gems
-  shell: $SHELL -lc 'eval "$(rbenv init -)" && gem install {{item}} --no-document'
-  with_items:
-    - puppet
-    - puppet-lint
-    - ruby-puppetdb
-    - mdl
+- name: Install dotfile ~/.gemrc
+  copy:
+    src: gemrc
+    dest: ~/.gemrc
+  tags: [ruby, gems]
+
+- name: Install gem ruby-puppetdb
+  shell: $SHELL -lc 'eval "$(rbenv init -)" && gem install puppet ruby-puppetdb'
+  args:
+    creates: ~/.rbenv/versions/2.2.2/bin/find-nodes
+  tags: [ruby, gems]
+
+- name: Install gem puppet-lint
+  shell: $SHELL -lc 'eval "$(rbenv init -)" && gem install puppet-lint'
+  args:
+    creates: ~/.rbenv/versions/2.2.2/bin/puppet-lint
+  tags: [ruby, gems]
+
+- name: Install gem mdl
+  shell: $SHELL -lc 'eval "$(rbenv init -)" && gem install mdl'
+  args:
+    creates: ~/.rbenv/versions/2.2.2/bin/mdl
   tags: [ruby, gems]
