@@ -19,7 +19,6 @@ Plugin 'godlygeek/tabular'
 " Syntax hilighting
 Plugin 'rodjek/vim-puppet'
 Plugin 'groenewege/vim-less'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'autowitch/hive.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'elzr/vim-json'
@@ -61,7 +60,6 @@ imap uu <Esc><Esc>
 nnoremap <Space> <Nop>
 let mapleader = " "
 nnoremap <Leader>t :NERDTreeToggle<CR>
-nnoremap <Leader>y ggyG<C-O><C-O>
 nnoremap <Leader>i gg=G<C-O><C-O>
 
 " Plugin-based keymaps
