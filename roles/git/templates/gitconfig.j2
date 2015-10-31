@@ -9,6 +9,11 @@
   autosetuprebase = always
 [color]
   ui = true
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[mergetool]
+  prompt = false
 [alias]
   c = commit -v
   ca = commit -v --amend
