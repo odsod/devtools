@@ -1,4 +1,6 @@
 - name: Install shell packages
+  become: yes
+  become_user: root
   apt:
     name: '{{item}}'
     state: latest

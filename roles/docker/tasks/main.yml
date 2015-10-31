@@ -12,6 +12,7 @@
   apt_repository:
     repo: 'deb https://get.docker.com/ubuntu docker main'
     state: present
+    update_cache: yes
   tags: [docker, repositories]
 
 - name: Install package lxc-docker

@@ -4,6 +4,7 @@
   apt_repository:
     repo: 'deb http://ppa.launchpad.net/git-core/ppa/ubuntu trusty main'
     state: present
+    update_cache: yes
   tags: [git, repositories]
 
 - name: Install package

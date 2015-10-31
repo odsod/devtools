@@ -4,6 +4,7 @@
   apt_repository:
     repo: 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main'
     state: present
+    update_cache: yes
   tags: [java8, repositories]
 
 - name: Accept Java8 license

@@ -1,0 +1,27 @@
+- name: Create folder ~/.bin
+  file:
+    path: ~/.bin
+    state: directory
+  tags: [folders, bin]
+
+- name: Install packages required for adding APT repositories
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+    state: latest
+  with_items:
+    - python-apt
+    - apt-transport-https
+    - python-software-properties
+    - software-properties-common
+  tags: [packages, repositories]
+
+- name: Add APT repository trusty-backports
+  become: yes
+  become_user: root
+  apt_repository:
+    repo: 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
+    state: present
+    update_cache: yes
+  tags: [repositories]
