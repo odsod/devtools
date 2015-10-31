@@ -1,3 +1,14 @@
+- name: Add poscar to sudoers
+  become: yes
+  become_user: root
+  lineinfile:
+    dest: /etc/sudoers.d/poscar
+    line: poscar ALL=(ALL) NOPASSWD:ALL
+    state: present
+    create: yes
+    validate: visudo -cf %s
+  tags: [poscar]
+
 - name: Create folder ~/.bin
   file:
     path: ~/.bin
