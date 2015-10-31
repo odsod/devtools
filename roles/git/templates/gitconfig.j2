@@ -29,3 +29,5 @@
   po = !git push origin "$(git rev-parse --abbrev-ref HEAD)"
   pfo = !git push -f origin "$(git rev-parse --abbrev-ref HEAD)"
   upr = !git add -u && git commit --amend --no-edit && git push -f origin "$(git rev-parse --abbrev-ref HEAD)"
+  exec = "!exec "
+  root = !git rev-parse --show-toplevel
