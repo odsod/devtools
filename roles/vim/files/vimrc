@@ -34,7 +34,7 @@ let g:solarized_termtrans=0
 silent! colorscheme solarized
 
 " Statusline
-set statusline=[%f]\ %r%=%y\ [%{strlen(&fenc)?&fenc:'none'}]\ [%p%%]
+set statusline=[%f]\ %r%=[%l,%c]\ %y\ [%{strlen(&fenc)?&fenc:'none'}]\ [%p%%]
 
 " Config
 set cursorline
