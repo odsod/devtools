@@ -22,3 +22,4 @@
   lb = for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'
   po = !git push origin "$(git rev-parse --abbrev-ref HEAD)"
   pfo = !git push -f origin "$(git rev-parse --abbrev-ref HEAD)"
+  upr = !git add -u && git commit --amend --no-edit && git push -f origin "$(git rev-parse --abbrev-ref HEAD)"
