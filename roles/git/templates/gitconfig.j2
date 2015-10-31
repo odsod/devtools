@@ -20,7 +20,5 @@
   rom = !git fetch origin master && git checkout master && git reset --hard origin/master
   rum = !git fetch upstream master && git checkout master && git reset --hard upstream/master && git push -f origin master
   lb = for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'
-  f = fetch
-  fu = fetch upstream
   po = !git push origin "$(git rev-parse --abbrev-ref HEAD)"
   pfo = !git push -f origin "$(git rev-parse --abbrev-ref HEAD)"
