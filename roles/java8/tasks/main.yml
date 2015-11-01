@@ -2,8 +2,7 @@
   become: yes
   become_user: root
   apt_repository:
-    repo: 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main'
-    state: present
+    repo: 'ppa:webupd8team/java'
     update_cache: yes
   tags: [java8, repositories]
 
