@@ -17,7 +17,9 @@
 - name: Install Java8 packages
   become: yes
   become_user: root
-  apt: name={{item}} state=latest
+  apt:
+    name: '{{item}}'
+    state: latest
   with_items:
     - oracle-java8-installer
     - ca-certificates
