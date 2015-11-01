@@ -2,8 +2,7 @@
   become: yes
   become_user: root
   apt_repository:
-    repo: 'deb http://ppa.launchpad.net/git-core/ppa/ubuntu trusty main'
-    state: present
+    repo: 'ppa:git-core/ppa'
     update_cache: yes
   tags: [git, repositories]
 
