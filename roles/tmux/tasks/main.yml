@@ -1,9 +1,8 @@
-- name: Add pi-rho repository
+- name: Add PPA pi-rho/dev
   become: yes
   become_user: root
   apt_repository:
-    repo: 'deb http://ppa.launchpad.net/pi-rho/dev/ubuntu trusty main'
-    state: present
+    repo: 'ppa:pi-rho/dev'
     update_cache: yes
   tags: [tmux, repositories]
 
