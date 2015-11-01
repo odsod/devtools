@@ -18,6 +18,10 @@ if [[ -d ~/.rbenv/bin ]]; then
   export PATH=${PATH}:${HOME}/.rbenv/bin
 fi
 
+if [[ -d ~/software/maven/apache-maven-3.3.3 ]]; then
+  export M2_HOME=$HOME/software/maven/apache-maven-3.3.3
+fi
+
 export EDITOR='vim'
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33'
