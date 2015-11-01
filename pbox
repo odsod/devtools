@@ -3,7 +3,6 @@
 ansible-playbook \
   -i localhost, \
   -c local \
-  --ask-become-pass \
   --extra-vars '@vars.json' \
   "$@" \
   pbox.yaml
