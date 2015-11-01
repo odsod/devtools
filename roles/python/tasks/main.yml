@@ -11,6 +11,8 @@
   tags: [python]
 
 - name: Install pip packages
+  become: yes
+  become_user: root
   pip:
     name: '{{item}}'
     state: latest
