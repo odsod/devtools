@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-RETRY_FILES_ENABLED=False ansible-playbook \
+ansible-playbook \
   -i localhost, \
   -c local \
   --ask-become-pass \
