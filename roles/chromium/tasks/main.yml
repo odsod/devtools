@@ -1,4 +1,6 @@
 - name: Install package
+  become: yes
+  become_user: root
   apt:
     name: chromium-browser
     state: latest
