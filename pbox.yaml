@@ -1,4 +1,10 @@
 - hosts: all
+  tasks:
+    - name: Symlink pbox script
+      file:
+        src: '{{playbook_dir}}/pbox'
+        dest: ~/.bin/pbox
+        state: link
   roles:
     - base
     - shell
