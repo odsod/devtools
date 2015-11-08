@@ -71,7 +71,7 @@ myScratchpads =
        (appName =? "drive.google.com") fullLayout
 
   , NS "chromium" "chromium-browser" (appName =? "Chromium-browser") fullLayout
-  , NS "dwb" "dwb --override-restore" (appName =? "dwb") fullLayout
+  , NS "dwb" "dwb" (appName =? "dwb") fullLayout
   , NS "ipython" "" (fmap (isPrefixOf "ipython") appName =? True) fullLayout
   , NS "bottom" "urxvtmux bottom" (appName =? "bottom") bottomLayout
   , NS "top" "urxvtmux top" (appName =? "top") topLayout
