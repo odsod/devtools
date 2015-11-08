@@ -18,14 +18,29 @@
     dest: ~/.config/dwb/settings
   tags: [dwb, dotfiles]
 
-- name: Install dotfile ~/.config/dwb/searchengines
-  copy:
-    src: searchengines
-    dest: ~/.config/dwb/searchengines
-  tags: [dwb, dotfiles]
-
 - name: Install dotfile ~/.config/dwb/keys
   copy:
     src: keys
     dest: ~/.config/dwb/keys
+  tags: [dwb, dotfiles]
+
+- name: Add search engine Google
+  lineinfile:
+    dest: ~/.config/dwb/searchengines
+    line: g https://www.google.com/search?q=_dwb_search_submit_
+    create: yes
+  tags: [dwb, dotfiles]
+
+- name: Add search engine DuckDuckGo
+  lineinfile:
+    dest: ~/.config/dwb/searchengines
+    line: dd https://duckduckgo.com/?q=_dwb_search_submit_
+    create: yes
+  tags: [dwb, dotfiles]
+
+- name: Add search engine GitHub
+  lineinfile:
+    dest: ~/.config/dwb/searchengines
+    line: gh https://github.com/search?utf8=%E2%9C%93&q=_dwb_search_submit_
+    create: yes
   tags: [dwb, dotfiles]
