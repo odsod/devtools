@@ -21,4 +21,5 @@
     - pep8
     - pyflakes
     - fabric
+    - requests[security] # or else SSL warnings
   tags: [python, pip]
