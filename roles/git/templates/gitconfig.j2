@@ -20,6 +20,8 @@
 [alias]
   c = commit -v
   ca = commit -v --amend
+  sp = !git show --stat | fpp
+  dp = !git diff --stat | fpp
   ic = commit --allow-empty -m 'Initial commit'
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   a = add -A
