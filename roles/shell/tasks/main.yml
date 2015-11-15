@@ -3,7 +3,6 @@
   become_user: root
   apt:
     name: '{{item}}'
-    state: latest
   with_items:
     - sudo
     - htop
@@ -13,10 +12,18 @@
     - xsel
     - xclip
     - curl
-    - jq
     - shellcheck
     - parallel
     - pssh
+  tags: [shell, packages]
+
+- name: Install packages from backports
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+  with_items:
+    - jq=1.4-2.1~ubuntu14.04.1
   tags: [shell, packages]
 
 - name: Install dotfile ~/.bashrc
