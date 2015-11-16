@@ -1,6 +1,6 @@
-- name: Download leiningen 2.5.3
+- name: Download leiningen 2.5.1
   get_url:
-    url: https://raw.githubusercontent.com/technomancy/leiningen/2.5.3/bin/lein
+    url: https://raw.githubusercontent.com/technomancy/leiningen/2.5.1/bin/lein
     dest: ~/.bin/lein
   tags: [clj, lein]
 
@@ -8,10 +8,4 @@
   file:
     path: ~/.bin/lein
     mode: 0755
-  tags: [clj, lein]
-
-- name: Install leiningen 2.5.3
-  shell: ~/.bin/lein
-  args:
-    creates: ~/.lein
   tags: [clj, lein]
