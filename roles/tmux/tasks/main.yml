@@ -14,19 +14,6 @@
     state: present
   tags: [tmux, packages]
 
-- name: Install tpm v3.0.0
-  git:
-    repo: https://github.com/tmux-plugins/tpm.git
-    dest: /home/poscar/.tmux/plugins/tpm
-    update: no
-    version: v3.0.0
-    depth: 1
-    accept_hostkey: yes
-  tags: [tmux]
-
-- name: Install tmux plugins
-  shell: /home/poscar/.tmux/plugins/tpm/bin/install_plugins
-
 - name: Install ~/.tmux.conf
   copy:
     src: tmux.conf
