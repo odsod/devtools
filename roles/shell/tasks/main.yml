@@ -15,6 +15,7 @@
     - shellcheck
     - parallel
     - pssh
+    - ncdu
   tags: [shell, packages]
 
 - name: Install packages from backports
