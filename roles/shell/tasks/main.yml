@@ -15,6 +15,7 @@
     - shellcheck
     - parallel
     - pssh
+    - gdb
     - ncdu
   tags: [shell, packages]
 
