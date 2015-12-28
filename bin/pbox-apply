@@ -5,6 +5,6 @@ script_dir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 ansible-playbook \
   -i localhost, \
   -c local \
-  --extra-vars @"${script_dir}"/vars.json \
+  --extra-vars @"${script_dir}"/../vars.json \
   "$@" \
-  "${script_dir}"/pbox.yaml
+  "${script_dir}"/../pbox.yaml

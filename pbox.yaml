@@ -1,15 +1,15 @@
 - hosts: all
   tasks:
-    - name: Symlink pbox script
+    - name: Symlink pbox scripts
       file:
-        src: '{{playbook_dir}}/pbox'
-        dest: ~/.bin/pbox
+        src: '{{playbook_dir}}/bin/{{item}}'
+        dest: ~/.bin/{{item}}
         state: link
-    - name: Symlink pbox-edit script
-      file:
-        src: '{{playbook_dir}}/pbox-edit'
-        dest: ~/.bin/pbox-edit
-        state: link
+      with_items:
+        - pbox-apply
+        - pbox-edit
+        - pbox-cd
+      tags: [pbox]
   roles:
     - base
     - shell
