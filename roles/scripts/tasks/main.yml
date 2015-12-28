@@ -1,0 +1,6 @@
+- name: Install script ~/.bin/tldr
+  copy:
+    src: tldr
+    dest: ~/.bin/tldr
+    mode: 0755
+  tags: [bin, scripts]
