@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+script_dir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+
+vim "$script_dir"

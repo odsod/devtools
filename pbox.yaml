@@ -5,6 +5,11 @@
         src: '{{playbook_dir}}/pbox'
         dest: ~/.bin/pbox
         state: link
+    - name: Symlink pbox-edit script
+      file:
+        src: '{{playbook_dir}}/pbox-edit'
+        dest: ~/.bin/pbox-edit
+        state: link
   roles:
     - base
     - shell
