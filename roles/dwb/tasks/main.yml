@@ -44,3 +44,10 @@
     line: gh https://github.com/search?utf8=%E2%9C%93&q=_dwb_search_submit_
     create: yes
   tags: [dwb, dotfiles]
+
+- name: Add search engine GitHub/odsod
+  lineinfile:
+    dest: ~/.config/dwb/searchengines
+    line: gho https://github.com/odsod/_dwb_search_submit_
+    create: yes
+  tags: [dwb, dotfiles]
