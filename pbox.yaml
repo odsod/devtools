@@ -8,7 +8,6 @@
       with_items:
         - pbox-apply
         - pbox-edit
-        - pbox-cd
       tags: [pbox]
   roles:
     - base
