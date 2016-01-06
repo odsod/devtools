@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-bg_black='\[\e[40m\]'
-bold_dark_grey='\[\e[32;1m\]'
 bold_light_grey='\[\e[36;1m\]'
 bold_grey='\[\e[33;1m\]'
 bold_red='\[\e[31;1m\]'
@@ -31,15 +29,7 @@ function git_prompt_info {
 }
 
 function prompt_command() {
-  PS1=$(cat << EOF
-
-${bg_black}$(printf "%${COLUMNS}s" ' ')\r\
-${bold_dark_grey}\u${bold_light_grey}@\h\
- ${yellow}${bg_black}\w\
- $(git_prompt_info)${normal}
-> 
-EOF
-)
+  PS1="\n  ${yellow}\w $(git_prompt_info)${normal}\n  \$ "
 }
 
 export PROMPT_COMMAND=prompt_command
