@@ -1,27 +1,3 @@
-URxvt.buffered: true
-URxvt.geometry: 80x22
-URxvt.transparent: 0
-URxvt.letterSpace: -1
-URxvt.lineSpace: 1
-URxvt.internalBorder: 10
-URxvt.cursorBlink: 1
-URxvt.cursorUnderline: 1
-
-URxvt.scrollbar: False
-URxvt.saveLines: 0
-
-URxvt.font:xft:PragmataPro:medium:size=11
-URxvt.boldFont:xft:PragmataPro:bold:size=11
-
-URxvt.perl-ext-common: font-size,clipboard
-URxvt.keysym.C-A: perl:font-size:increase
-URxvt.keysym.C-O: perl:font-size:decrease
-URxvt.keysym.C-S-E: perl:font-size:incglobal
-URxvt.keysym.C-S-U: perl:font-size:decglobal
-URxvt.keysym.C-S-V: perl:clipboard:paste
-
-URxvt.iso14755: False
-
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull

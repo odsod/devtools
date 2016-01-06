@@ -8,7 +8,6 @@
     - xorg
     - arandr
     - ttf-liberation
-    - rxvt-unicode
   tags: [xorg, packages]
 
 - name: Create folder ~/.xkb/symbols
@@ -52,10 +51,4 @@
   copy:
     src: gtkrc-2.0
     dest: ~/.gtkrc-2.0
-  tags: [xorg, dotfiles]
-
-- name: Install dotfile ~/.solarized
-  copy:
-    src: solarized
-    dest: ~/.solarized
   tags: [xorg, dotfiles]
