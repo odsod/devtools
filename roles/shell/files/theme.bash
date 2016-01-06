@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
-red='\[\e[31m\]'
-yellow='\[\e[0;33m\]'
-normal='\[\e[0m\]'
-
 git_dirty_state() {
   (git status -bs --porcelain 2> /dev/null | grep -vq '^#') && echo '*'
+}
+
+color() {
+  echo '\[\e[0;'"$1"'m\]'
+}
+
+bold() {
+  echo '\[\e[1;'"$1"'m\]'
 }
 
 git_branch() {
@@ -18,15 +22,15 @@ git_branch() {
   fi
 }
 
-git_prompt_info() {
-  git_branch=$(which git &> /dev/null && git_branch 2>/dev/null)
+git_prompt() {
+  local git_branch=$(which git &> /dev/null && git_branch 2>/dev/null)
   if [[ -n $git_branch ]]; then
-    echo -e "${normal}[${git_branch}${red}$(git_dirty_state)${normal}]"
+    echo -e "$(bold 92)[$(color 96)${git_branch}$(color 91)$(git_dirty_state)$(bold 92)]"
   fi
 }
 
 prompt_command() {
-  PS1="\n ${yellow}\w $(git_prompt_info)${normal}\n \$ "
+  PS1="\n $(color 33)\w $(git_prompt)$(color 0)\n \$ "
 }
 
 export PROMPT_COMMAND=prompt_command
