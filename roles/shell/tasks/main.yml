@@ -51,9 +51,3 @@
     src: theme.bash
     dest: ~/.bash/theme.bash
   tags: [shell, dotfiles]
-
-- name: Download dotfile ~/.bash/git_completion.bash
-  get_url:
-    url: https://raw.githubusercontent.com/git/git/fc9dfda1be25ab3bb311900c6cfbf59d6b6e224e/contrib/completion/git-completion.bash
-    dest: ~/.bash/git_completion.bash
-  tags: [shell, dotfiles]

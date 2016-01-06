@@ -39,7 +39,6 @@ bind Space:magic-space
 alias xi='xclip -selection clipboard -i'
 
 source ~/.bash/theme.bash
-source ~/.bash/git_completion.bash
 
 function cd() {
   if [[ $# == 0 ]]; then
