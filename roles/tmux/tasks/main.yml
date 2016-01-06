@@ -34,9 +34,9 @@
     mode: 0755
   tags: [tmux, bin]
 
-- name: Install script urxvtmux
+- name: Install script stmux
   copy:
-    src: urxvtmux
-    dest: ~/.bin/urxvtmux
+    src: stmux
+    dest: ~/.bin/stmux
     mode: 0755
   tags: [tmux, bin]
