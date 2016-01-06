@@ -11,4 +11,5 @@ usage() {
 layout_name=$1
 [[ -n "${layout_name}" ]] || { usage; exit 1; }
 
-setxkbmap -I "$HOME/.xkb" "$layout_name" -print | xkbcomp -I"$HOME/.xkb" - "$DISPLAY"
+setxkbmap -I "$HOME/.xkb" "$layout_name" -print | \
+  xkbcomp -I"$HOME/.xkb" - "$DISPLAY" 2>/dev/null
