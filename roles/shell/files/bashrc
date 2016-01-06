@@ -23,9 +23,10 @@ if [[ -d ~/software/maven/apache-maven-3.3.3 ]]; then
 fi
 
 export EDITOR='vim'
+
 export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;33'
-export LSCOLORS='Gxfxcxdxdxegedabagacad'
+export GREP_COLOR='1;34'
+
 export HISTCONTROL='ignoredups'
 export HISTSIZE=100000
 
