@@ -19,14 +19,14 @@ git_branch() {
 }
 
 git_prompt_info() {
-  git_branch=$(which git &> /dev/null && git_branch)
+  git_branch=$(which git &> /dev/null && git_branch 2>/dev/null)
   if [[ -n $git_branch ]]; then
     echo -e "${normal}[${git_branch}${red}$(git_dirty_state)${normal}]"
   fi
 }
 
 prompt_command() {
-  PS1="\n   ${yellow}\w $(git_prompt_info)${normal}\n   \$ "
+  PS1="\n ${yellow}\w $(git_prompt_info)${normal}\n \$ "
 }
 
 export PROMPT_COMMAND=prompt_command
