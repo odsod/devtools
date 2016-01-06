@@ -42,10 +42,10 @@
     dest: ~/.Xresources
   tags: [xorg, dotfiles]
 
-- name: Install dotfile ~/.fonts.conf
+- name: Install dotfile ~/.config/fontconfig/fonts.conf
   copy:
     src: fonts.conf
-    dest: ~/.fonts.conf
+    dest: ~/.config/fontconfig/fonts.conf
   tags: [xorg, dotfiles]
 
 - name: Install dotfile ~/.gtkrc-2.0
