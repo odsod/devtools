@@ -40,3 +40,10 @@
     dest: ~/.bin/stmux
     mode: 0755
   tags: [tmux, bin]
+
+- name: Install script print-tmux-colors
+  copy:
+    src: print-tmux-colors
+    dest: ~/.bin/print-tmux-colors
+    mode: 0755
+  tags: [tmux, bin]
