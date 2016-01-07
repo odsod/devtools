@@ -8,10 +8,6 @@ color() {
   echo '\[\e[0;'"$1"'m\]'
 }
 
-bold() {
-  echo '\[\e[1;'"$1"'m\]'
-}
-
 git_branch() {
   local symbolic_ref=$(git symbolic-ref -q HEAD)
   if [[ -n "$symbolic_ref" ]]; then
@@ -25,7 +21,7 @@ git_branch() {
 git_prompt() {
   local git_branch=$(which git &> /dev/null && git_branch 2>/dev/null)
   if [[ -n $git_branch ]]; then
-    echo -e "$(bold 92)[$(color 96)${git_branch}$(color 91)$(git_dirty_state)$(bold 92)]"
+    echo -e "$(color 92)[$(color 96)${git_branch}$(color 91)$(git_dirty_state)$(color 92)]"
   fi
 }
 
