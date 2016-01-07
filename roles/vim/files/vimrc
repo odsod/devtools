@@ -33,7 +33,7 @@ set background=dark
 let g:solarized_termtrans=0
 silent! colorscheme solarized
 " Use normal background for line numbers
-highlight LineNr ctermbg=grey
+autocmd ColorScheme * highlight LineNr ctermbg=grey
 
 " Statusline
 set statusline=[%f]\ %r%=[%l,%c]\ %y\ [%{strlen(&fenc)?&fenc:'none'}]\ [%p%%]
