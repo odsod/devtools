@@ -5,9 +5,15 @@
     name: '{{item}}'
     state: latest
   with_items:
-    - xmonad
+    - cabal-install
     - unclutter
     - suckless-tools
+  tags: [xmonad, packages]
+
+- name: Install XMonad cabal packages
+  shell: cabal install xmonad xmonad-contrib
+  args:
+    creates: ~/.cabal/bin/xmonad
   tags: [xmonad, packages]
 
 - name: Create folder ~/.xmonad
