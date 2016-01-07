@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ $OSTYPE =~ ^linux ]]; then
-  alias ls='ls --classify'
+  alias ls='ls --color=auto --classify'
 fi
 
 export TERM='screen-256color'
