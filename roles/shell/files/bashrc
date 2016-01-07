@@ -35,6 +35,8 @@ unset MAILCHECK
 shopt -s histappend
 shopt -s extglob
 
+stty -ixon # disable XON/XOFF flow control
+
 bind Space:magic-space
 
 alias xi='xclip -selection clipboard -i'
