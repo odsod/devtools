@@ -16,7 +16,7 @@ URxvt.scrollBar: false
 URxvt.saveLines: 0
 URxvt.font: xft:PragmataPro:medium:size=11
 URxvt.boldFont: xft:PragmataPro:bold:size=11
-URxvt.perl-ext-common: font-size,clipboard
+URxvt.perl-ext-common: clipboard
 
 ! Remove C-V mapping
 URxvt.iso14755: false
