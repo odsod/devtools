@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+echo_color() {
+  local n=$1
+  local name=$2
+  printf "\e[%s%14s\e[0m%6s   %-16s" "${n}m" 'hello world' "${n}m" "$name"
+  printf "\e[%s%14s\e[0m%6s   %-22s\n" "1;${n}m" 'hello world' "${n}m" "$name (bold)"
+}
+
+echo_color 30 'Black'
+echo_color 31 'Red'
+echo_color 32 'Green'
+echo_color 33 'Yellow'
+echo_color 34 'Blue'
+echo_color 35 'Magenta'
+echo_color 36 'Cyan'
+echo_color 37 'Light Gray'
+echo_color 90 'Dark Gray'
+echo_color 91 'Light Red'
+echo_color 92 'Light Green'
+echo_color 93 'Light Yellow'
+echo_color 94 'Light Blue'
+echo_color 95 'Light Magenta'
+echo_color 96 'Light Cyan'
+echo_color 97 'White'
