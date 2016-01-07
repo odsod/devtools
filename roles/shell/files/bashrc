@@ -1,26 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $OSTYPE =~ ^linux ]]; then
-  alias ls='ls --color=auto --classify'
-fi
-
 export TERM='screen-256color'
-
-if [[ -d ~/.bin ]]; then
-  export PATH=${HOME}/.bin:${PATH}
-fi
-
-if [[ -d ~/.cabal/bin ]]; then
-  export PATH=${HOME}/.cabal/bin:${PATH}
-fi
-
-if [[ -d ~/.rbenv/bin ]]; then
-  export PATH=${PATH}:${HOME}/.rbenv/bin
-fi
-
-if [[ -d ~/software/maven/apache-maven-3.3.3 ]]; then
-  export M2_HOME=$HOME/software/maven/apache-maven-3.3.3
-fi
 
 export EDITOR='vim'
 
@@ -45,11 +25,35 @@ source ~/.bash/theme.bash
 
 function cd() {
   if [[ $# == 0 ]]; then
-    builtin cd "$HOME" && ls
+    builtin cd ~ && ls
   else
     builtin cd "$*" && ls
   fi
 }
+
+if [[ $OSTYPE =~ ^linux ]]; then
+  alias ls='ls --color=auto --classify'
+fi
+
+if [[ -d ~/.bin ]]; then
+  export PATH=~/.bin:${PATH}
+fi
+
+if [[ -d ~/.cabal/bin ]]; then
+  export PATH=~/.cabal/bin:${PATH}
+fi
+
+if [[ -d ~/.rbenv/bin ]]; then
+  export PATH=~/.rbenv/bin:${PATH}
+fi
+
+if [[ -f ~/.rbenv/bin/rbenv ]]; then
+  eval "$(rbenv init -)"
+fi
+
+if [[ -d ~/software/maven/apache-maven-3.3.3 ]]; then
+  export M2_HOME=~/software/maven/apache-maven-3.3.3
+fi
 
 if [[ -f /etc/bash_completion ]]; then
   source /etc/bash_completion
@@ -57,14 +61,6 @@ fi
 
 if [[ -f ~/.bashrc.local ]]; then
   source ~/.bashrc.local
-fi
-
-if [[ -f ~/.rbenv/bin/rbenv ]]; then
-  eval "$(rbenv init -)"
-fi
-
-if [[ -f ~/.nvm/nvm.sh ]]; then
-  source ~/.nvm/nvm.sh
 fi
 
 if [[ -d ~/software/google-cloud-sdk/google-cloud-sdk ]]; then
