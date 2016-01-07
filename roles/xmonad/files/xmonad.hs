@@ -14,7 +14,7 @@ main = xmonad $ defaultConfig {
 , terminal           = myTerminal
 , workspaces         = map fst myWorkspaces
 , startupHook        = windows $ greedyView $ fst $ head myWorkspaces
-, focusedBorderColor = "#93a1a1"
+, focusedBorderColor = "#586e75"
 , normalBorderColor  = "#073642"
 , focusFollowsMouse  = False
 , layoutHook         = myLayout
@@ -69,7 +69,6 @@ myScratchpads =
        (appName =? "spotify.slack.com") fullLayout
   , NS "drive" "chromium-browser --app=https://drive.google.com"
        (appName =? "drive.google.com") fullLayout
-
   , NS "chromium" "chromium-browser" (appName =? "Chromium-browser") fullLayout
   , NS "dwb" "dwb" (appName =? "dwb") fullLayout
   , NS "ipython" "" (fmap (isPrefixOf "ipython") appName =? True) fullLayout
