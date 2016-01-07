@@ -75,7 +75,7 @@ myScratchpads =
   , NS "bottom" "ttymux bottom" (appName =? "bottom") bottomLayout
   , NS "top" "ttymux top" (appName =? "top") topLayout
   ]
-  where topMargin = 0.025
+  where topMargin = 0.035
         leftMargin = topMargin * (10 / 16) -- compensate for widescreen
         fullLayout = customFloating $ RationalRect
           leftMargin topMargin (1 - 2 * leftMargin) (1 - 2 * topMargin)
