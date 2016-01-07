@@ -6,6 +6,8 @@
     state: latest
   with_items:
     - xorg
+    - xcompmgr
+    - hsetroot
     - ttf-liberation
   tags: [xorg, packages]
 

@@ -4,6 +4,8 @@ xrdb -merge ~/.Xresources
 
 xsetroot -cursor_name 'left_ptr'
 xsetroot -solid '#002b36'
+hsetroot -solid '#002b36'
+xcompmgr & # fix border redraw issue
 
 setxkb 'poskeys'
 
