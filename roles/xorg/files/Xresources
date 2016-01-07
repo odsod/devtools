@@ -21,10 +21,6 @@ URxvt.perl-ext-common: font-size,clipboard
 ! Remove C-V mapping
 URxvt.iso14755: false
 
-URxvt.keysym.C-A: perl:font-size:increase
-URxvt.keysym.C-O: perl:font-size:decrease
-URxvt.keysym.C-S-A: perl:font-size:incglobal
-URxvt.keysym.C-S-O: perl:font-size:decglobal
 URxvt.keysym.C-S-V: perl:clipboard:paste
 
 #define S_base03 #002b36

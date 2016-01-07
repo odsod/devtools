@@ -12,13 +12,6 @@
     state: directory
   tags: [urxvt, folders]
 
-- name: Install script ~/.urxvt/ext/font-size
-  copy:
-    src: font-size
-    dest: ~/.urxvt/ext/font-size
-    mode: 0755
-  tags: [urxvt, bin]
-
 - name: Install script ~/.urxvt/ext/clipboard
   copy:
     src: clipboard
