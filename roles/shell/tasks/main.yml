@@ -17,6 +17,7 @@
     - pssh
     - gdb
     - ncdu
+    - rxvt-unicode
   tags: [shell, packages]
 
 - name: Install packages from backports
