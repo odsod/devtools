@@ -23,14 +23,6 @@ alias xi='xclip -selection clipboard -i'
 
 source ~/.bash/theme.bash
 
-function cd() {
-  if [[ $# == 0 ]]; then
-    builtin cd ~ && ls
-  else
-    builtin cd "$*" && ls
-  fi
-}
-
 if [[ $OSTYPE =~ ^linux ]]; then
   alias ls='ls --color=auto --classify'
 fi
@@ -67,6 +59,14 @@ if [[ -d ~/software/google-cloud-sdk/google-cloud-sdk ]]; then
   source ~/software/google-cloud-sdk/google-cloud-sdk/path.bash.inc
   source ~/software/google-cloud-sdk/google-cloud-sdk/completion.bash.inc
 fi
+
+function cd() {
+  if [[ $# == 0 ]]; then
+    builtin cd ~ && ls
+  else
+    builtin cd "$*" && ls
+  fi
+}
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   export _JAVA_AWT_WM_NONREPARENTING=1 # XMonad + AWT
