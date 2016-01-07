@@ -1,21 +1,20 @@
-- name: Install nvm v0.29.0
-  git:
-    repo: https://github.com/creationix/nvm.git
-    dest: /home/poscar/.nvm
-    update: no
-    version: v0.29.0
-    depth: 1
-    accept_hostkey: yes
-  tags: [nodejs]
+- name: Install nodejs packages
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+    state: latest
+  with_items:
+    - nodejs-legacy
+    - npm
+  tags: [nodejs, packages]
 
-- name: Install Node.js v4.2.1
-  shell: $SHELL -lc 'source /home/poscar/.nvm/nvm.sh && nvm install v4.2.1'
-  args:
-    creates: ~/.nvm/versions/node/v4.2.1
-  tags: [nodejs]
-
-- name: Use Node.js v4.2.1 as default
-  shell: $SHELL -lc 'source /home/poscar/.nvm/nvm.sh && nvm alias default stable'
-  args:
-    creates: ~/.nvm/alias/default
-  tags: [nodejs]
+- name: Install npm packages
+  become: yes
+  become_user: root
+  npm:
+    name: '{{item}}'
+    global: yes
+  with_items:
+    - npm
+  tags: [nodejs, packages]
