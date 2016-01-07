@@ -6,7 +6,7 @@ import XMonad.StackSet hiding (workspaces)
 
 import Data.List
 
-myTerminal = "stmux mid"
+myTerminal = "ttymux mid"
 myWorkspaces = [("h", xK_h), ("c", xK_c), ("r", xK_r), ("l", xK_l)]
 
 main = xmonad $ defaultConfig {
@@ -72,8 +72,8 @@ myScratchpads =
   , NS "chromium" "chromium-browser" (appName =? "Chromium-browser") fullLayout
   , NS "dwb" "dwb" (appName =? "dwb") fullLayout
   , NS "ipython" "" (fmap (isPrefixOf "ipython") appName =? True) fullLayout
-  , NS "bottom" "stmux bottom" (appName =? "bottom") bottomLayout
-  , NS "top" "stmux top" (appName =? "top") topLayout
+  , NS "bottom" "ttymux bottom" (appName =? "bottom") bottomLayout
+  , NS "top" "ttymux top" (appName =? "top") topLayout
   ]
   where topMargin = 0.025
         leftMargin = topMargin * (10 / 16) -- compensate for widescreen

@@ -34,10 +34,10 @@
     mode: 0755
   tags: [tmux, bin]
 
-- name: Install script stmux
+- name: Install script ttymux
   copy:
-    src: stmux
-    dest: ~/.bin/stmux
+    src: ttymux
+    dest: ~/.bin/ttymux
     mode: 0755
   tags: [tmux, bin]
 
