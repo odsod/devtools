@@ -7,7 +7,7 @@
   with_items:
     - nodejs-legacy
     - npm
-  tags: [nodejs, packages]
+  tags: [nodejs]
 
 - name: Install npm packages
   become: yes
@@ -17,4 +17,4 @@
     global: yes
   with_items:
     - npm
-  tags: [nodejs, packages]
+  tags: [nodejs]

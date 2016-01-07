@@ -4,50 +4,50 @@
   apt:
     name: dwb
     state: latest
-  tags: [dwb, packages]
+  tags: [dwb]
 
 - name: Create folder ~/.config/dwb
   file:
     path: ~/.config/dwb
     state: directory
-  tags: [dwb, folders]
+  tags: [dwb]
 
 - name: Install dotfile ~/.config/dwb/settings
   copy:
     src: settings
     dest: ~/.config/dwb/settings
-  tags: [dwb, dotfiles]
+  tags: [dwb]
 
 - name: Install dotfile ~/.config/dwb/keys
   copy:
     src: keys
     dest: ~/.config/dwb/keys
-  tags: [dwb, dotfiles]
+  tags: [dwb]
 
 - name: Add search engine Google
   lineinfile:
     dest: ~/.config/dwb/searchengines
     line: g https://www.google.com/search?q=_dwb_search_submit_
     create: yes
-  tags: [dwb, dotfiles]
+  tags: [dwb]
 
 - name: Add search engine DuckDuckGo
   lineinfile:
     dest: ~/.config/dwb/searchengines
     line: dd https://duckduckgo.com/?q=_dwb_search_submit_
     create: yes
-  tags: [dwb, dotfiles]
+  tags: [dwb]
 
 - name: Add search engine GitHub
   lineinfile:
     dest: ~/.config/dwb/searchengines
     line: gh https://github.com/search?utf8=%E2%9C%93&q=_dwb_search_submit_
     create: yes
-  tags: [dwb, dotfiles]
+  tags: [dwb]
 
 - name: Add search engine GitHub/odsod
   lineinfile:
     dest: ~/.config/dwb/searchengines
     line: gho https://github.com/odsod/_dwb_search_submit_
     create: yes
-  tags: [dwb, dotfiles]
+  tags: [dwb]

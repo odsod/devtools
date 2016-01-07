@@ -9,35 +9,35 @@
     - xcompmgr
     - hsetroot
     - ttf-liberation
-  tags: [xorg, packages]
+  tags: [xorg]
 
 - name: Create folder ~/.xkb/symbols
   file:
     path: ~/.xkb/symbols
     state: directory
-  tags: [xorg, keyboard, folders]
+  tags: [xorg]
 
 - name: Install keyboard layout ~/.xkb/symbols/poskeys
   copy:
     src: poskeys
     dest: ~/.xkb/symbols/poskeys
-  tags: [xorg, dotfiles, keyboard]
+  tags: [xorg]
 
 - name: Install script ~/.bin/setxkb
   copy:
     src: setxkb
     dest: ~/.bin/setxkb
     mode: 0755
-  tags: [xorg, bin, keyboard]
+  tags: [xorg]
 
 - name: Install dotfile ~/.xinitrc
   copy:
     src: xinitrc
     dest: ~/.xinitrc
-  tags: [xorg, dotfiles]
+  tags: [xorg]
 
 - name: Install dotfile ~/.Xresources
   copy:
     src: Xresources
     dest: ~/.Xresources
-  tags: [xorg, dotfiles]
+  tags: [xorg]

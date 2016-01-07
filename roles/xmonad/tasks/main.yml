@@ -8,29 +8,29 @@
     - cabal-install
     - unclutter
     - suckless-tools
-  tags: [xmonad, packages]
+  tags: [xmonad]
 
 - name: Install XMonad cabal packages
   shell: cabal install xmonad xmonad-contrib
   args:
     creates: ~/.cabal/bin/xmonad
-  tags: [xmonad, packages]
+  tags: [xmonad]
 
 - name: Create folder ~/.xmonad
   file:
     path: ~/.xmonad
     state: directory
-  tags: [xmonad, dotfiles, folders]
+  tags: [xmonad]
 
 - name: Install dotfile ~/.xmonad/xmonad.hs
   copy:
     src: xmonad.hs
     dest: ~/.xmonad/xmonad.hs
-  tags: [xmonad, dotfiles]
+  tags: [xmonad]
 
 - name: Install mydmenu script
   copy:
     src: mydmenu
     dest: ~/.bin/mydmenu
     mode: 0755
-  tags: [xmonad, bin]
+  tags: [xmonad]

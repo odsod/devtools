@@ -4,7 +4,7 @@
   apt_repository:
     repo: 'ppa:webupd8team/java'
     update_cache: yes
-  tags: [java8, repositories]
+  tags: [java8]
 
 - name: Accept Java8 license
   become: yes
@@ -24,4 +24,4 @@
     - oracle-java8-installer
     - ca-certificates
     - oracle-java8-set-default 
-  tags: [java8, packages]
+  tags: [java8]

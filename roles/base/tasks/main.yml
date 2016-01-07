@@ -7,13 +7,13 @@
     state: present
     create: yes
     validate: visudo -cf %s
-  tags: [poscar]
+  tags: [base]
 
 - name: Create folder ~/.bin
   file:
     path: ~/.bin
     state: directory
-  tags: [folders, bin]
+  tags: [base]
 
 - name: Install packages required for adding APT repositories
   become: yes
@@ -26,7 +26,7 @@
     - apt-transport-https
     - python-software-properties
     - software-properties-common
-  tags: [packages, repositories]
+  tags: [base]
 
 - name: Add APT repository trusty-backports
   become: yes
@@ -35,4 +35,4 @@
     repo: 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
     state: present
     update_cache: yes
-  tags: [repositories]
+  tags: [base]

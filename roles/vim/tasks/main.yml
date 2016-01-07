@@ -2,7 +2,7 @@
   copy:
     src: vimrc
     dest: ~/.vimrc
-  tags: [vim, dotfiles]
+  tags: [vim]
 
 - name: Clone GitHub repo VundleVim/Vundle.vim
   git:

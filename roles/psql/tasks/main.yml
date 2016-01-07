@@ -2,4 +2,4 @@
   copy:
     src: psqlrc
     dest: ~/.psqlrc
-  tags: [psql, dotfiles]
+  tags: [psql]

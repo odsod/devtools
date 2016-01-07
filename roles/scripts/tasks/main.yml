@@ -3,4 +3,4 @@
     src: tldr
     dest: ~/.bin/tldr
     mode: 0755
-  tags: [bin, scripts]
+  tags: [bin]

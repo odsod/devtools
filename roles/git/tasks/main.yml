@@ -4,7 +4,7 @@
   apt_repository:
     repo: 'ppa:git-core/ppa'
     update_cache: yes
-  tags: [git, repositories]
+  tags: [git]
 
 - name: Install package
   become: yes
@@ -12,10 +12,10 @@
   apt:
     name: git
     state: latest
-  tags: [git, packages]
+  tags: [git]
 
 - name: Install dotfile ~/.gitconfig
   template:
     src: gitconfig.j2
     dest: ~/.gitconfig
-  tags: [git, dotfiles]
+  tags: [git]

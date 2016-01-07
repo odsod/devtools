@@ -2,7 +2,7 @@
   file:
     path: ~/software/fpp
     state: directory
-  tags: [fpp, folders]
+  tags: [fpp]
 
 - name: Download fpp.0.6.2.tar.gz
   get_url:
@@ -14,7 +14,7 @@
   file:
     path: ~/software/fpp/fpp-0.6.2
     state: directory
-  tags: [fpp, folders]
+  tags: [fpp]
 
 - name: Unarchive fpp.0.6.2.tar.gz
   unarchive:

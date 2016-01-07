@@ -18,7 +18,7 @@
     - gdb
     - ncdu
     - rxvt-unicode
-  tags: [shell, packages]
+  tags: [shell]
 
 - name: Install packages from backports
   become: yes
@@ -27,35 +27,35 @@
     name: '{{item}}'
   with_items:
     - jq=1.4-2.1~ubuntu14.04.1
-  tags: [shell, packages]
+  tags: [shell]
 
 - name: Install dotfile ~/.bashrc
   copy:
     src: bashrc
     dest: ~/.bashrc
-  tags: [shell, dotfiles]
+  tags: [shell]
 
 - name: Install dotfile ~/.inputrc
   copy:
     src: inputrc
     dest: ~/.inputrc
-  tags: [shell, dotfiles]
+  tags: [shell]
 
 - name: Create folder ~/.bash
   file:
     path: ~/.bash
     state: directory
-  tags: [shell, dotfiles, folders]
+  tags: [shell]
 
 - name: Install dotfile ~/.bash/theme.bash
   copy:
     src: theme.bash
     dest: ~/.bash/theme.bash
-  tags: [shell, dotfiles]
+  tags: [shell]
 
 - name: Install script print-bash-colors
   copy:
     src: print-bash-colors
     dest: ~/.bin/print-bash-colors
     mode: 0755
-  tags: [shell, bin]
+  tags: [shell]

@@ -4,7 +4,7 @@
   apt_repository:
     repo: 'ppa:pi-rho/dev'
     update_cache: yes
-  tags: [tmux, repositories]
+  tags: [tmux]
 
 - name: Install package tmux=2.0-1~ppa1~t
   become: yes
@@ -12,38 +12,38 @@
   apt:
     name: tmux=2.0-1~ppa1~t
     state: present
-  tags: [tmux, packages]
+  tags: [tmux]
 
 - name: Install ~/.tmux.conf
   copy:
     src: tmux.conf
     dest: ~/.tmux.conf
-  tags: [tmux, dotfiles]
+  tags: [tmux]
 
 - name: Install script tmuxssh
   copy:
     src: tmuxssh
     dest: ~/.bin/tmuxssh
     mode: 0755
-  tags: [tmux, bin]
+  tags: [tmux]
 
 - name: Install script tmuxargs
   copy:
     src: tmuxargs
     dest: ~/.bin/tmuxargs
     mode: 0755
-  tags: [tmux, bin]
+  tags: [tmux]
 
 - name: Install script ttymux
   copy:
     src: ttymux
     dest: ~/.bin/ttymux
     mode: 0755
-  tags: [tmux, bin]
+  tags: [tmux]
 
 - name: Install script print-tmux-colors
   copy:
     src: print-tmux-colors
     dest: ~/.bin/print-tmux-colors
     mode: 0755
-  tags: [tmux, bin]
+  tags: [tmux]

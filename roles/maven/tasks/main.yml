@@ -2,7 +2,7 @@
   file:
     path: ~/software/maven
     state: directory
-  tags: [maven, folders]
+  tags: [maven]
 
 - name: Download apache-maven-3.3.3-bin.tar.gz
   get_url:

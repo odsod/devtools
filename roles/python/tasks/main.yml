@@ -22,4 +22,4 @@
     - pyflakes
     - fabric
     - requests[security] # or else SSL warnings
-  tags: [python, pip]
+  tags: [python]
