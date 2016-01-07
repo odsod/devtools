@@ -35,12 +35,10 @@ if [[ -d ~/.cabal/bin ]]; then
   export PATH=~/.cabal/bin:${PATH}
 fi
 
-if [[ -d ~/.rbenv/bin ]]; then
-  export PATH=~/.rbenv/bin:${PATH}
-fi
-
-if [[ -f ~/.rbenv/bin/rbenv ]]; then
-  eval "$(rbenv init -)"
+if [[ -f /usr/local/share/chruby/chruby.sh ]]; then
+  source /usr/local/share/chruby/chruby.sh
+  RUBIES+=(~/software/rubies/ruby-2.2.1)
+  chruby ruby-2.2.1
 fi
 
 if [[ -d ~/software/maven/apache-maven-3.3.3 ]]; then

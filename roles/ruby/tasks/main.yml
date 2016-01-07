@@ -1,51 +1,55 @@
-- name: Clone GitHub repo sstephenson/rbenv to ~/.rbenv
-  git:
-    repo: https://github.com/sstephenson/rbenv.git
-    dest: ~/.rbenv
-    update: no
-    accept_hostkey: yes
-  tags: [ruby, rbenv]
+- name: Create folder ~/software/rubies
+  file:
+    path: ~/software/rubies
+    state: directory
+  tags: [ruby]
 
-- name: Clone GitHub repo sstephenson/ruby-build to ~/.rbenv/plugins
-  git:
-    repo: https://github.com/sstephenson/ruby-build.git
-    dest: ~/.rbenv/plugins/ruby-build
-    update: no
-    accept_hostkey: yes
-  tags: [ruby, rbenv]
+- name: Download ruby-2.2.1.tar.bz2
+  get_url:
+    url: https://rvm_io.global.ssl.fastly.net/binaries/ubuntu/14.04/x86_64/ruby-2.2.1.tar.bz2
+    dest: ~/software/rubies/ruby-2.2.1.tar.bz2
+  tags: [ruby]
 
-- name: Install 2.2.2
-  shell: $SHELL -lc 'eval "$(rbenv init -)" && rbenv install 2.2.2'
-  args:
-    creates: ~/.rbenv/versions/2.2.2
-  tags: [ruby, rbenv]
+- name: Unarchive ruby-2.2.1.tar.bz2
+  unarchive:
+    copy: no
+    src: ~/software/rubies/ruby-2.2.1.tar.bz2
+    dest: ~/software/rubies
+    creates: ~/software/rubies/ruby-2.2.1
+  tags: [ruby]
 
-- name: Set global ruby version
-  copy:
-    src: version
-    dest: ~/.rbenv/version
-  tags: [ruby, rbenv]
+- name: Create folder ~/software/chruby
+  file:
+    path: ~/software/chruby
+    state: directory
+  tags: [ruby]
+
+- name: Download chruby-0.3.9.tar.gz
+  get_url:
+    url: https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+    dest: ~/software/chruby/chruby-0.3.9.tar.gz
+  tags: [ruby]
+
+- name: Unarchive chruby-0.3.9.tar.gz
+  unarchive:
+    copy: no
+    src: ~/software/chruby/chruby-0.3.9.tar.gz
+    dest: ~/software/chruby
+    creates: ~/software/chruby/chruby-0.3.9
+  tags: [ruby]
 
 - name: Install dotfile ~/.gemrc
   copy:
     src: gemrc
     dest: ~/.gemrc
-  tags: [ruby, gems]
+  tags: [ruby]
 
-- name: Install gem ruby-puppetdb
-  shell: $SHELL -lc 'eval "$(rbenv init -)" && gem install puppet ruby-puppetdb'
-  args:
-    creates: ~/.rbenv/versions/2.2.2/bin/find-nodes
-  tags: [ruby, gems]
-
-- name: Install gem puppet-lint
-  shell: $SHELL -lc 'eval "$(rbenv init -)" && gem install puppet-lint'
-  args:
-    creates: ~/.rbenv/versions/2.2.2/bin/puppet-lint
-  tags: [ruby, gems]
-
-- name: Install gem mdl
-  shell: $SHELL -lc 'eval "$(rbenv init -)" && gem install mdl'
-  args:
-    creates: ~/.rbenv/versions/2.2.2/bin/mdl
-  tags: [ruby, gems]
+- name: Install gems
+  gem:
+    name: rake
+    executable: ~/software/rubies/ruby-2.2.1/bin/gem
+  with_items:
+    - puppet-lint
+    - mdl
+    - ruby-puppetdb
+  tags: [ruby]
