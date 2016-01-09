@@ -69,6 +69,7 @@ nnoremap <Space> <Nop>
 let mapleader = " "
 nnoremap <Leader>t :NERDTreeToggle<CR>
 nnoremap <Leader>i gg=G<C-O><C-O>
+nnoremap <Leader>n :nohlsearch<CR>
 
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
