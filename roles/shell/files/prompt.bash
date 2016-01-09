@@ -11,10 +11,10 @@ git_dirty_state() {
 
 git_ahead_state() {
   num_commits_ahead=$(git status -bs --porcelain 2>/dev/null \
-    | head -1 | grep ahead | sed 's/.*ahead \([1..9]\)\+.*/\1/')
+    | head -1 | grep ahead | sed 's/.*ahead \([[:digit:]]*\).*/\1/')
   [[ -n $num_commits_ahead ]] && echo -n "+$num_commits_ahead"
   num_commits_behind=$(git status -bs --porcelain 2>/dev/null \
-    | head -1 | grep behind | sed 's/.*behind \([1..9]\)\+.*/\1/')
+    | head -1 | grep behind | sed 's/.*behind \([[:digit:]]*\).*/\1/')
   [[ -n $num_commits_behind ]] && echo -n "-$num_commits_behind"
 }
 
