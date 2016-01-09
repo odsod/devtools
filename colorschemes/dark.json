@@ -1,0 +1,25 @@
+{
+  "COLORSCHEME": {
+    "TYPE": "dark",
+    "BLACK": "#073642",
+    "RED": "#dc322f",
+    "GREEN": "#859900",
+    "YELLOW": "#b58900",
+    "BLUE": "#268bd2",
+    "MAGENTA": "#d33682",
+    "CYAN": "#2aa198",
+    "LIGHT_GRAY": "#eee8d5",
+    "DARK_GRAY": "#002b36",
+    "LIGHT_RED": "#cb4b16",
+    "LIGHT_GREEN": "#586e75",
+    "LIGHT_YELLOW": "#657b83",
+    "LIGHT_BLUE": "#839496",
+    "LIGHT_MAGENTA": "#6c71c4",
+    "LIGHT_CYAN": "#93a1a1",
+    "WHITE": "#fdf6e3",
+    "BACKGROUND": "#002b36",
+    "FOREGROUND": "#839496",
+    "CURSOR": "#93a1a1",
+    "FONT_SIZE": 13
+  }
+}

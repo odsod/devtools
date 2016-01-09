@@ -47,10 +47,10 @@
     state: directory
   tags: [shell]
 
-- name: Install dotfile ~/.bash/theme.bash
+- name: Install dotfile ~/.bash/prompt.bash
   copy:
-    src: theme.bash
-    dest: ~/.bash/theme.bash
+    src: prompt.bash
+    dest: ~/.bash/prompt.bash
   tags: [shell]
 
 - name: Install script print-bash-colors
@@ -58,4 +58,10 @@
     src: print-bash-colors
     dest: ~/.bin/print-bash-colors
     mode: 0755
+  tags: [shell]
+
+- name: Render template ~/.bash/colorscheme.bash
+  template:
+    src: colorscheme.bash.j2
+    dest: ~/.bash/colorscheme.bash
   tags: [shell]

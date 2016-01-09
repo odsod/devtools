@@ -12,9 +12,9 @@
     state: directory
   tags: [dwb]
 
-- name: Install dotfile ~/.config/dwb/settings
-  copy:
-    src: settings
+- name: Render template ~/.config/dwb/settings
+  template:
+    src: settings.j2
     dest: ~/.config/dwb/settings
   tags: [dwb]
 

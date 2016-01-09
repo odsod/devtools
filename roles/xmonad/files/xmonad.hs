@@ -5,6 +5,8 @@ import XMonad.Util.NamedScratchpad
 import XMonad.StackSet hiding (workspaces)
 
 import Data.List
+import System.Environment
+import System.IO.Unsafe
 
 myTerminal = "ttymux mid"
 myWorkspaces = [("h", xK_h), ("c", xK_c), ("r", xK_r), ("l", xK_l)]
@@ -14,8 +16,8 @@ main = xmonad $ defaultConfig {
 , terminal           = myTerminal
 , workspaces         = map fst myWorkspaces
 , startupHook        = windows $ greedyView $ fst $ head myWorkspaces
-, focusedBorderColor = "#586e75"
-, normalBorderColor  = "#073642"
+, focusedBorderColor = unsafePerformIO $ getEnv "COLORSCHEME_LIGHT_GREEN"
+, normalBorderColor  = unsafePerformIO $ getEnv "COLORSCHEME_BLACK"
 , focusFollowsMouse  = False
 , layoutHook         = myLayout
 , manageHook         = namedScratchpadManageHook myScratchpads

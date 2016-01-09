@@ -1,3 +1,8 @@
 #!/bin/bash
 
-exec dmenu_run -i -nb "#073642" -nf "#657B83" -sb "#002b36" -sf "#93a1a1" -fn "10x20"
+exec dmenu_run -i \
+  -nb "$COLORSCHEME_BLACK" \
+  -nf "$COLORSCHEME_LIGHT_YELLOW" \
+  -sb "$COLORSCHEME_DARK_GRAY" \
+  -sf "$COLORSCHEME_LIGHT_CYAN" \
+  -fn "10x20"

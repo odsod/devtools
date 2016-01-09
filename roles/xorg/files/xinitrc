@@ -3,11 +3,11 @@
 xrdb -merge ~/.Xresources
 
 xsetroot -cursor_name 'left_ptr'
-xsetroot -solid '#002b36'
-hsetroot -solid '#002b36'
+xsetroot -solid "$COLORSCHEME_DARK_GRAY"
+hsetroot -solid "$COLORSCHEME_DARK_GRAY"
 xcompmgr & # fix border redraw issue
 
-setxkb 'poskeys'
+setxkb poskeys
 
 # power saving off
 xset -dpms &

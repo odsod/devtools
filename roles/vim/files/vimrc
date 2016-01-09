@@ -29,9 +29,16 @@ call vundle#end()
 
 filetype plugin indent on
 
-set background=dark
-let g:solarized_termtrans=0
-silent! colorscheme solarized
+if $COLORSCHEME_TYPE == 'contrast'
+  set background=light
+  set nocursorline
+else
+  let g:solarized_termtrans=0
+  set background=dark
+  silent! colorscheme solarized
+  set cursorline
+endif
+
 " Use normal background for line numbers
 autocmd ColorScheme * highlight LineNr ctermbg=grey
 
@@ -39,7 +46,6 @@ autocmd ColorScheme * highlight LineNr ctermbg=grey
 set statusline=[%f]\ %r%=[%l,%c]\ %y\ [%{strlen(&fenc)?&fenc:'none'}]\ [%p%%]
 
 " Config
-set cursorline
 set expandtab
 set hidden
 set hlsearch

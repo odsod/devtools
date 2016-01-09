@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+{% for COLOR, hex in COLORSCHEME.iteritems() %}
+export COLORSCHEME_{{COLOR}}='{{hex}}'
+{% endfor %}

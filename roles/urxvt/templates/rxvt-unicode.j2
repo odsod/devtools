@@ -1,0 +1,18 @@
+! vim: ft=xdefaults
+
+URxvt.transparent: false
+URxvt.letterSpace: -0.99
+URxvt.lineSpace: 2
+URxvt.internalBorder: 8
+URxvt.cursorUnderline: true
+URxvt.cursorBlink: true
+URxvt.scrollBar: false
+URxvt.saveLines: 0
+URxvt.font: xft:PragmataPro:medium:size={{COLORSCHEME['FONT_SIZE']}}
+URxvt.boldFont: xft:PragmataPro:bold:size={{COLORSCHEME['FONT_SIZE']}}
+URxvt.perl-ext-common: clipboard
+
+! Remove C-V mapping
+URxvt.iso14755: false
+
+URxvt.keysym.C-S-V: perl:clipboard:paste

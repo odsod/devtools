@@ -18,3 +18,9 @@
     dest: ~/.urxvt/ext/clipboard
     mode: 0755
   tags: [urxvt]
+
+- name: Render template ~/.Xresources.d/rxvt-unicode
+  template:
+    src: rxvt-unicode.j2
+    dest: ~/.Xresources.d/rxvt-unicode
+  tags: [urxvt]

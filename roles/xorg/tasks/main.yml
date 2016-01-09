@@ -41,3 +41,15 @@
     src: Xresources
     dest: ~/.Xresources
   tags: [xorg]
+
+- name: Create folder ~/.Xresources.d
+  file:
+    path: ~/.Xresources.d
+    state: directory
+  tags: [xorg]
+
+- name: Render template ~/.Xresources.d/colorscheme
+  template:
+    src: colorscheme.j2
+    dest: ~/.Xresources.d/colorscheme
+  tags: [xorg]
