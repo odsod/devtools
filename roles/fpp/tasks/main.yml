@@ -4,29 +4,29 @@
     state: directory
   tags: [fpp]
 
-- name: Download fpp.0.6.2.tar.gz
+- name: Download fpp.0.7.0.tar.gz
   get_url:
-    url: https://github.com/facebook/PathPicker/releases/download/0.6.2/fpp.0.6.2.tar.gz
-    dest: ~/software/fpp/fpp.0.6.2.tar.gz
+    url: https://github.com/facebook/PathPicker/releases/download/0.7.0/fpp.0.7.0.tar.gz
+    dest: ~/software/fpp/fpp.0.7.0.tar.gz
   tags: [fpp]
 
-- name: Create folder ~/software/fpp/fpp-0.6.2
+- name: Create folder ~/software/fpp/fpp-0.7.0
   file:
-    path: ~/software/fpp/fpp-0.6.2
+    path: ~/software/fpp/fpp-0.7.0
     state: directory
   tags: [fpp]
 
-- name: Unarchive fpp.0.6.2.tar.gz
+- name: Unarchive fpp.0.7.0.tar.gz
   unarchive:
     copy: no
-    src: ~/software/fpp/fpp.0.6.2.tar.gz
-    dest: ~/software/fpp/fpp-0.6.2
-    creates: ~/software/fpp/fpp-0.6.2/fpp
+    src: ~/software/fpp/fpp.0.7.0.tar.gz
+    dest: ~/software/fpp/fpp-0.7.0
+    creates: ~/software/fpp/fpp-0.7.0/fpp
   tags: [fpp]
 
 - name: Symlink ~/.bin/fpp
   file:
-    src: ~/software/fpp/fpp-0.6.2/fpp
+    src: ~/software/fpp/fpp-0.7.0/fpp
     dest: ~/.bin/fpp
     state: link
   tags: [fpp]

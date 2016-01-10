@@ -1,0 +1,54 @@
+- name: Add PPA repository webupd8team/java
+  become: yes
+  become_user: root
+  apt_repository:
+    repo: 'ppa:webupd8team/java'
+    update_cache: yes
+  tags: [java]
+
+- name: Accept Java 8 license
+  become: yes
+  become_user: root
+  shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | tee /etc/oracle-java8-licence-acceptance | /usr/bin/debconf-set-selections
+  args:
+    creates: /etc/oracle-java8-licence-acceptance
+  tags: [java]
+
+- name: Install Java 8 packages
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+    state: latest
+  with_items:
+    - oracle-java8-installer
+    - ca-certificates
+    - oracle-java8-set-default 
+  tags: [java]
+
+- name: Create folder ~/software/maven
+  file:
+    path: ~/software/maven
+    state: directory
+  tags: [java]
+
+- name: Download apache-maven-3.3.3-bin.tar.gz
+  get_url:
+    url: http://apache.mirrors.spacedump.net/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz
+    dest: ~/software/maven/apache-maven-3.3.3-bin.tar.gz
+  tags: [java]
+
+- name: Unarchive apache-maven-3.3.3-bin.tar.gz
+  unarchive:
+    copy: no
+    src: ~/software/maven/apache-maven-3.3.3-bin.tar.gz
+    dest: ~/software/maven
+    creates: ~/software/maven/apache-maven-3.3.3
+  tags: [java]
+
+- name: Symlink ~/.bin/mvn
+  file:
+    src: ~/software/maven/apache-maven-3.3.3/bin/mvn
+    dest: ~/.bin/mvn
+    state: link
+  tags: [java]

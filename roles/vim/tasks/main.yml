@@ -1,3 +1,10 @@
+- name: Install package vim-gtk
+  become: yes
+  become_user: root
+  apt:
+    name: vim-gtk
+  tags: [vim]
+
 - name: Install dotfile ~/.vimrc
   copy:
     src: vimrc

@@ -9,6 +9,8 @@
     - xcompmgr
     - hsetroot
     - ttf-liberation
+    - xsel
+    - xclip
   tags: [xorg]
 
 - name: Create folder ~/.xkb/symbols

@@ -31,12 +31,10 @@ filetype plugin indent on
 
 if $COLORSCHEME_TYPE == 'contrast'
   set background=light
-  set nocursorline
 else
   let g:solarized_termtrans=0
   set background=dark
   silent! colorscheme solarized
-  set cursorline
 endif
 
 " Use normal background for line numbers
@@ -46,6 +44,7 @@ autocmd ColorScheme * highlight LineNr ctermbg=grey
 set statusline=[%f]\ %r%=[%l,%c]\ %y\ [%{strlen(&fenc)?&fenc:'none'}]\ [%p%%]
 
 " Config
+set cursorline
 set expandtab
 set hidden
 set hlsearch
@@ -70,6 +69,8 @@ let mapleader = " "
 nnoremap <Leader>t :NERDTreeToggle<CR>
 nnoremap <Leader>i gg=G<C-O><C-O>
 nnoremap <Leader>n :nohlsearch<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>zz :qa!<CR>
 
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>

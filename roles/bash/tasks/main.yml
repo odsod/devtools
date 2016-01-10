@@ -1,67 +1,46 @@
-- name: Install shell packages
+- name: Install bash packages
   become: yes
   become_user: root
   apt:
     name: '{{item}}'
   with_items:
-    - sudo
-    - htop
-    - unzip
-    - vim-gtk
     - bash-completion
-    - xsel
-    - xclip
-    - curl
     - shellcheck
-    - parallel
-    - pssh
-    - gdb
-    - ncdu
-    - rxvt-unicode
-  tags: [shell]
-
-- name: Install packages from backports
-  become: yes
-  become_user: root
-  apt:
-    name: '{{item}}'
-  with_items:
-    - jq=1.4-2.1~ubuntu14.04.1
-  tags: [shell]
+  tags: [bash]
 
 - name: Install dotfile ~/.bashrc
   copy:
     src: bashrc
     dest: ~/.bashrc
-  tags: [shell]
+  tags: [bash]
 
 - name: Install dotfile ~/.inputrc
   copy:
     src: inputrc
     dest: ~/.inputrc
-  tags: [shell]
+  tags: [bash]
 
 - name: Create folder ~/.bash
   file:
     path: ~/.bash
     state: directory
-  tags: [shell]
+  tags: [bash]
 
 - name: Install dotfile ~/.bash/prompt.bash
   copy:
     src: prompt.bash
     dest: ~/.bash/prompt.bash
-  tags: [shell]
+  tags: [bash]
 
 - name: Install script print-bash-colors
   copy:
     src: print-bash-colors
     dest: ~/.bin/print-bash-colors
     mode: 0755
-  tags: [shell]
+  tags: [bash]
 
 - name: Render template ~/.bash/colorscheme.bash
   template:
     src: colorscheme.bash.j2
     dest: ~/.bash/colorscheme.bash
-  tags: [shell]
+  tags: [bash]

@@ -11,25 +11,26 @@
       tags: [pbox]
   roles:
     - base
-    - shell
-    - tmux
-    - xorg
-    - xmonad
-    - nodejs
-    - docker
-    - java8
-    - idea
-    - clj
-    - fpp
-    - ruby
+    - bash
     - python
-    - gcloud
+    - haskell
+    - nodejs
+    - ruby
+    - clojure
     - cpp
+    - java
+    - xorg
+    - rxvt
+    - xmonad
+    - vim
+    - tmux
+    - git
+    - docker
     - dwb
     - chromium
-    - git
+    - idea
+    - fpp
+    - gcloud
     - psql
-    - urxvt
-    - vim
-    - maven
+    - jq
     - scripts

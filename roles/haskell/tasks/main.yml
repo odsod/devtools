@@ -1,0 +1,10 @@
+- name: Install Haskell packages
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+    state: latest
+  with_items:
+    - haskell-platform
+    - cabal-install
+  tags: [haskell]

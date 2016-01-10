@@ -36,3 +36,19 @@
     state: present
     update_cache: yes
   tags: [base]
+
+- name: Install base packages
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+  with_items:
+    - sudo
+    - htop
+    - unzip
+    - curl
+    - parallel
+    - pssh
+    - gdb
+    - ncdu
+  tags: [base]

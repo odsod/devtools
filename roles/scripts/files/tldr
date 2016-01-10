@@ -10,7 +10,7 @@ find_platforms() {
 }
 
 prettify_output() {
-  sed 's/^`/    /' | sed 's/`//g' | sed 's/^> //'
+  sed 's/^`/    /' | sed 's/`//g' | sed 's/^> //' | sed 's/{{//g' | sed 's/}}//g'
 }
 
 cmd=$1
