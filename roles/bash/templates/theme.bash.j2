@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+{% for KEY, value in THEME.iteritems() %}
+export THEME_{{KEY}}='{{value}}'
+{% endfor %}

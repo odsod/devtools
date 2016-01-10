@@ -21,7 +21,7 @@ bind Space:magic-space
 
 alias xi='xclip -selection clipboard -i'
 
-source ~/.bash/colorscheme.bash
+source ~/.bash/theme.bash
 source ~/.bash/prompt.bash
 
 if [[ $OSTYPE =~ ^linux ]]; then

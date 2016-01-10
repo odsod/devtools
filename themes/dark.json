@@ -1,6 +1,7 @@
 {
-  "COLORSCHEME": {
-    "TYPE": "dark",
+  "THEME": {
+    "NAME": "dark",
+    "FONT_SIZE": 11,
     "BLACK": "#073642",
     "RED": "#dc322f",
     "GREEN": "#859900",
@@ -19,7 +20,6 @@
     "WHITE": "#fdf6e3",
     "BACKGROUND": "#002b36",
     "FOREGROUND": "#839496",
-    "CURSOR": "#93a1a1",
-    "FONT_SIZE": 11
+    "CURSOR": "#93a1a1"
   }
 }

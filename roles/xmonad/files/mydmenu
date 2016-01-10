@@ -1,8 +1,8 @@
 #!/bin/bash
 
 exec dmenu_run -i \
-  -nb "$COLORSCHEME_BLACK" \
-  -nf "$COLORSCHEME_LIGHT_YELLOW" \
-  -sb "$COLORSCHEME_DARK_GRAY" \
-  -sf "$COLORSCHEME_LIGHT_CYAN" \
+  -nb "$THEME_BLACK" \
+  -nf "$THEME_LIGHT_YELLOW" \
+  -sb "$THEME_DARK_GRAY" \
+  -sf "$THEME_LIGHT_CYAN" \
   -fn "10x20"

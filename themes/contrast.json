@@ -1,6 +1,7 @@
 {
-  "COLORSCHEME": {
-    "TYPE": "contrast",
+  "THEME": {
+    "NAME": "contrast",
+    "FONT_SIZE": 16,
     "BLACK": "#333333",
     "RED": "#880000",
     "GREEN": "#008800",
@@ -19,7 +20,6 @@
     "WHITE": "#ffffff",
     "BACKGROUND": "#ffffff",
     "FOREGROUND": "#333333",
-    "CURSOR": "#333333",
-    "FONT_SIZE": 16
+    "CURSOR": "#333333"
   }
 }

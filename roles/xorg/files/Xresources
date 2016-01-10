@@ -1,4 +1,4 @@
-#include ".Xresources.d/colorscheme"
+#include ".Xresources.d/theme"
 #include ".Xresources.d/rxvt-unicode"
 
 Xft.autohint: 0

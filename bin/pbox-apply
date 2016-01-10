@@ -6,6 +6,6 @@ ansible-playbook \
   -i localhost, \
   -c local \
   --extra-vars @"${script_dir}"/../vars.json \
-  --extra-vars @"${script_dir}"/../colorschemes/dark.json \
+  --extra-vars @"${script_dir}"/../themes/dark.json \
   "$@" \
   "${script_dir}"/../pbox.yaml

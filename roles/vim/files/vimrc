@@ -29,7 +29,7 @@ call vundle#end()
 
 filetype plugin indent on
 
-if $COLORSCHEME_TYPE == 'contrast'
+if $THEME_NAME == 'contrast'
   set background=light
 else
   let g:solarized_termtrans=0

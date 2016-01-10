@@ -50,8 +50,8 @@
     state: directory
   tags: [xorg]
 
-- name: Render template ~/.Xresources.d/colorscheme
+- name: Render template ~/.Xresources.d/theme
   template:
-    src: colorscheme.j2
-    dest: ~/.Xresources.d/colorscheme
+    src: theme.j2
+    dest: ~/.Xresources.d/theme
   tags: [xorg]
