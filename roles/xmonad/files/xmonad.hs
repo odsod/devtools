@@ -1,8 +1,11 @@
+{-# LANGUAGE NoMonomorphismRestriction #-} -- needed for tabs
+
 import XMonad
 import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig
 import XMonad.Util.NamedScratchpad
 import XMonad.StackSet hiding (workspaces)
+import XMonad.Layout.Tabbed
 
 import Data.List
 import System.Environment
@@ -11,20 +14,32 @@ import System.IO.Unsafe
 myTerminal = "ttymux mid"
 myWorkspaces = [("h", xK_h), ("c", xK_c), ("r", xK_r), ("l", xK_l)]
 
+env = unsafePerformIO . getEnv
+
 main = xmonad $ defaultConfig {
   modMask            = mod4Mask
 , terminal           = myTerminal
 , workspaces         = map fst myWorkspaces
 , startupHook        = windows $ greedyView $ fst $ head myWorkspaces
-, focusedBorderColor = unsafePerformIO $ getEnv "THEME_LIGHT_GREEN"
-, normalBorderColor  = unsafePerformIO $ getEnv "THEME_BLACK"
-, focusFollowsMouse  = False
+, focusedBorderColor = env "THEME_LIGHT_GREEN"
+, normalBorderColor  = env "THEME_BLACK"
 , layoutHook         = myLayout
 , manageHook         = namedScratchpadManageHook myScratchpads
 } `additionalKeys` myKeys
 
-myLayout = smartBorders $ tall ||| Mirror tall ||| Full
+tabTheme = defaultTheme {
+  fontName = "xft:PragmataPro:medium:size=9"
+, activeColor = env "THEME_BLACK"
+, activeBorderColor = env "THEME_BLACK"
+, activeTextColor = env "THEME_LIGHT_CYAN"
+, inactiveColor = env "THEME_DARK_GRAY"
+, inactiveBorderColor = env "THEME_DARK_GRAY"
+, inactiveTextColor = env "THEME_LIGHT_GREEN"
+}
+
+myLayout = smartBorders $ tall ||| Mirror tall ||| Full ||| tabs
   where tall = Tall 1 (3/100) (1/2) -- documented defaults
+        tabs = tabbed shrinkText tabTheme
 
 toggleScratchpad = namedScratchpadAction myScratchpads
 
