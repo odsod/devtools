@@ -18,7 +18,6 @@
     state: latest
   with_items:
     - pip
-    - ansible
     - pep8
     - pyflakes
     - fabric
