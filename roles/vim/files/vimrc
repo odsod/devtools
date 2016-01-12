@@ -29,6 +29,9 @@ call vundle#end()
 
 filetype plugin indent on
 
+" Use normal background for line numbers
+autocmd ColorScheme * highlight LineNr ctermbg=grey
+
 if $THEME_NAME == 'contrast'
   set background=light
 else
@@ -36,9 +39,6 @@ else
   set background=dark
   silent! colorscheme solarized
 endif
-
-" Use normal background for line numbers
-autocmd ColorScheme * highlight LineNr ctermbg=grey
 
 " Statusline
 set statusline=[%f]\ %r%=[%l,%c]\ %y\ [%{strlen(&fenc)?&fenc:'none'}]\ [%p%%]
