@@ -11,14 +11,13 @@ import Data.List
 import System.Environment
 import System.IO.Unsafe
 
-myTerminal = "ttymux mid"
 myWorkspaces = [("h", xK_h), ("c", xK_c), ("r", xK_r), ("l", xK_l)]
 
 env = unsafePerformIO . getEnv
 
 main = xmonad $ defaultConfig {
   modMask            = mod4Mask
-, terminal           = myTerminal
+, terminal           = "urxvtc"
 , workspaces         = map fst myWorkspaces
 , startupHook        = windows $ greedyView $ fst $ head myWorkspaces
 , focusedBorderColor = env "THEME_LIGHT_GREEN"
@@ -48,7 +47,7 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
   modKeys = [((mod4Mask, key), action) | (key, action) <- binds]
     where binds = [ (xK_l, sendMessage Expand)
                   , (xK_h, sendMessage Shrink)
-                  , (xK_n, spawn myTerminal)
+                  , (xK_n, toggleScratchpad "mid")
                   , (xK_s, toggleScratchpad "bottom")
                   , (xK_minus, spawn "mydmenu")
                   , (xK_q, spawn "xmonad --recompile; xmonad --restart")
@@ -91,9 +90,11 @@ myScratchpads =
   , NS "ipython" "" (fmap (isPrefixOf "ipython") appName =? True) fullLayout
   , NS "bottom" "ttymux bottom" (appName =? "bottom") bottomLayout
   , NS "top" "ttymux top" (appName =? "top") topLayout
+  , NS "mid" "ttymux mid" (appName =? "mid") coverLayout
   ]
   where topMargin = 0.035
         leftMargin = topMargin * (10 / 16) -- compensate for widescreen
+        coverLayout = customFloating $ RationalRect 0 0 1 1
         fullLayout = customFloating $ RationalRect
           leftMargin topMargin (1 - 2 * leftMargin) (1 - 2 * topMargin)
         topLayout = customFloating $ RationalRect
