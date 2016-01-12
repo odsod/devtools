@@ -36,7 +36,7 @@ tabTheme = defaultTheme {
 , inactiveTextColor = env "THEME_LIGHT_GREEN"
 }
 
-myLayout = smartBorders $ tall ||| Mirror tall ||| Full ||| tabs
+myLayout = smartBorders $ tall ||| Mirror tall ||| tabs
   where tall = Tall 1 (3/100) (1/2) -- documented defaults
         tabs = tabbed shrinkText tabTheme
 
