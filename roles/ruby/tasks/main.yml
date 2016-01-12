@@ -38,6 +38,15 @@
     creates: ~/software/chruby/chruby-0.3.9
   tags: [ruby]
 
+- name: Install chruby-0.3.9
+  become: yes
+  become_user: root
+  shell: make install
+  args:
+    chdir: /home/poscar/software/chruby/chruby-0.3.9
+    creates: /usr/local/share/chruby
+  tags: [ruby]
+
 - name: Install dotfile ~/.gemrc
   copy:
     src: gemrc
