@@ -8,10 +8,15 @@
     - cabal-install
     - unclutter
     - suckless-tools
+    # cabal build dependencies
+    - libx11-dev
+    - libxinerama-dev
+    - libxext-dev
+    - libxrandr-dev
   tags: [xmonad]
 
 - name: Install XMonad cabal packages
-  shell: cabal install xmonad xmonad-contrib
+  shell: cabal update && cabal install xmonad xmonad-contrib
   args:
     creates: ~/.cabal/bin/xmonad
   tags: [xmonad]
