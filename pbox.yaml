@@ -19,6 +19,7 @@
     - clojure
     - cpp
     - java
+    - asm
     - xorg
     - rxvt
     - xmonad

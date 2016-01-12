@@ -1,0 +1,10 @@
+- name: Install packages
+  become: yes
+  become_user: root
+  apt:
+    name: '{{item}}'
+    state: latest
+  with_items:
+    - nasm
+    - gcc-multilib
+  tags: [asm]
