@@ -26,6 +26,7 @@
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   a = add -A
   s = status --short --branch
+  ss = show
   d = diff --patch --stat
   rom = !git fetch origin master && git checkout master && git reset --hard origin/master
   rum = !git fetch upstream master && git checkout master && git reset --hard upstream/master && git push -f origin master
