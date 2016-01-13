@@ -23,6 +23,7 @@ main = xmonad $ defaultConfig {
 , focusedBorderColor = env "THEME_LIGHT_GREEN"
 , normalBorderColor  = env "THEME_BLACK"
 , layoutHook         = myLayout
+, focusFollowsMouse  = False
 , manageHook         = namedScratchpadManageHook myScratchpads
 } `additionalKeys` myKeys
 
