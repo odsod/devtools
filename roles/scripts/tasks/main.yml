@@ -4,3 +4,16 @@
     dest: ~/.bin/tldr
     mode: 0755
   tags: [scripts]
+
+- name: Install script ~/.bin/clipmenu
+  copy:
+    src: clipmenu
+    dest: ~/.bin/clipmenu
+    mode: 0755
+  tags: [scripts]
+
+- name: Create folder ~/.clipmenu
+  file:
+    path: ~/.clipmenu
+    state: directory
+  tags: [scripts]

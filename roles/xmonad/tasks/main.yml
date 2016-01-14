@@ -33,9 +33,16 @@
     dest: ~/.xmonad/xmonad.hs
   tags: [xmonad]
 
-- name: Install mydmenu script
+- name: Install script ~/.bin/mydmenu
   copy:
     src: mydmenu
     dest: ~/.bin/mydmenu
+    mode: 0755
+  tags: [xmonad]
+
+- name: Install script ~/.bin/pmenu
+  copy:
+    src: pmenu
+    dest: ~/.bin/pmenu
     mode: 0755
   tags: [xmonad]

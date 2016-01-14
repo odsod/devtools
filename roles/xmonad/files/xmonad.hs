@@ -54,6 +54,7 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
                   , (xK_q, spawn "xmonad --recompile; xmonad --restart")
                   , (xK_j, windows focusDown)
                   , (xK_k, windows focusUp)
+                  , (xK_v, spawn "clipmenu")
                   , (xK_Return, windows swapMaster)
                   ]
 
