@@ -57,6 +57,9 @@ fi
 if [[ -d ~/software/google-cloud-sdk/google-cloud-sdk ]]; then
   source ~/software/google-cloud-sdk/google-cloud-sdk/path.bash.inc
   source ~/software/google-cloud-sdk/google-cloud-sdk/completion.bash.inc
+  if [[ -f ~/.gcp-credentials.json ]]; then
+    export GOOGLE_APPLICATION_CREDENTIALS=~/.gcp-credentials.json
+  fi
 fi
 
 function cd() {
