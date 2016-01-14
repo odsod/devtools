@@ -28,12 +28,12 @@ if [[ $OSTYPE =~ ^linux ]]; then
   alias ls='ls --color=auto --classify'
 fi
 
-if [[ -d ~/.bin ]]; then
-  export PATH=~/.bin:${PATH}
-fi
-
 if [[ -d ~/.cabal/bin ]]; then
   export PATH=~/.cabal/bin:${PATH}
+fi
+
+if [[ -d ~/.bin ]]; then
+  export PATH=~/.bin:${PATH}
 fi
 
 if [[ -f /usr/local/share/chruby/chruby.sh ]]; then
