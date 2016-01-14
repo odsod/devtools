@@ -20,13 +20,14 @@
 [alias]
   c = commit -v
   ca = commit -v --amend
-  sp = !git show --stat | fpp
   dp = !git diff --stat | fpp
   ic = commit --allow-empty -m 'Initial commit'
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   a = add -A
   s = status --short --branch
+  sp = !git status --short | fpp
   ss = show
+  ssp = !git show --stat | fpp
   d = diff --patch --stat
   rom = !git fetch origin master && git checkout master && git reset --hard origin/master
   rum = !git fetch upstream master && git checkout master && git reset --hard upstream/master && git push -f origin master
