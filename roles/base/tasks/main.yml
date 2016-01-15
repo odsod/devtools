@@ -45,6 +45,7 @@
   with_items:
     - sudo
     - htop
+    - iftop
     - unzip
     - curl
     - parallel
