@@ -52,4 +52,5 @@
     - pssh
     - gdb
     - ncdu
+    - keepassx
   tags: [base]
