@@ -60,12 +60,13 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
 
   scratchpadKeys = [((mod4Mask .|. mod1Mask, key), toggleScratchpad name) | (key, name) <- binds]
     where binds = [ (xK_c, "calendar")
-                  , (xK_m, "mail")
                   , (xK_d, "drive")
                   , (xK_l, "dwb")
                   , (xK_b, "chromium")
                   , (xK_t, "ipython")
                   , (xK_s, "slack")
+                  , (xK_m, "mail")
+                  , (xK_w, "keepassx")
                   ]
 
   modShiftKeys = [((mod4Mask .|. shiftMask, key), action) | (key, action) <- binds]
@@ -93,6 +94,7 @@ myScratchpads =
   , NS "bottom" "ttymux bottom" (appName =? "bottom") bottomLayout
   , NS "top" "ttymux top" (appName =? "top") topLayout
   , NS "mid" "ttymux mid" (appName =? "mid") coverLayout
+  , NS "keepassx" "keepassx" (appName =? "keepassx") fullLayout
   ]
   where topMargin = 0.035
         leftMargin = topMargin * (10 / 16) -- compensate for widescreen
