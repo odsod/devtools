@@ -49,9 +49,3 @@
     path: ~/.Xresources.d
     state: directory
   tags: [xorg]
-
-- name: Render template ~/.Xresources.d/theme
-  template:
-    src: theme.j2
-    dest: ~/.Xresources.d/theme
-  tags: [xorg]
