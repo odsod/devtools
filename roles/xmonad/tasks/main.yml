@@ -13,6 +13,8 @@
     - libxinerama-dev
     - libxext-dev
     - libxrandr-dev
+    - pkg-config
+    - libghc-x11-xft-dev
   tags: [xmonad]
 
 - name: Install XMonad cabal packages
