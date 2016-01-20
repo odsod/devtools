@@ -31,12 +31,18 @@ git_branch() {
 git_prompt() {
   local git_branch=$(which git &> /dev/null && git_branch 2>/dev/null)
   if [[ -n $git_branch ]]; then
-    echo -e "$(color 92)[$(color 96)${git_branch}$(git_ahead_state)$(color 91)$(git_dirty_state)$(color 92)]"
+    echo -e " $(color 92)[$(color 96)${git_branch}$(git_ahead_state)$(color 91)$(git_dirty_state)$(color 92)]"
+  fi
+}
+
+virtualenv_prompt() {
+  if [[ -n $VIRTUAL_ENV ]]; then
+    echo -e " $(color 92)[$(color 34)$(basename "$VIRTUAL_ENV")$(color 92)]"
   fi
 }
 
 prompt_command() {
-  PS1="\n $(color 33)\w $(git_prompt)$(color 0)\n \$ "
+  PS1="\n $(color 33)\w$(git_prompt)$(virtualenv_prompt)$(color 0)\n \$ "
 }
 
 export PROMPT_COMMAND=prompt_command
