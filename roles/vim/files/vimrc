@@ -16,6 +16,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/ListToggle'
 Plugin 'godlygeek/tabular'
+Plugin 'ctrlpvim/ctrlp.vim'
 " Syntax hilighting
 Plugin 'rodjek/vim-puppet'
 Plugin 'groenewege/vim-less'
