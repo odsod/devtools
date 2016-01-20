@@ -7,6 +7,8 @@
   with_items:
     - python-pip
     - python-dev
+    - python3-pip
+    - python3-dev
     - python-virtualenv
   tags: [python]
 
@@ -22,4 +24,17 @@
     - pyflakes
     - fabric
     - requests[security] # or else SSL warnings
+  tags: [python]
+
+- name: Install pip3 packages
+  become: yes
+  become_user: root
+  pip:
+    name: '{{item}}'
+    state: latest
+    executable: pip3
+  with_items:
+    - jupyter
+    - pandas
+    - matplotlib
   tags: [python]
