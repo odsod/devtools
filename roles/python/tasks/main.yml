@@ -23,6 +23,7 @@
     - pep8
     - pyflakes
     - fabric
+    - docopt
     - requests[security] # or else SSL warnings
   tags: [python]
 
