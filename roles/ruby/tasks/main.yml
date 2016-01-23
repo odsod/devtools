@@ -1,21 +1,17 @@
-- name: Create folder ~/software/ruby
-  file:
-    path: ~/software/ruby
-    state: directory
+- name: Add PPA repository brightbox/ruby-ng
+  become: yes
+  become_user: root
+  apt_repository:
+    repo: ppa:brightbox/ruby-ng
+    update_cache: yes
   tags: [ruby]
 
-- name: Download ruby-2.2.1.tar.bz2
-  get_url:
-    url: https://rvm_io.global.ssl.fastly.net/binaries/ubuntu/14.04/x86_64/ruby-2.2.1.tar.bz2
-    dest: ~/software/ruby/ruby-2.2.1.tar.bz2
-  tags: [ruby]
-
-- name: Unarchive ruby-2.2.1.tar.bz2
-  unarchive:
-    copy: no
-    src: ~/software/ruby/ruby-2.2.1.tar.bz2
-    dest: ~/software/ruby
-    creates: ~/software/ruby/ruby-2.2.1
+- name: Install Ruby 2.3
+  become: yes
+  become_user: root
+  apt:
+    name: ruby2.3
+    state: latest
   tags: [ruby]
 
 - name: Install dotfile ~/.gemrc
@@ -25,9 +21,11 @@
   tags: [ruby]
 
 - name: Install gems
+  become: yes
+  become_user: root
   gem:
     name: '{{item}}'
-    executable: ~/software/ruby/ruby-2.2.1/bin/gem
+    user_install: no
   with_items:
     - puppet-lint
     - mdl
