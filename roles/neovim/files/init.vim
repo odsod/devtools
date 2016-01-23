@@ -1,32 +1,24 @@
-" Enable Vundle
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-" Settings
-Plugin 'tpope/vim-sensible'
-" Colorscheme
-Plugin 'jwhitley/vim-colors-solarized'
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'jwhitley/vim-colors-solarized'
 " Features
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/ListToggle'
-Plugin 'godlygeek/tabular'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'Valloric/ListToggle'
+Plug 'godlygeek/tabular'
+Plug 'ctrlpvim/ctrlp.vim'
 " Syntax hilighting
-Plugin 'rodjek/vim-puppet'
-Plugin 'groenewege/vim-less'
-Plugin 'autowitch/hive.vim'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'elzr/vim-json'
-Plugin 'elubow/cql-vim'
-Plugin 'smerrill/vcl-vim-plugin'
-Plugin 'ekalinin/Dockerfile.vim'
-call vundle#end()
+Plug 'rodjek/vim-puppet'
+Plug 'groenewege/vim-less'
+Plug 'autowitch/hive.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'elzr/vim-json'
+Plug 'elubow/cql-vim'
+Plug 'smerrill/vcl-vim-plugin'
+Plug 'ekalinin/Dockerfile.vim'
+call plug#end()
 
 filetype plugin indent on
 
