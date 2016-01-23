@@ -27,7 +27,7 @@
   become: yes
   become_user: root
   user:
-    name: poscar
+    name: '{{ansible_ssh_user}}'
     groups: docker
     append: yes
   tags: [docker]
