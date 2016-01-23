@@ -1,59 +1,37 @@
 #!/usr/bin/env bash
 
 export TERM='screen-256color'
-
 export EDITOR='vim'
-
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;34'
-
 export HISTCONTROL='ignoredups'
 export HISTSIZE=100000
-
 unset MAILCHECK
+
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='34'
 
 shopt -s histappend
 shopt -s extglob
+bind Space:magic-space
 
 stty -ixon # disable XON/XOFF flow control
 
-bind Space:magic-space
-
 alias xi='xclip -selection clipboard -i'
+alias xo='xclip -selection clipboard -o'
 
 source ~/.bash/theme.bash
 source ~/.bash/prompt.bash
+source /etc/bash_completion
 
 if [[ $OSTYPE =~ ^linux ]]; then
   alias ls='ls --color=auto --classify'
 fi
 
-export PATH=~/.cabal/bin:$PATH
 export PATH=~/.bin:$PATH
+export PATH=~/.cabal/bin:$PATH
 export PATH=~/software/ruby/ruby-2.2.1/bin:$PATH
 export PATH=~/.gem/ruby/2.2.1/bin:$PATH
 
-if [[ -d ~/.bin ]]; then
-  export PATH=~/.bin:${PATH}
-fi
-
-if [[ -f /usr/local/share/chruby/chruby.sh ]]; then
-  source /usr/local/share/chruby/chruby.sh
-  RUBIES+=(~/software/rubies/ruby-2.2.1)
-  chruby ruby-2.2.1
-fi
-
-if [[ -d ~/software/maven/apache-maven-3.3.3 ]]; then
-  export M2_HOME=~/software/maven/apache-maven-3.3.3
-fi
-
-if [[ -f /etc/bash_completion ]]; then
-  source /etc/bash_completion
-fi
-
-if [[ -f ~/.bashrc.local ]]; then
-  source ~/.bashrc.local
-fi
+export M2_HOME=~/software/maven/apache-maven-3.3.3
 
 if [[ -d ~/software/google-cloud-sdk/google-cloud-sdk ]]; then
   source ~/software/google-cloud-sdk/google-cloud-sdk/path.bash.inc
@@ -70,6 +48,8 @@ function cd() {
     builtin cd "$*" && ls
   fi
 }
+
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   export _JAVA_AWT_WM_NONREPARENTING=1 # XMonad + AWT
