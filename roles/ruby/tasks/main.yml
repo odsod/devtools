@@ -1,50 +1,21 @@
-- name: Create folder ~/software/rubies
+- name: Create folder ~/software/ruby
   file:
-    path: ~/software/rubies
+    path: ~/software/ruby
     state: directory
   tags: [ruby]
 
 - name: Download ruby-2.2.1.tar.bz2
   get_url:
     url: https://rvm_io.global.ssl.fastly.net/binaries/ubuntu/14.04/x86_64/ruby-2.2.1.tar.bz2
-    dest: ~/software/rubies/ruby-2.2.1.tar.bz2
+    dest: ~/software/ruby/ruby-2.2.1.tar.bz2
   tags: [ruby]
 
 - name: Unarchive ruby-2.2.1.tar.bz2
   unarchive:
     copy: no
-    src: ~/software/rubies/ruby-2.2.1.tar.bz2
-    dest: ~/software/rubies
-    creates: ~/software/rubies/ruby-2.2.1
-  tags: [ruby]
-
-- name: Create folder ~/software/chruby
-  file:
-    path: ~/software/chruby
-    state: directory
-  tags: [ruby]
-
-- name: Download chruby-0.3.9.tar.gz
-  get_url:
-    url: https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
-    dest: ~/software/chruby/chruby-0.3.9.tar.gz
-  tags: [ruby]
-
-- name: Unarchive chruby-0.3.9.tar.gz
-  unarchive:
-    copy: no
-    src: ~/software/chruby/chruby-0.3.9.tar.gz
-    dest: ~/software/chruby
-    creates: ~/software/chruby/chruby-0.3.9
-  tags: [ruby]
-
-- name: Install chruby-0.3.9
-  become: yes
-  become_user: root
-  shell: make install
-  args:
-    chdir: /home/poscar/software/chruby/chruby-0.3.9
-    creates: /usr/local/share/chruby
+    src: ~/software/ruby/ruby-2.2.1.tar.bz2
+    dest: ~/software/ruby
+    creates: ~/software/ruby/ruby-2.2.1
   tags: [ruby]
 
 - name: Install dotfile ~/.gemrc
@@ -55,8 +26,8 @@
 
 - name: Install gems
   gem:
-    name: rake
-    executable: ~/software/rubies/ruby-2.2.1/bin/gem
+    name: '{{item}}'
+    executable: ~/software/ruby/ruby-2.2.1/bin/gem
   with_items:
     - puppet-lint
     - mdl

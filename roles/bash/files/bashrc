@@ -28,9 +28,10 @@ if [[ $OSTYPE =~ ^linux ]]; then
   alias ls='ls --color=auto --classify'
 fi
 
-if [[ -d ~/.cabal/bin ]]; then
-  export PATH=~/.cabal/bin:${PATH}
-fi
+export PATH=~/.cabal/bin:$PATH
+export PATH=~/.bin:$PATH
+export PATH=~/software/ruby/ruby-2.2.1/bin:$PATH
+export PATH=~/.gem/ruby/2.2.1/bin:$PATH
 
 if [[ -d ~/.bin ]]; then
   export PATH=~/.bin:${PATH}
