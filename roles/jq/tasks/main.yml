@@ -10,7 +10,7 @@
     dest: ~/software/jq/jq-1.5
   tags: [jq]
 
-- name: Add execution permissions to jq-1.5
+- name: Set mode 755 on jq-1.5
   file:
     path: ~/software/jq/jq-1.5
     mode: 0755
