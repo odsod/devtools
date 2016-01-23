@@ -80,28 +80,33 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
       , (f, modKey) <- [(greedyView, 0), (shift, shiftMask)]]
 
 myScratchpads =
-  [ NS "mail" "chromium-browser --app=http://mail.spotify.com"
-       (appName =? "mail.spotify.com") fullLayout
+  [ NS "dwb" "dwb"
+       (appName =? "dwb") (centeredLayout defaultMargin)
+  , NS "chromium" "chromium-browser"
+       (appName =? "chromium-browser") (centeredLayout defaultMargin)
+  , NS "mid" "ttymux mid"
+       (appName =? "mid") (centeredLayout 0)
+  , NS "top" "ttymux top"
+       (appName =? "top") (topLayout defaultMargin)
+  , NS "bottom" "ttymux bottom"
+       (appName =? "bottom") (bottomLayout defaultMargin)
+  , NS "keepassx" "keepassx"
+       (appName =? "keepassx") (centeredLayout 0.35)
+  , NS "mail" "chromium-browser --app=http://mail.spotify.com"
+       (appName =? "mail.spotify.com") (centeredLayout defaultMargin)
   , NS "calendar" "chromium-browser --app=https://calendar.google.com"
-       (appName =? "calendar.google.com") fullLayout
+       (appName =? "calendar.google.com") (centeredLayout defaultMargin)
   , NS "slack" "chromium-browser --app=https://spotify.slack.com"
-       (appName =? "spotify.slack.com") fullLayout
+       (appName =? "spotify.slack.com") (centeredLayout defaultMargin)
   , NS "drive" "chromium-browser --app=https://drive.google.com"
-       (appName =? "drive.google.com") fullLayout
-  , NS "chromium" "chromium-browser" (appName =? "chromium-browser") fullLayout
-  , NS "dwb" "dwb" (appName =? "dwb") fullLayout
-  , NS "ipython" "" (fmap (isPrefixOf "ipython") appName =? True) fullLayout
-  , NS "bottom" "ttymux bottom" (appName =? "bottom") bottomLayout
-  , NS "top" "ttymux top" (appName =? "top") topLayout
-  , NS "mid" "ttymux mid" (appName =? "mid") coverLayout
-  , NS "keepassx" "keepassx" (appName =? "keepassx") fullLayout
+       (appName =? "drive.google.com") (centeredLayout defaultMargin)
   ]
-  where topMargin = 0.035
-        leftMargin = topMargin * (10 / 16) -- compensate for widescreen
-        coverLayout = customFloating $ RationalRect 0 0 1 1
-        fullLayout = customFloating $ RationalRect
-          leftMargin topMargin (1 - 2 * leftMargin) (1 - 2 * topMargin)
-        topLayout = customFloating $ RationalRect
-          leftMargin topMargin (1  - 2 * leftMargin) (0.5 - 1.5 * topMargin)
-        bottomLayout = customFloating $ RationalRect
-          leftMargin (0.5 + 0.5 * topMargin) (1 - 2 * leftMargin) (0.5 - 1.5 * topMargin)
+  where defaultMargin = 0.035
+        widescreen margin = margin * 10 / 16
+        opposite margin = 1 - 2 * margin
+        centeredLayout margin = customFloating $ RationalRect
+          (widescreen margin) margin (opposite $ widescreen margin) (opposite margin)
+        topLayout margin = customFloating $ RationalRect
+          (widescreen margin) margin (opposite $ widescreen margin) (0.5 - 1.5 * margin)
+        bottomLayout margin = customFloating $ RationalRect
+          (widescreen margin) (0.5 + 0.5 * margin) (opposite $ widescreen margin) (0.5 - 1.5 * margin)
