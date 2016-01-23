@@ -63,7 +63,9 @@ nnoremap <Leader>t :NERDTreeToggle<CR>
 nnoremap <Leader>i gg=G<C-O><C-O>
 nnoremap <Leader>n :nohlsearch<CR>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>zz :qa!<CR>
+nnoremap <Leader>z :qa!<CR>
+nnoremap <Leader>b :TableFormat<CR>
+nnoremap <Leader>a :wqa<CR>
 
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
