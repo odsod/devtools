@@ -4,7 +4,7 @@ echo_color() {
   local n=$1
   local name=$2
   printf "\e[%s%14s\e[0m%6s   %-16s" "${n}m" 'hello world' "${n}m" "$name"
-  printf "\e[%s%14s\e[0m%6s   %-22s\n" "1;${n}m" 'hello world' "${n}m" "$name (bold)"
+  printf "\e[%s%14s\e[0m%6s   %-22s\n" "1;${n}m" 'hello world' "1;${n}m" "$name (bold)"
 }
 
 echo_color 30 'Black'
