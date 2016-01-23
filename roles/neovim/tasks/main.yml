@@ -4,32 +4,32 @@
   apt_repository:
     repo: ppa:neovim-ppa/unstable
     update_cache: yes
-  tags: [vim]
+  tags: [neovim]
 
 - name: Install package nvim
   become: yes
   become_user: root
   apt:
     name: neovim
-  tags: [vim]
+  tags: [neovim]
 
 - name: Create folder ~/.config/nvim/autoload
   file:
     path: ~/.config/nvim/autoload
     state: directory
-  tags: [vim]
+  tags: [neovim]
 
 - name: Download plug.vim
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/0.8.0/plug.vim
     dest: ~/.config/nvim/autoload/plug.vim
-  tags: [vim]
+  tags: [neovim]
 
 - name: Install dotfile ~/.config/nvim/init.vim
   copy:
     src: init.vim
     dest: ~/.config/nvim/init.vim
-  tags: [vim]
+  tags: [neovim]
 
 - name: Update alternatives to nvim
   become: yes
@@ -41,4 +41,4 @@
     - vim
     - vi
     - editor
-  tags: [vim]
+  tags: [neovim]
