@@ -9,7 +9,7 @@ unset MAILCHECK
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='34'
 
-export LS_COLORS='di=1;96'
+export LS_COLORS='di=1;94'
 
 shopt -s histappend
 shopt -s extglob
