@@ -22,6 +22,9 @@ call plug#end()
 
 filetype plugin indent on
 
+" Disable mouse integration
+set mouse=
+
 " Use normal background for line numbers
 autocmd ColorScheme * highlight LineNr ctermbg=grey
 
