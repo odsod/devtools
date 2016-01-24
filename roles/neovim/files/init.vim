@@ -59,6 +59,7 @@ set wildignorecase
 set wildmode=list:longest,full
 
 " Keymaps
+set timeoutlen=400
 imap uu <Esc><Esc>
 nnoremap <Space> <Nop>
 let mapleader = " "
