@@ -100,6 +100,7 @@ autocmd FileType markdown setlocal textwidth=74
 " NERDTree
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows=0
+let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$']
 " Open nerdtree if vim was started without arguments
 autocmd StdinReadPre * let s:std_in=1
