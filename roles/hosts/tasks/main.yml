@@ -1,0 +1,7 @@
+- name: Install curated /etc/hosts from github.com/StevenBlack
+  become: yes
+  become_user: root
+  get_url:
+    url: https://raw.githubusercontent.com/StevenBlack/hosts/256d22f93546111310f1079123fcc616684c6da5/hosts
+    dest: /etc/hosts
+  tags: [hosts]

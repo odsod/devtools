@@ -37,3 +37,4 @@
     - psql
     - jq
     - scripts
+    - hosts
