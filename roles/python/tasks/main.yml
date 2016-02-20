@@ -26,6 +26,7 @@
     - pyflakes
     - fabric
     - docopt
+    - cqlsh
     - requests[security] # or else SSL warnings
   tags: [python]
 
