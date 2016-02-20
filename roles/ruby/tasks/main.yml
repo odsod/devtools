@@ -30,4 +30,6 @@
     - puppet-lint
     - mdl
     - ruby-puppetdb
+    - rake
+    - bundler
   tags: [ruby]
