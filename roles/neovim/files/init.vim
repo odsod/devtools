@@ -11,7 +11,6 @@ Plug 'godlygeek/tabular'
 Plug 'ctrlpvim/ctrlp.vim'
 " Syntax hilighting
 Plug 'rodjek/vim-puppet'
-Plug 'groenewege/vim-less'
 Plug 'autowitch/hive.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
