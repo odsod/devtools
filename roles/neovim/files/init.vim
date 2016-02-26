@@ -17,6 +17,8 @@ Plug 'elzr/vim-json'
 Plug 'elubow/cql-vim'
 Plug 'smerrill/vcl-vim-plugin'
 Plug 'ekalinin/Dockerfile.vim'
+" Languages
+Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 call plug#end()
 
 filetype plugin indent on
