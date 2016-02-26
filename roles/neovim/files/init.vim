@@ -90,7 +90,6 @@ autocmd FileType python set tabstop=4 expandtab shiftwidth=4 softtabstop=4
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['java'] }
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
-let g:syntastic_python_checkers = ['pep8', 'pyflakes']
 
 " Markdown
 let g:vim_markdown_folding_disabled=1
