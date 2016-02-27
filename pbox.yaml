@@ -38,3 +38,4 @@
     - jq
     - scripts
     - hosts
+    - mosh
