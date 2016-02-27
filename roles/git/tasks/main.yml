@@ -2,7 +2,7 @@
   become: yes
   become_user: root
   apt_repository:
-    repo: 'ppa:git-core/ppa'
+    repo: ppa:git-core/ppa
     update_cache: yes
   tags: [git]
 
