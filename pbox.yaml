@@ -25,7 +25,7 @@
     - xorg
     - rxvt
     - xmonad
-    - neovim
+    - nvim
     - tmux
     - git
     - docker

@@ -62,7 +62,7 @@ set wildmode=list:longest,full
 
 " Keymaps
 set timeoutlen=400
-imap uu <Esc><Esc>
+imap <silent> uu <Esc><Esc>:w<CR>
 nnoremap <Space> <Nop>
 let mapleader = " "
 nnoremap <Leader>t :NERDTreeToggle<CR>
