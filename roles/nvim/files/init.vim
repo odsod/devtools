@@ -19,7 +19,6 @@ Plug 'smerrill/vcl-vim-plugin'
 Plug 'ekalinin/Dockerfile.vim'
 " Languages
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-Plug 'othree/html5.vim', {'for': 'html'}
 call plug#end()
 
 filetype plugin indent on
