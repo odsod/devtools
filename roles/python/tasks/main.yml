@@ -41,4 +41,5 @@
     - jupyter
     - pandas
     - matplotlib
+    - proselint
   tags: [python]
