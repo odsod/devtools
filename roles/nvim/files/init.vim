@@ -87,8 +87,8 @@ autocmd BufNewFile,BufRead *.ngt setf html
 autocmd BufRead *.cql set syntax=cql
 autocmd FileType python set tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
-autocmd FileType html imap <buffer> <C-t> <ESC>viw"tyea><ESC>bi<<ESC>lela</<ESC>"tpa><ESC>T>i
-autocmd FileType html imap <buffer> <C-n> <CR><CR><ESC>ka<Tab>
+autocmd FileType html,xml imap <buffer> <C-t> <ESC>viw"tyea><ESC>bi<<ESC>lela</<ESC>"tpa><ESC>T>i
+autocmd FileType html,xml imap <buffer> <C-n> <CR><CR><ESC>ka<Tab>
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['java'] }
