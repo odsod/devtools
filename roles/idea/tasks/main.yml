@@ -4,8 +4,6 @@
     state: directory
   tags: [idea]
 
-
-
 - name: Download ideaIC-2016.1.tar.gz
   get_url:
     url: http://download.jetbrains.com/idea/ideaIC-2016.1.tar.gz
