@@ -95,6 +95,7 @@ autocmd FileType html,xml imap <buffer> <C-n> <CR><CR><ESC>ka<Tab>
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['java'] }
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
+let g:syntastic_python_checkers = ['flake8']
 
 " Markdown
 let g:vim_markdown_folding_disabled=1
