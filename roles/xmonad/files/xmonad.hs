@@ -67,6 +67,7 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
                   , (xK_s, "slack")
                   , (xK_m, "mail")
                   , (xK_w, "keepassx")
+                  , (xK_z, "zeal")
                   ]
 
   modShiftKeys = [((mod4Mask .|. shiftMask, key), action) | (key, action) <- binds]
@@ -92,6 +93,8 @@ myScratchpads =
        (appName =? "bottom") (bottomLayout defaultMargin)
   , NS "keepassx" "keepassx"
        (appName =? "keepassx") (centeredLayout 0.35)
+  , NS "zeal" "zeal"
+       (appName =? "zeal") (centeredLayout 0.15)
   , NS "mail" "chromium-browser --app=http://mail.spotify.com"
        (appName =? "mail.spotify.com") (centeredLayout defaultMargin)
   , NS "calendar" "chromium-browser --app=https://calendar.google.com"
