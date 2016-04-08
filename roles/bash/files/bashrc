@@ -57,3 +57,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   export _JAVA_AWT_WM_NONREPARENTING=1 # XMonad + AWT
   exec ssh-agent startx
 fi
+
+# TODO: Find out why the bash prompt won't work in tmux without this
+[[ -z $TMUX_WTF ]] && { export TMUX_WTF=true; exec bash; }
