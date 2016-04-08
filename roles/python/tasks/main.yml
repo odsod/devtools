@@ -21,8 +21,6 @@
     state: latest
   with_items:
     - pip
-    - pep8
-    - pyflakes
     - fabric
     - docopt
     - cqlsh
