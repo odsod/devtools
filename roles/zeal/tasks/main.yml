@@ -14,6 +14,12 @@
     state: latest
   tags: [zeal]
 
+- name: Create folder ~/.local/share/Zeal/Zeal/docsets
+  file:
+    path: ~/.local/share/Zeal/Zeal/docsets
+    state: directory
+  tags: [zeal]
+
 - name: Download x86 docset
   get_url:
     url: http://newyork.kapeli.com/feeds/zzz/user_contributed/build/IntelASMx86/IntelASMx86.tgz
