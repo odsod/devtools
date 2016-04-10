@@ -28,6 +28,14 @@
     - requests[security] # or else SSL warnings
   tags: [python]
 
+- name: Install pip3
+  become: yes
+  become_user: root
+  easy_install:
+    name: pip
+    executable: easy_install3
+  tags: [python]
+
 - name: Install pip3 packages
   become: yes
   become_user: root
