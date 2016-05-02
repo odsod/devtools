@@ -86,6 +86,7 @@ autocmd BufNewFile,BufRead *.hql setf hive
 autocmd BufNewFile,BufRead *.ngt setf html
 autocmd BufRead *.cql set syntax=cql
 autocmd FileType python set tabstop=4 expandtab shiftwidth=4 softtabstop=4
+autocmd FileType conf set tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 " Tag manipulation
 autocmd FileType html,xml imap <buffer> <C-t> <ESC>viw"tyea><ESC>bi<<ESC>lela</<ESC>"tpa><ESC>T>i
