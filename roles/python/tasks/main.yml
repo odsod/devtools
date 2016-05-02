@@ -27,6 +27,7 @@
     - cqlsh==4.1.1
     - flake8
     - requests[security] # or else SSL warnings
+    - requests_crtauth
   tags: [python]
 
 - name: Install pip3
