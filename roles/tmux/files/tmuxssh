@@ -15,6 +15,6 @@ fi
 tmux new-window -a "ssh ${hostnames[0]}"
 tmux rename-window "tmuxssh ${hostnames[0]:0:20}..."
 for server in "${hostnames[@]:1}"; do
-  tmux split-window "ssh ${server}"
+  tmux split-window "ssh ${server}; [[ "'$?'" == 255 ]] && echo 'Failed to connect to ${server}' && read"
   tmux select-layout tiled
 done
