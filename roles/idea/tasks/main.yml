@@ -4,23 +4,23 @@
     state: directory
   tags: [idea]
 
-- name: Download ideaIC-2016.1.tar.gz
+- name: Download ideaIC-2016.2.tar.gz
   get_url:
-    url: http://download.jetbrains.com/idea/ideaIC-2016.1.tar.gz
-    dest: ~/software/idea/ideaIC-2016.1.tar.gz
+    url: https://download.jetbrains.com/idea/ideaIC-2016.2.tar.gz
+    dest: ~/software/idea/ideaIC-2016.2.tar.gz
   tags: [idea]
 
-- name: Unarchive ideaIC-2016.1.tar.gz
+- name: Unarchive ideaIC-2016.2.tar.gz
   unarchive:
     copy: no
-    src: ~/software/idea/ideaIC-2016.1.tar.gz
+    src: ~/software/idea/ideaIC-2016.2.tar.gz
     dest: ~/software/idea
-    creates: ~/software/idea/idea-IC-145.258.11/bin/idea.sh
+    creates: ~/software/idea/idea-IC-162.1121.32/bin/idea.sh
   tags: [idea]
 
 - name: Symlink ~/.bin/idea
   file:
-    src: ~/software/idea/idea-IC-145.258.11/bin/idea.sh
+    src: ~/software/idea/idea-IC-162.1121.32/bin/idea.sh
     dest: ~/.bin/idea
     state: link
   tags: [idea]
