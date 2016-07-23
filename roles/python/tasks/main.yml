@@ -8,6 +8,7 @@
     - python-pip
     - python-dev
     - python3-dev
+    - python3-pip
     - python-virtualenv
     - pkg-config
     - libfreetype6-dev
@@ -19,7 +20,7 @@
   pip:
     name: '{{item}}'
     state: latest
-    executable: /usr/local/bin/pip2
+    executable: /usr/bin/pip2
   with_items:
     - pip
     - fabric
@@ -30,21 +31,13 @@
     - requests_crtauth
   tags: [python]
 
-- name: Install pip3
-  become: yes
-  become_user: root
-  easy_install:
-    name: pip
-    executable: easy_install3
-  tags: [python]
-
 - name: Install pip3 packages
   become: yes
   become_user: root
   pip:
     name: '{{item}}'
     state: latest
-    executable: /usr/local/bin/pip3
+    executable: /usr/bin/pip3
   with_items:
     - jupyter
     - pandas
