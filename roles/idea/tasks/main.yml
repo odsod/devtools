@@ -6,7 +6,7 @@
 
 - name: Download ideaIC-2016.2.tar.gz
   get_url:
-    url: https://download.jetbrains.com/idea/ideaIC-2016.2.tar.gz
+    url: http://download.jetbrains.com/idea/ideaIC-2016.2.tar.gz
     dest: ~/software/idea/ideaIC-2016.2.tar.gz
   tags: [idea]
 
