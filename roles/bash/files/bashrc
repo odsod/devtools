@@ -33,8 +33,6 @@ export PATH=~/.cabal/bin:$PATH
 export PATH=~/software/ruby/ruby-2.2.1/bin:$PATH
 export PATH=~/.gem/ruby/2.2.1/bin:$PATH
 
-export M2_HOME=~/software/maven/apache-maven-3.3.3
-
 if [[ -d ~/software/google-cloud-sdk/google-cloud-sdk ]]; then
   source ~/software/google-cloud-sdk/google-cloud-sdk/path.bash.inc
   source ~/software/google-cloud-sdk/google-cloud-sdk/completion.bash.inc

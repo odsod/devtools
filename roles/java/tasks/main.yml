@@ -26,29 +26,18 @@
     - oracle-java8-set-default 
   tags: [java]
 
-- name: Create folder ~/software/maven
-  file:
-    path: ~/software/maven
-    state: directory
+- name: Add PPA repository andrei-pozolotin/maven3
+  become: yes
+  become_user: root
+  apt_repository:
+    repo: ppa:andrei-pozolotin/maven3
+    update_cache: yes
   tags: [java]
 
-- name: Download apache-maven-3.3.3-bin.tar.gz
-  get_url:
-    url: http://apache.mirrors.spacedump.net/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz
-    dest: ~/software/maven/apache-maven-3.3.3-bin.tar.gz
-  tags: [java]
-
-- name: Unarchive apache-maven-3.3.3-bin.tar.gz
-  unarchive:
-    copy: no
-    src: ~/software/maven/apache-maven-3.3.3-bin.tar.gz
-    dest: ~/software/maven
-    creates: ~/software/maven/apache-maven-3.3.3
-  tags: [java]
-
-- name: Symlink ~/.bin/mvn
-  file:
-    src: ~/software/maven/apache-maven-3.3.3/bin/mvn
-    dest: ~/.bin/mvn
-    state: link
+- name: Install maven3 package
+  become: yes
+  become_user: root
+  apt:
+    name: maven3
+    state: latest
   tags: [java]
