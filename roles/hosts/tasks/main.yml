@@ -6,10 +6,13 @@
     dest: /etc/hosts
   tags: [hosts]
 
-- name: Add pbox hostname to /etc/hosts
+- name: Add pbox hostnames to /etc/hosts
   become: yes
   become_user: root
   lineinfile:
     dest: /etc/hosts
-    line: 127.0.0.1 pbox
+    line: '127.0.0.1 {{item}}'
+  with_items:
+    - pbox
+    - pdesk
   tags: [hosts]
