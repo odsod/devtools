@@ -10,6 +10,8 @@ Plug 'Valloric/ListToggle'
 Plug 'godlygeek/tabular'
 Plug 'ctrlpvim/ctrlp.vim'
 " Syntax hilighting
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'rodjek/vim-puppet'
 Plug 'autowitch/hive.vim'
 Plug 'plasticboy/vim-markdown'
@@ -89,8 +91,8 @@ autocmd FileType python set tabstop=4 expandtab shiftwidth=4 softtabstop=4
 autocmd FileType conf set tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 " Tag manipulation
-autocmd FileType html,xml imap <buffer> <C-t> <ESC>viw"tyea><ESC>bi<<ESC>lela</<ESC>"tpa><ESC>T>i
-autocmd FileType html,xml imap <buffer> <C-n> <CR><CR><ESC>ka<Tab>
+autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-t> <ESC>viw"tyea><ESC>bi<<ESC>lela</<ESC>"tpa><ESC>T>i
+autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-n> <CR><CR><ESC>ka<Tab>
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['java'] }
@@ -102,6 +104,9 @@ let g:syntastic_python_checkers = ['flake8']
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
 autocmd FileType markdown setlocal textwidth=74
+
+" vim-jsx
+let g:jsx_ext_required = 0
 
 " NERDTree
 let g:NERDTreeMinimalUI=1
