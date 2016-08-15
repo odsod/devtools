@@ -33,4 +33,5 @@
     global: yes
   with_items:
     - npm
+    - diff-so-fancy
   tags: [nodejs]

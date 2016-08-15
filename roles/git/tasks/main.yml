@@ -19,3 +19,11 @@
     src: gitconfig.j2
     dest: ~/.gitconfig
   tags: [git]
+
+- name: Install NPM package diff-so-fancy
+  become: yes
+  become_user: root
+  npm:
+    name: diff-so-fancy
+    global: yes
+  tags: [git]
