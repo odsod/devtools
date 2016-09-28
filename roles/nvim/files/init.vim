@@ -96,6 +96,7 @@ autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-n> <CR><CR><ESC>ka
 
 " Neomake
 autocmd! BufWritePost,BufRead * Neomake
+let g:neomake_verbose = 0
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_python_enabled_makers = ['flake8']
 
