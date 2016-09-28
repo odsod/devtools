@@ -4,7 +4,7 @@ Plug 'jwhitley/vim-colors-solarized'
 " Features
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/ListToggle'
 Plug 'godlygeek/tabular'
@@ -94,11 +94,10 @@ autocmd FileType conf set tabstop=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-t> <ESC>viw"tyea><ESC>bi<<ESC>lela</<ESC>"tpa><ESC>T>i
 autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-n> <CR><CR><ESC>ka<Tab>
 
-" Syntastic
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['java'] }
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_python_checkers = ['flake8']
+" Neomake
+autocmd! BufWritePost,BufRead * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_python_enabled_makers = ['flake8']
 
 " Markdown
 let g:vim_markdown_folding_disabled=1
