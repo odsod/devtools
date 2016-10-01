@@ -1,9 +1,7 @@
-- name: Add apt key for deb.nodesource.com/node_4.x
+- name: Add nodesource apt key
   become: yes
   become_user: root
-  apt_key:
-    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    state: present
+  shell: curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
   tags: [nodejs]
 
 - name: Add repository deb.nodesource.com/node_4.x
