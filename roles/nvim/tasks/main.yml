@@ -21,7 +21,7 @@
 
 - name: Download plug.vim
   get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/0.8.0/plug.vim
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/0.9.1/plug.vim
     dest: ~/.config/nvim/autoload/plug.vim
   tags: [nvim]
 
