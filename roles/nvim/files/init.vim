@@ -10,7 +10,8 @@ Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/ListToggle'
 Plug 'godlygeek/tabular'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -64,6 +65,8 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>z :qa!<CR>
 nnoremap <Leader>b :TableFormat<CR>
 nnoremap <Leader>a :wqa<CR>
+
+nnoremap <C-p> :GFiles<CR>
 
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
