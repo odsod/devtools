@@ -59,15 +59,8 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
                   ]
 
   scratchpadKeys = [((mod4Mask .|. mod1Mask, key), toggleScratchpad name) | (key, name) <- binds]
-    where binds = [ (xK_c, "calendar")
-                  , (xK_d, "drive")
-                  , (xK_l, "dwb")
-                  , (xK_b, "chromium")
-                  , (xK_t, "ipython")
-                  , (xK_s, "slack")
-                  , (xK_m, "mail")
+    where binds = [ (xK_l, "dwb")
                   , (xK_w, "keepassx")
-                  , (xK_z, "zeal")
                   ]
 
   modShiftKeys = [((mod4Mask .|. shiftMask, key), action) | (key, action) <- binds]
@@ -83,8 +76,6 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
 myScratchpads =
   [ NS "dwb" "dwb"
        (appName =? "dwb") (centeredLayout defaultMargin)
-  , NS "chromium" "chromium-browser"
-       (appName =? "chromium-browser") (centeredLayout defaultMargin)
   , NS "mid" "ttymux mid"
        (appName =? "mid") (centeredLayout 0)
   , NS "top" "ttymux top"
@@ -93,16 +84,6 @@ myScratchpads =
        (appName =? "bottom") (bottomLayout defaultMargin)
   , NS "keepassx" "keepassx"
        (appName =? "keepassx") (centeredLayout 0.35)
-  , NS "zeal" "zeal"
-       (appName =? "zeal") (centeredLayout 0.15)
-  , NS "mail" "chromium-browser --app=http://mail.spotify.com"
-       (appName =? "mail.spotify.com") (centeredLayout defaultMargin)
-  , NS "calendar" "chromium-browser --app=https://calendar.google.com"
-       (appName =? "calendar.google.com") (centeredLayout defaultMargin)
-  , NS "slack" "chromium-browser --app=https://spotify.slack.com"
-       (appName =? "spotify.slack.com") (centeredLayout defaultMargin)
-  , NS "drive" "chromium-browser --app=https://drive.google.com"
-       (appName =? "drive.google.com") (centeredLayout defaultMargin)
   ]
   where defaultMargin = 0.035
         widescreen margin = margin * 10 / 16
