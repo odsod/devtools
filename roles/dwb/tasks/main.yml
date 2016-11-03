@@ -35,4 +35,5 @@
     - gh https://github.com/search?utf8=%E2%9C%93&q=_dwb_search_submit_
     - gho https://github.com/odsod/_dwb_search_submit_
     - mdn https://developer.mozilla.org/en-US/search?q=_dwb_search_submit_
+    - mvn https://mvnrepository.com/search?q=_dwb_search_submit_
   tags: [dwb]
