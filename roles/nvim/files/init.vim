@@ -1,9 +1,7 @@
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'jwhitley/vim-colors-solarized'
-" Syntax highlighting
 Plug 'sheerun/vim-polyglot'
-" Features
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
@@ -12,6 +10,7 @@ Plug 'Valloric/ListToggle'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 filetype plugin indent on
@@ -66,7 +65,7 @@ nnoremap <Leader>z :qa!<CR>
 nnoremap <Leader>b :TableFormat<CR>
 nnoremap <Leader>a :wqa<CR>
 
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-n> :GFiles<CR>
 
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
@@ -77,9 +76,6 @@ nmap <silent> <C-l> :wincmd l<CR>
 let g:lt_quickfix_list_toggle_map = '<leader>f'
 
 " Autocommands
-autocmd BufNewFile,BufRead *.hql setf hive
-autocmd BufNewFile,BufRead *.ngt setf html
-autocmd BufRead *.cql set syntax=cql
 autocmd FileType python set tabstop=4 expandtab shiftwidth=4 softtabstop=4
 autocmd FileType conf set tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
