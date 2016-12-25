@@ -23,12 +23,10 @@
     executable: /usr/bin/pip2
   with_items:
     - pip
-    - fabric
     - docopt
-    - cqlsh==4.1.1
-    - flake8
+    - cqlsh==4.1.1 # 2.x only
+    - fabric # 2.x only
     - requests[security] # or else SSL warnings
-    - requests_crtauth
   tags: [python]
 
 - name: Install pip3 packages
@@ -43,4 +41,9 @@
     - pandas
     - matplotlib
     - proselint
+    - pylint
+    - pycodestyle
+    - docopt
+    - requests[security] # or else SSL warnings
+    - requests_crtauth
   tags: [python]
