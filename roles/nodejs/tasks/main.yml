@@ -31,5 +31,5 @@
     global: yes
   with_items:
     - npm
-    - diff-so-fancy
+    - yarn
   tags: [nodejs]
