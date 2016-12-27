@@ -1,0 +1,98 @@
+- hosts: all
+
+  tasks:
+    - name: Add user to sudoers
+      become: yes
+      become_user: root
+      lineinfile:
+        dest: '/etc/sudoers.d/{{ansible_ssh_user}}'
+        line: '{{ansible_ssh_user}} ALL=(ALL) NOPASSWD:ALL'
+        state: present
+        create: yes
+        validate: visudo -cf %s
+      tags: [base]
+
+    - name: Add user to groups
+      become: yes
+      become_user: root
+      user:
+        name: '{{ansible_ssh_user}}'
+        groups: docker
+        append: yes
+      with_items:
+        - docker
+        - vboxsf
+      tags: [base]
+
+    - name: Create dotfolders
+      file:
+        path: ~/.{{item}}
+        state: directory
+      with_items:
+        - bin
+        - clipmenu
+        - xmonad
+        - bash.d
+        - Xresources.d
+        - xkb/symbols
+        - config/nvim/autoload
+        - config/dwb
+        - urxvt/ext
+      tags: [base]
+
+    - name: Install dotfiles
+      copy:
+        src: dotfiles/{{item}}
+        dest: ~/.{{item}}
+      with_items:
+        - tmux.conf
+        - xmonad/xmonad.hs
+        - xkb/symbols/poskeys
+        - xinitrc
+        - gemrc
+        - psqlrc
+        - config/nvim/init.vim
+        - config/dwb/keys
+        - bashrc
+        - inputrc
+        - bash.d/prompt.bash
+        - urxvt/ext/clipboard
+      tags: [base]
+
+    - name: Install scripts into ~/.bin
+      copy:
+        src: scripts/{{item}}
+        dest: ~/.bin/{{item}}
+        mode: 0755
+      with_items:
+        - print-bash-colors
+        - print-tmux-colors
+        - clipmenu
+        - tmuxargs
+        - tmuxssh
+        - ttymux
+        - setxkb
+      tags: [base]
+
+    - name: Render dotfile templates
+      template:
+        src: '{{item}}.j2'
+        dest: ~/.{{item}}
+      with_items:
+        - Xresources.d/rxvt-unicode
+        - bash.d/theme.bash
+        - gitconfig
+        - config/dwb/settings
+      tags: [base]
+
+    - name: Symlink pbox script
+      file:
+        src: '{{playbook_dir}}/files/scripts/pbox'
+        dest: ~/.bin/pbox
+        state: link
+      tags: [base]
+
+    - include: tasks/packages.yml
+    - include: tasks/dwb.yml
+    - include: tasks/nvim.yml
+    - include: tasks/hosts.yml

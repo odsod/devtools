@@ -1,5 +1,0 @@
-- name: Install dotfile ~/.psqlrc
-  copy:
-    src: psqlrc
-    dest: ~/.psqlrc
-  tags: [psql]

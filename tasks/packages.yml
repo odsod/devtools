@@ -1,0 +1,163 @@
+- name: Install pacman packages
+  become: yes
+  become_user: root
+  pacman:
+    name: '{{item}}'
+    state: present
+  with_items:
+    # Base packages
+    - base
+    - base-devel
+
+    # VirtualBox guest additions
+    - virtualbox-guest-modules-arch
+    - virtualbox-guest-utils
+
+    # XOrg
+    - xorg-server
+    - xorg-xinit
+    - xorg-server-utils
+    - xsel
+    - xclip
+    - arandr
+
+    # XMonad
+    - xmonad
+    - xmonad-contrib
+    - xcompmgr
+    - unclutter
+    - dmenu
+
+    # Fonts
+    - ttf-liberation
+
+    # Terminal
+    - rxvt-unicode
+    - tmux
+
+    # Tools
+    - git
+    - ansible
+    - fabric
+    - openssh
+    - htop
+    - iftop
+    - iotop
+    - jq
+    - unzip
+    - ncdu
+    - keepassx2
+    - tcpdump
+    - ngrep
+    - wireshark-cli
+
+    # Java
+    - jdk8-openjdk
+    - maven
+
+    # Docker
+    - docker
+
+    # Web surfing
+    - dwb
+
+    # NodeJS
+    - nodejs
+    - npm
+
+    # Jupyter
+    - jupyter
+    - jupyter-notebook
+    - python-pandas
+    - python-matplotlib
+
+    # Python 2
+    - python2
+    - python2-pip
+    - python2-virtualenv
+    - python2-pylint
+    - python2-pycodestyle
+    - python2-requests
+    - python2-docopt
+
+    # Python 3
+    - python
+    - python-pip
+    - python-virtualenv
+    - python-pylint
+    - python-pycodestyle
+    - python-requests
+    - python-docopt
+
+    # C++
+    - cmake
+    - gcc
+    - clang
+    - gdb
+
+    # ASM
+    - nasm
+
+    # Ruby
+    - ruby
+    - ruby-bundler
+  tags: [packages, pacman]
+
+- name: Install pip2 packages
+  become: yes
+  become_user: root
+  pip:
+    name: '{{item}}'
+    state: latest
+    executable: /usr/bin/pip2
+  with_items:
+    - cqlsh==4.1.1
+  tags: [packages, pip2]
+
+- name: Install pip3 packages
+  become: yes
+  become_user: root
+  pip:
+    name: '{{item}}'
+    state: latest
+    executable: /usr/bin/pip3
+  with_items:
+    - proselint
+  tags: [packages, pip3]
+
+- name: Install Ruby gems
+  become: yes
+  become_user: root
+  gem:
+    name: '{{item}}'
+    user_install: no
+  with_items:
+    - puppet-lint
+    - mdl
+  tags: [packages, gem]
+
+- name: Install npm packages
+  become: yes
+  become_user: root
+  npm:
+    name: '{{item}}'
+    global: yes
+    state: latest
+  with_items:
+    - yarn
+    - diff-so-fancy
+  tags: [packages, npm]
+
+- name: Install AUR packages
+  aur:
+    name: '{{item}}'
+    user: '{{ansible_ssh_user}}'
+    dir: ~/aur
+    skip_pgp: yes
+  with_items:
+    - hsetroot
+    - fpp-git
+    - google-cloud-sdk
+    - leiningen
+    - intellij-idea-ce
+  tags: [packages, aur]
