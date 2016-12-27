@@ -1,0 +1,12 @@
+<scheme name="poscar" version="142" parent_scheme="Default">
+  <metaInfo>
+    <property name="created">2016-12-27T17:46:05</property>
+    <property name="ide">Idea</property>
+    <property name="ideVersion">2016.3.1.0.0</property>
+    <property name="modified">2016-12-27T17:46:26</property>
+    <property name="originalScheme">_@user_Default</property>
+  </metaInfo>
+  <option name="EDITOR_FONT_SIZE" value="12" />
+  <option name="CONSOLE_FONT_NAME" value="Monospaced" />
+  <option name="EDITOR_FONT_NAME" value="PragmataPro" />
+</scheme>

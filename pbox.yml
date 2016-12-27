@@ -38,6 +38,9 @@
         - config/nvim/autoload
         - config/dwb
         - urxvt/ext
+        # IntelliJ
+        - IdeaIC2016.3/colors
+        - IdeaIC2016.3/options
       tags: [base]
 
     - name: Install dotfiles
@@ -57,6 +60,14 @@
         - inputrc
         - bash.d/prompt.bash
         - urxvt/ext/clipboard
+        # IntelliJ
+        - IdeaIC2016.3/disabled_plugins.txt
+        - IdeaIC2016.3/colors/poscar.icls
+        - IdeaIC2016.3/options/colors.scheme.xml
+        - IdeaIC2016.3/options/editor.codeinsight.xml
+        - IdeaIC2016.3/options/editor.xml
+        - IdeaIC2016.3/options/parameter.hints.xml
+        - IdeaIC2016.3/options/ui.lnf.xml
       tags: [base]
 
     - name: Install scripts into ~/.bin
