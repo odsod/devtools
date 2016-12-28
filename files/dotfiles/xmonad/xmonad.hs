@@ -29,7 +29,7 @@ main = xmonad $ defaultConfig {
 } `additionalKeys` myKeys
 
 tabTheme = defaultTheme {
-  fontName = "xft:PragmataPro:medium:size=9"
+  fontName = "xft:" ++ env "THEME_FONT_FAMILY" ++ ":medium:size=" ++ env "THEME_FONT_SIZE"
 , activeColor = env "THEME_BLACK"
 , activeBorderColor = env "THEME_BLACK"
 , activeTextColor = env "THEME_LIGHT_CYAN"
