@@ -101,6 +101,9 @@
     # Ruby
     - ruby
     - ruby-bundler
+
+    # Shell
+    - shellcheck
   tags: [packages, pacman]
 
 - name: Install pip2 packages
