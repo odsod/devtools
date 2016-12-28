@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -eu
 
 exec dmenu_run -i \
   -nb "$THEME_BLACK" \
   -nf "$THEME_LIGHT_YELLOW" \
   -sb "$THEME_DARK_GRAY" \
   -sf "$THEME_LIGHT_CYAN" \
-  -fn "10x20"
+  -fn 'PragmataPro'

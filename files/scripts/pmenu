@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-dmenu -i \
+set -eu
+
+exec dmenu -i \
   -nb "$THEME_BLACK" \
   -nf "$THEME_LIGHT_YELLOW" \
   -sb "$THEME_DARK_GRAY" \

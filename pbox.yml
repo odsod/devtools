@@ -10,7 +10,6 @@
         state: present
         create: yes
         validate: visudo -cf %s
-      tags: [base]
 
     - name: Add user to groups
       become: yes
@@ -22,7 +21,6 @@
       with_items:
         - docker
         - vboxsf
-      tags: [base]
 
     - name: Create dotfolders
       file:
@@ -41,7 +39,7 @@
         # IntelliJ
         - IdeaIC2016.3/colors
         - IdeaIC2016.3/options
-      tags: [base]
+      tags: [dotfolders]
 
     - name: Install dotfiles
       copy:
@@ -68,7 +66,18 @@
         - IdeaIC2016.3/options/editor.xml
         - IdeaIC2016.3/options/parameter.hints.xml
         - IdeaIC2016.3/options/ui.lnf.xml
-      tags: [base]
+      tags: [dotfiles]
+
+    - name: Render dotfile templates
+      template:
+        src: '{{item}}.j2'
+        dest: ~/.{{item}}
+      with_items:
+        - Xresources.d/rxvt-unicode
+        - bash.d/theme.bash
+        - gitconfig
+        - config/dwb/settings
+      tags: [dotfiles]
 
     - name: Install scripts into ~/.bin
       copy:
@@ -83,25 +92,15 @@
         - tmuxssh
         - ttymux
         - setxkb
-      tags: [base]
-
-    - name: Render dotfile templates
-      template:
-        src: '{{item}}.j2'
-        dest: ~/.{{item}}
-      with_items:
-        - Xresources.d/rxvt-unicode
-        - bash.d/theme.bash
-        - gitconfig
-        - config/dwb/settings
-      tags: [base]
+        - pmenu
+        - pmenu-run
+      tags: [scripts]
 
     - name: Symlink pbox script
       file:
         src: '{{playbook_dir}}/files/scripts/pbox'
         dest: ~/.bin/pbox
         state: link
-      tags: [base]
 
     - include: tasks/packages.yml
     - include: tasks/dwb.yml

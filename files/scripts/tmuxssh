@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
+set -e
+
 usage() {
-  echo "Usage: tmuxssh HOSTNAME..." 1>&2
+  {
+    echo 'Usage:'
+    echo '  tmuxssh [HOSTNAME...]'
+    echo
+    echo 'Examples:'
+    echo '  tmuxssh localhost{,,}'
+    echo '  echo localhost{,,} | tmuxssh'
+  } 2>&1
 }
 
 if [[ ! -t 0 ]]; then

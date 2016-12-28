@@ -5,11 +5,14 @@
 set -e
 
 usage() {
+  {
   echo "Usage: setxkb <layout-name>"
+  } 1>&2
 }
 
 layout_name=$1
-[[ -n "${layout_name}" ]] || { usage; exit 1; }
 
-setxkbmap -I "$HOME/.xkb" "$layout_name" -print | \
-  xkbcomp -I"$HOME/.xkb" - "$DISPLAY" 2>/dev/null
+[[ $layout_name ]] || { usage; exit 1; }
+
+setxkbmap -I ~/.xkb "$layout_name" -print \
+  | xkbcomp -I~/.xkb - "$DISPLAY" 2>/dev/null

@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
+set -e
+
 usage() {
-  echo "Usage: tmuxargs CMD" 1>&2
+  {
+    echo 'Usage:'
+    echo '  tmuxargs CMD...'
+    echo
+    echo 'Examples:'
+    echo '  echo {google,spotify}.com | tmuxargs ping'
+  } 1>&2
 }
 
 cmd="$*"

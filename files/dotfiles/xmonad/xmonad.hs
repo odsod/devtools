@@ -51,7 +51,7 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
                   , (xK_h, sendMessage Shrink)
                   , (xK_n, toggleScratchpad "mid")
                   , (xK_s, toggleScratchpad "bottom")
-                  , (xK_minus, spawn "mydmenu")
+                  , (xK_minus, spawn "pmenu-run")
                   , (xK_q, spawn "xmonad --recompile; xmonad --restart")
                   , (xK_j, windows focusDown)
                   , (xK_k, windows focusUp)

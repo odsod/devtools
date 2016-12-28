@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
 
-selected_key=$(cat ~/.clipmenu/*.json | jq -r 'keys | .[]' | pmenu)
+selected_key=$(\
+  cat ~/.clipmenu/*.json \
+    | jq -r 'keys | .[]' \
+    | pmenu)
 
-selected_value=$(cat ~/.clipmenu/*.json | jq -rs "add | .[\"${selected_key}\"]")
+selected_value=$(\
+  cat ~/.clipmenu/*.json \
+    | jq -rs "add | .[\"${selected_key}\"]")
 
-echo -n "$selected_value" | xclip -i -selection clipboard
+xclip -i -selection clipboard <<< "$selected_value"
