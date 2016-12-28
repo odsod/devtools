@@ -101,10 +101,10 @@ let NERDTreeIgnore = ['\.pyc$', '.git', '\.o$']
 " fzf
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Comment'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Normal'],
   \ 'fg+':     ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
   \ 'bg+':     ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Normal'],
   \ 'hl+':     ['fg', 'Normal'],
   \ 'info':    ['fg', 'Normal'],
   \ 'prompt':  ['fg', 'Normal'],
