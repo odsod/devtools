@@ -51,6 +51,7 @@
     - tcpdump
     - ngrep
     - wireshark-cli
+    - bind-tools
 
     # Java
     - jdk8-openjdk
