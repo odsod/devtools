@@ -163,10 +163,10 @@
 - name: Install AUR packages
   aur:
     name: '{{item}}'
-    user: '{{ansible_ssh_user}}'
     dir: ~/aur
-    skip_pgp: yes
   with_items:
+    - cower
+    - pacaur
     - hsetroot
     - fpp-git
     - google-cloud-sdk
