@@ -28,9 +28,9 @@
     - name: Start services
       become: yes
       become_user: root
-      service:
+      systemd:
         name: '{{item}}'
-        state: started
+        enabled: yes
       with_items:
         - dhcpcd
         - vboxservice
