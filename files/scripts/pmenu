@@ -7,4 +7,4 @@ exec dmenu -i \
   -nf "$THEME_LIGHT_YELLOW" \
   -sb "$THEME_DARK_GRAY" \
   -sf "$THEME_LIGHT_CYAN" \
-  -fn 'PragmataPro'
+  -fn "xft:${THEME_FONT_FAMILY}:medium:size=${THEME_FONT_SIZE}"

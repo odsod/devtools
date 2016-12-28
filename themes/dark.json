@@ -1,6 +1,7 @@
 {
   "THEME": {
     "NAME": "dark",
+    "FONT_FAMILY": "PragmataPro",
     "FONT_SIZE": 11,
     "BLACK": "#073642",
     "RED": "#dc322f",

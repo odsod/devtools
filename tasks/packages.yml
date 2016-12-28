@@ -36,6 +36,7 @@
     - tmux
 
     # Tools
+    - wget
     - git
     - ansible
     - fabric
@@ -103,6 +104,7 @@
     - ruby-bundler
 
     # Shell
+    - bash-completion
     - shellcheck
   tags: [packages, pacman]
 
@@ -150,6 +152,13 @@
     - yarn
     - diff-so-fancy
   tags: [packages, npm]
+
+- name: Create director ~/aur
+  file:
+    path: ~/aur
+    state: directory
+    mode: 0755
+  tags: [packages, aur]
 
 - name: Install AUR packages
   aur:

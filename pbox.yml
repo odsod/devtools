@@ -1,26 +1,52 @@
 - hosts: all
 
   tasks:
+    - name: Add config lines
+      become: yes
+      become_user: root
+      lineinfile:
+        dest: '/etc/{{item.file}}'
+        line: '{{item.line}}'
+        state: present
+        create: yes
+      with_items:
+        - {file: vconsole.conf, line: FONT=Lat2-Terminus16}
+        - {file: vconsole.conf, line: KEYMAP=dvorak}
+        - {file: locale.conf, line: LANG=en_US.UTF-8}
+      tags: [config]
+
+    - name: Render config templates
+      become: yes
+      become_user: root
+      template:
+        src: 'etc/{{item}}.j2'
+        dest: /etc/{{item}}
+      with_items:
+        - hostname
+      tags: [config]
+
+    - name: Start services
+      become: yes
+      become_user: root
+      service:
+        name: '{{item}}'
+        state: started
+      with_items:
+        - dhcpcd
+        - vboxservice
+        - docker
+      tags: [services]
+
     - name: Add user to sudoers
       become: yes
       become_user: root
       lineinfile:
-        dest: '/etc/sudoers.d/{{ansible_ssh_user}}'
-        line: '{{ansible_ssh_user}} ALL=(ALL) NOPASSWD:ALL'
+        dest: '/etc/sudoers.d/{{ansible_user}}'
+        line: '{{ansible_user}} ALL=(ALL) NOPASSWD:ALL'
         state: present
         create: yes
         validate: visudo -cf %s
-
-    - name: Add user to groups
-      become: yes
-      become_user: root
-      user:
-        name: '{{ansible_ssh_user}}'
-        groups: docker
-        append: yes
-      with_items:
-        - docker
-        - vboxsf
+      tags: [sudoers]
 
     - name: Create dotfolders
       file:
@@ -46,6 +72,7 @@
         src: dotfiles/{{item}}
         dest: ~/.{{item}}
       with_items:
+        - Xresources
         - tmux.conf
         - xmonad/xmonad.hs
         - xkb/symbols/poskeys
@@ -101,8 +128,21 @@
         src: '{{playbook_dir}}/files/scripts/pbox'
         dest: ~/.bin/pbox
         state: link
+      tags: [scripts]
 
     - include: tasks/packages.yml
     - include: tasks/dwb.yml
     - include: tasks/nvim.yml
     - include: tasks/hosts.yml
+
+    - name: Add user to groups
+      become: yes
+      become_user: root
+      user:
+        name: '{{ansible_user}}'
+        groups: '{{item}}'
+        append: yes
+      with_items:
+        - docker
+        - vboxsf
+      tags: [groups]
