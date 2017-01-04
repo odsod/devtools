@@ -19,7 +19,8 @@ git_ahead_state() {
 }
 
 git_branch() {
-  local symbolic_ref=$(git symbolic-ref -q HEAD)
+  local symbolic_ref
+  symbolic_ref=$(git symbolic-ref -q HEAD)
   if [[ -n "$symbolic_ref" ]]; then
     echo "${symbolic_ref#refs/heads/}"
   else
@@ -29,7 +30,8 @@ git_branch() {
 }
 
 git_prompt() {
-  local git_branch=$(which git &> /dev/null && git_branch 2>/dev/null)
+  local git_branch
+  git_branch=$(which git &> /dev/null && git_branch 2>/dev/null)
   if [[ -n $git_branch ]]; then
     echo -e " $(color 92)[$(color 96)${git_branch}$(git_ahead_state)$(color 91)$(git_dirty_state)$(color 92)]"
   fi
