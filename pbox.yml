@@ -1,6 +1,17 @@
 - hosts: all
 
   tasks:
+    - name: Add user to sudoers
+      become: yes
+      become_user: root
+      lineinfile:
+        dest: '/etc/sudoers.d/{{ansible_user}}'
+        line: '{{ansible_user}} ALL=(ALL) NOPASSWD:ALL'
+        state: present
+        create: yes
+        validate: visudo -cf %s
+      tags: [sudoers]
+
     - name: Add config lines
       become: yes
       become_user: root
@@ -24,29 +35,6 @@
       with_items:
         - hostname
       tags: [config]
-
-    - name: Start services
-      become: yes
-      become_user: root
-      systemd:
-        name: '{{item}}'
-        enabled: yes
-      with_items:
-        - dhcpcd
-        - vboxservice
-        - docker
-      tags: [services]
-
-    - name: Add user to sudoers
-      become: yes
-      become_user: root
-      lineinfile:
-        dest: '/etc/sudoers.d/{{ansible_user}}'
-        line: '{{ansible_user}} ALL=(ALL) NOPASSWD:ALL'
-        state: present
-        create: yes
-        validate: visudo -cf %s
-      tags: [sudoers]
 
     - name: Create dotfolders
       file:
@@ -134,6 +122,18 @@
     - include: tasks/dwb.yml
     - include: tasks/nvim.yml
     - include: tasks/hosts.yml
+
+    - name: Start services
+      become: yes
+      become_user: root
+      systemd:
+        name: '{{item}}'
+        enabled: yes
+      with_items:
+        - dhcpcd
+        - vboxservice
+        - docker
+      tags: [services]
 
     - name: Add user to groups
       become: yes
