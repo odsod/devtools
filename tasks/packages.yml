@@ -36,6 +36,7 @@
     - tmux
 
     # Tools
+    - moreutils
     - wget
     - git
     - ansible
@@ -52,6 +53,8 @@
     - ngrep
     - wireshark-cli
     - bind-tools
+    - httpie
+    - the_silver_searcher
 
     # Java
     - jdk8-openjdk
@@ -171,4 +174,6 @@
     - google-cloud-sdk
     - leiningen
     - intellij-idea-ce
+    - icdiff
+    - hub
   tags: [packages, aur]
