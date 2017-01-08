@@ -112,6 +112,15 @@
     - include: tasks/nvim.yml
     - include: tasks/hosts.yml
 
+    - name: Set group ownership of /media to users
+      become: yes
+      become_user: root
+      file:
+        path: /media
+        state: directory
+        group: users 
+      tags: [media]
+
     - name: Start services
       become: yes
       become_user: root
