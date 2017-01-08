@@ -1,5 +1,5 @@
 {
-  "host": "pbox",
   "name": "Oscar Söderlund",
-  "email": null
+  "email": {{email}},
+  "host": {{host}}
 }

@@ -39,6 +39,7 @@
     - moreutils
     - wget
     - git
+    - hub
     - ansible
     - fabric
     - openssh
@@ -175,5 +176,4 @@
     - leiningen
     - intellij-idea-ce
     - icdiff
-    - hub
   tags: [packages, aur]
