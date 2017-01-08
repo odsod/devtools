@@ -2,8 +2,7 @@
 
 set -eu
 
-pacman -Sy
-pacman -S cowsay moreutils
+pacman --noconfirm -Sy cowsay moreutils
 
 cowsay 'Collecting variables'
 read -rp 'Hostname: ' hostname
@@ -75,7 +74,7 @@ cowsay 'Cloning pbox'
 arch-chroot /mnt \
   sudo -u poscar \
     git clone https://github.com/odsod/pbox /home/"$username"/pbox
-sed -i 's#https://github.com/#git@github.com:' /mnt/home/"$username"/pbox/.git/config
+sed -i 's#https://github.com/#git@github.com:#' /mnt/home/"$username"/pbox/.git/config
 
 cowsay 'Writing pbox variables'
 cat > /mnt/home/"$username"/pbox/vars.json <<EOF
