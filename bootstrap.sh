@@ -19,26 +19,27 @@ msg 'Creating single bootable /dev/sda1 partition'
 sfdisk /dev/sda <<< '2048,,L,*'
 mkfs.ext4 /dev/sda1
 
-msg 'Installing sponge cmd'
+msg 'Mounting /dev/sda1 to /mnt'
+mount /dev/sda1 /mnt
+
+msg 'Writing /etc/fstab'
+genfstab -U /mnt >> /mnt/etc/fstab
+
+msg 'Installing moreutils'
 pacman --noconfirm -Sy moreutils
 
-msg 'Configuring Swedish mirrors'
+msg 'Configuring Swedish Pacman mirrors'
 cat \
   <(grep --no-group-separator -A1 Sweden /etc/pacman.d/mirrorlist) \
   <(grep -v --no-group-separator -A1 Sweden /etc/pacman.d/mirrorlist) \
   | sponge /etc/pacman.d/mirrorlist
 
-msg 'Mounting /dev/sda1 to /mnt'
-mount /dev/sda1 /mnt
-
 msg 'Installing Arch Linux to /mnt'
 pacstrap /mnt base base-devel
 
-msg 'Writing /etc/fstab'
-genfstab -U /mnt >> /mnt/etc/fstab
-
 msg 'Setting keyboard layout to dvorak'
 echo 'KEYMAP=dvorak' >> /mnt/etc/vconsole.conf
+
 msg 'Setting console font'
 echo 'FONT=Lat2-Terminus16' >> /mnt/etc/vconsole.conf
 
@@ -69,9 +70,9 @@ arch-chroot /mnt \
   systemctl enable dhcpcd.service
 
 msg 'Creating user'
-echo "${username} ALL=(ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt \
   useradd -m -g users -s /bin/bash "$username"
+echo "${username} ALL=(ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers
 
 msg 'Installing packages required for bootstrapping'
 arch-chroot /mnt \
