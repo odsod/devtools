@@ -177,6 +177,7 @@
     - leiningen
     - intellij-idea-ce
     - icdiff
+    - ttf-ms-fonts
   tags: [packages, aur]
 
 - name: Create symlink aliases in /usr/local/bin
