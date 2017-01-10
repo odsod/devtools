@@ -86,6 +86,7 @@
     - python2-flake8
     - python2-requests
     - python2-docopt
+    - python2-yaml
 
     # Python 3
     - python
@@ -95,6 +96,7 @@
     - flake8
     - python-requests
     - python-docopt
+    - python-yaml
 
     # C++
     - cmake
