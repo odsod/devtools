@@ -10,6 +10,8 @@ export GREP_COLOR='34'
 
 export LS_COLORS='di=1;94'
 
+export PYTHONDONTWRITEBYTECODE='1'
+
 shopt -s histappend
 shopt -s extglob
 bind Space:magic-space
