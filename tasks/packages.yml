@@ -159,6 +159,7 @@
   with_items:
     - yarn
     - diff-so-fancy
+    - create-react-app
   tags: [packages, npm]
 
 - name: Create director ~/aur
