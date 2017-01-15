@@ -78,25 +78,11 @@
     - python-pandas
     - python-matplotlib
 
-    # Python 2
+    # Python
     - python2
-    - python2-setuptools
-    - python2-pip
-    - python2-virtualenv
-    - python2-flake8
-    - python2-requests
-    - python2-docopt
-    - python2-yaml
-
-    # Python 3
     - python
-    - python-setuptools
-    - python-pip
-    - python-virtualenv
     - flake8
-    - python-requests
-    - python-docopt
-    - python-yaml
+    - python2-flake8
 
     # C++
     - cmake
@@ -115,6 +101,24 @@
     - bash-completion
     - shellcheck
   tags: [packages, pacman]
+
+- name: Install python packages
+  become: yes
+  become_user: root
+  pacman:
+    name: '{{item[0]}}-{{item[1]}}'
+    state: present
+  with_nested:
+    - [python, python2]
+    -
+      - setuptools
+      - pip
+      - virtualenv
+      - requests
+      - docopt
+      - yaml
+      - tox
+  tags: [packages, python]
 
 - name: Install pip2 packages
   become: yes
