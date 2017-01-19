@@ -36,6 +36,7 @@
     - tmux
 
     # Tools
+    - units
     - neovim
     - moreutils
     - wget
