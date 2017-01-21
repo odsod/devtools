@@ -16,7 +16,7 @@ myWorkspaces = [("h", xK_h), ("c", xK_c), ("r", xK_r), ("l", xK_l)]
 
 env = unsafePerformIO . getEnv
 
-main = xmonad $ defaultConfig {
+main = xmonad $ def {
   modMask            = mod4Mask
 , terminal           = "urxvtc"
 , workspaces         = map fst myWorkspaces
