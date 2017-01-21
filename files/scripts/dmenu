@@ -2,9 +2,11 @@
 
 set -eu
 
-exec dmenu_run -i \
+exec /usr/bin/dmenu \
+  -i \
   -nb "$THEME_BLACK" \
   -nf "$THEME_LIGHT_YELLOW" \
   -sb "$THEME_DARK_GRAY" \
   -sf "$THEME_LIGHT_CYAN" \
-  -fn "xft:${THEME_FONT_FAMILY}:medium:size=${THEME_FONT_SIZE}"
+  -fn "xft:${THEME_FONT_FAMILY}:medium:size=${THEME_FONT_SIZE}" \
+  "$@"

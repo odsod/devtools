@@ -96,8 +96,7 @@
         - tmuxssh
         - ttymux
         - setxkb
-        - pmenu
-        - pmenu-run
+        - dmenu
       tags: [scripts]
 
     - name: Symlink pbox script
