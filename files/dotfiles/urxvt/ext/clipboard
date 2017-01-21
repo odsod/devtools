@@ -9,7 +9,8 @@ sub on_sel_grab {
 
 sub paste {
     my ($self) = @_;
-    my $content = `/usr/bin/xclip -loop 1 -out -selection clipboard` ;
+    my $content = `/usr/bin/xclip -loop 1 -out -selection clipboard`;
+    $content =~ s/\s+$//;
     $self->tt_write ($content);
 }
 
