@@ -21,10 +21,12 @@ if is_package_installed:
     module.exit_json(changed=False)
 
 os.chdir(dir)
-module.run_command('curl {} -o {}'.format(archive_url, archive_name),
-                   check_rc=True)
-module.run_command('tar xzf {}'.format(archive_name),
-                   check_rc=True)
+module.run_command(
+    'curl {} -o {}'.format(archive_url, archive_name),
+    check_rc=True)
+module.run_command(
+    'tar xzf {}'.format(archive_name),
+    check_rc=True)
 
 os.chdir(os.path.join(dir, pkg))
 module.run_command(
