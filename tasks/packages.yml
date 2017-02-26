@@ -66,9 +66,6 @@
     # Docker
     - docker
 
-    # Web surfing
-    - dwb
-
     # NodeJS
     - nodejs
     - npm
@@ -188,6 +185,7 @@
     - intellij-idea-ce
     - icdiff
     - ttf-ms-fonts
+    - dwb
   tags: [packages, aur]
 
 - name: Create symlink aliases in /usr/local/bin
