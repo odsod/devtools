@@ -9,6 +9,9 @@
     - base
     - base-devel
 
+    # More base
+    - zip
+
     # VirtualBox guest additions
     - virtualbox-guest-modules-arch
     - virtualbox-guest-utils
