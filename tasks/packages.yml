@@ -11,6 +11,8 @@
 
     # More base
     - zip
+    - parallel
+    - gthumb
 
     # VirtualBox guest additions
     - virtualbox-guest-modules-arch
