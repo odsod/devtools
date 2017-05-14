@@ -170,6 +170,7 @@
     - yarn
     - diff-so-fancy
     - create-react-app
+    - sloc
   tags: [packages, npm]
 
 - name: Create director ~/aur
