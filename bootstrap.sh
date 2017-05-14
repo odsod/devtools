@@ -79,8 +79,9 @@ sed -i 's#https://github.com/#git@github.com:#' /mnt/home/"$username"/pbox/.git/
 cowsay 'Writing pbox variables'
 cat > /mnt/home/"$username"/pbox/vars.json <<EOF
 {
-  "name": "${full_name}",
+  "fullName": "${full_name}",
   "email": "${email}",
+  "ansible_user": "${username}",
   "host": "${hostname}"
 }
 EOF
