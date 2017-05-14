@@ -1,4 +1,4 @@
-call plug#begin()
+call plug#begin('~/.config/nvim/plugged')
 Plug 'jwhitley/vim-colors-solarized'
 Plug 'sheerun/vim-polyglot'
 Plug 'plasticboy/vim-markdown'
