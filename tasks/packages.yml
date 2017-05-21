@@ -194,6 +194,7 @@
     - intellij-idea-ce
     - icdiff
     - ttf-ms-fonts
+    - ttf-iosevka
     - dwb
   tags: [packages, aur]
 

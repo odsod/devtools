@@ -1,7 +1,7 @@
 <application>
   <component name="UISettings">
-    <option name="FONT_FACE" value="PragmataPro" />
-    <option name="FONT_SIZE" value="12" />
+    <option name="FONT_FACE" value="Iosevka" />
+    <option name="FONT_SIZE" value="11" />
     <option name="OVERRIDE_NONIDEA_LAF_FONTS" value="true" />
   </component>
 </application>
