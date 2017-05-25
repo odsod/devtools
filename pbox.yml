@@ -136,7 +136,7 @@
       become: yes
       become_user: root
       user:
-        name: '{{ansible_user}}'
+        name: '{{username}}'
         groups: '{{item}}'
         append: yes
       with_items:
