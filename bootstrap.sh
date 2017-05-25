@@ -72,7 +72,7 @@ arch-chroot /mnt \
 
 cowsay 'Cloning pbox'
 arch-chroot /mnt \
-  sudo -u poscar \
+  sudo -u "$username" \
     git clone https://github.com/odsod/pbox /home/"$username"/pbox
 sed -i 's#https://github.com/#git@github.com:#' /mnt/home/"$username"/pbox/.git/config
 
@@ -90,7 +90,7 @@ arch-chroot /mnt \
 
 cowsay 'Bootstrapping pbox'
 arch-chroot /mnt \
-  sudo -u poscar \
+  sudo -u "$username" \
     /home/"$username"/pbox/files/scripts/pbox
 
 cowsay 'Setting root password'
