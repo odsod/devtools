@@ -97,6 +97,7 @@
         - ttymux
         - setxkb
         - dmenu
+        - mvn-autoenforce
       tags: [scripts]
 
     - name: Symlink pbox script

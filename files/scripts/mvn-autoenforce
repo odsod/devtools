@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+'''
+Find the highest version of all dependencies in the output from Maven enforcer.
+'''
+
+import sys
+import re
+
+
+def parse_version(version):
+    result = []
+    for part in version.split('.'):
+        try:
+            result.append(int(part))
+        except:
+            result.append(part)
+    return result
+
+
+def format_version(version):
+    return '.'.join(map(str, version))
+
+
+def to_xml(dependency):
+    return f'''
+<dependency>
+  <groupId>{dependency['group_id']}</groupId>
+  <artifactId>{dependency['artifact_id']}</artifactId>
+  <version>{format_version(dependency['version'])}</version>
+</dependency>
+    '''.strip()
+
+
+def main():
+    next_dependency_pattern = re.compile(
+        '^Require upper bound dependencies error for '
+        '(.*) '
+        'paths to dependency are:$')
+
+    current_dependency = None
+    candidate_version_pattern = None
+
+    for line in sys.stdin:
+        next_dependency_match = re.match(next_dependency_pattern, line)
+        if next_dependency_match:
+            if current_dependency:
+                print(to_xml(current_dependency))
+                print()
+            dependency_str = next_dependency_match.group(1)
+            group_id, artifact_id, version = dependency_str.split(':')
+            current_dependency = {
+                'group_id': group_id,
+                'artifact_id': artifact_id,
+                'version': parse_version(version),
+            }
+            candidate_version_pattern = re.compile(
+                f'{group_id}:{artifact_id}:(\\S+)')
+        elif line.strip() == ']' and current_dependency:
+            print(to_xml(current_dependency))
+        elif candidate_version_pattern:
+            for version_str in re.findall(candidate_version_pattern, line):
+                candidate_version = parse_version(version_str)
+                if candidate_version > current_dependency['version']:
+                    current_dependency['version'] = candidate_version
+
+
+if __name__ == '__main__':
+    main()
