@@ -12,15 +12,11 @@ import Data.List
 import System.Environment
 import System.IO.Unsafe
 
-myWorkspaces = [("h", xK_h), ("c", xK_c), ("r", xK_r), ("l", xK_l)]
-
 env = unsafePerformIO . getEnv
 
 main = xmonad $ def {
   modMask            = mod4Mask
 , terminal           = "urxvtc"
-, workspaces         = map fst myWorkspaces
-, startupHook        = windows $ greedyView $ fst $ head myWorkspaces
 , focusedBorderColor = env "THEME_LIGHT_GREEN"
 , normalBorderColor  = env "THEME_BLACK"
 , layoutHook         = myLayout
@@ -44,7 +40,7 @@ myLayout = smartBorders $ tall ||| Mirror tall ||| tabs
 
 toggleScratchpad = namedScratchpadAction myScratchpads
 
-myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
+myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys where
 
   modKeys = [((mod4Mask, key), action) | (key, action) <- binds]
     where binds = [ (xK_l, sendMessage Expand)
@@ -69,10 +65,6 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys ++ switchWorkspaceKeys where
                   , (xK_l, sendMessage NextLayout)
                   , (xK_s, toggleScratchpad "top")
                   ]
-
-  switchWorkspaceKeys = [((modKey .|. mod4Mask .|. mod5Mask, k), windows $ f i)
-      | (i, k) <- myWorkspaces
-      , (f, modKey) <- [(greedyView, 0), (shift, shiftMask)]]
 
 myScratchpads =
   [ NS "dwb" "dwb"
