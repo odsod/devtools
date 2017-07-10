@@ -29,8 +29,9 @@ def parse_dependency(dependency_str):
 def find_highest_version(dependency, input):
     highest_version = dependency['version']
     candidate_version_pattern = re.compile(
-        '{group_id}:{artifact_id}:(\\S+)'.format(group_id=dependency["group_id"],
-                                                 artifact_id=dependency["artifact_id"]))
+        '{group_id}:{artifact_id}:(\\S+)'.format(
+            group_id=dependency['group_id'],
+            artifact_id=dependency['artifact_id']))
     for candidate_version_str in re.findall(candidate_version_pattern, input):
         candidate_version = parse_version(candidate_version_str)
         highest_version = max(highest_version, candidate_version)
@@ -48,9 +49,10 @@ def to_xml(dependency):
   <artifactId>{artifact_id}</artifactId>
   <version>{version}</version>
 </dependency>
-    '''.format(group_id=dependency["group_id"],
-               artifact_id=dependency["artifact_id"],
-               version=format_version(dependency['version'])).strip()
+    '''.format(
+        group_id=dependency['group_id'],
+        artifact_id=dependency['artifact_id'],
+        version=format_version(dependency['version'])).strip()
 
 
 def main():
