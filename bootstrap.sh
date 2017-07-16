@@ -81,7 +81,7 @@ cat > /mnt/home/"$username"/pbox/vars.json <<EOF
 {
   "fullName": "${full_name}",
   "email": "${email}",
-  "ansible_user": "${username}",
+  "username": "${username}",
   "host": "${hostname}"
 }
 EOF
