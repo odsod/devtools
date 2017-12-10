@@ -81,6 +81,9 @@
     - python-pandas
     - python-matplotlib
 
+    # Browser
+    - qutebrowser
+
     # Python
     - python2
     - python
@@ -184,7 +187,6 @@
     - icdiff
     - ttf-ms-fonts
     - ttf-iosevka
-    - dwb
   tags: [packages, aur]
 
 - name: Create symlink aliases in /usr/local/bin

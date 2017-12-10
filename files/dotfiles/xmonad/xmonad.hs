@@ -56,7 +56,7 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys where
                   ]
 
   scratchpadKeys = [((mod4Mask .|. mod1Mask, key), toggleScratchpad name) | (key, name) <- binds]
-    where binds = [ (xK_l, "dwb")
+    where binds = [ (xK_l, "qutebrowser")
                   , (xK_w, "keepassx2")
                   ]
 
@@ -67,8 +67,8 @@ myKeys = modKeys ++ modShiftKeys ++ scratchpadKeys where
                   ]
 
 myScratchpads =
-  [ NS "dwb" "dwb"
-       (appName =? "dwb") (centeredLayout defaultMargin)
+  [ NS "qutebrowser" "qutebrowser"
+       (appName =? "qutebrowser") (centeredLayout defaultMargin)
   , NS "mid" "ttymux mid"
        (appName =? "mid") (centeredLayout 0)
   , NS "top" "ttymux top"
