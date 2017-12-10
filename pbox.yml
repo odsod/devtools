@@ -107,10 +107,9 @@
         state: link
       tags: [scripts]
 
-    - include: tasks/packages.yml
-    - include: tasks/dwb.yml
-    - include: tasks/nvim.yml
-    - include: tasks/hosts.yml
+    - import_tasks: tasks/packages.yml
+    - import_tasks: tasks/nvim.yml
+    - import_tasks: tasks/hosts.yml
 
     - name: Set group ownership of /media to users
       become: yes
