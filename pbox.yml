@@ -37,7 +37,6 @@
         - Xresources.d
         - xkb/symbols
         - config/nvim/autoload
-        - config/dwb
         - urxvt/ext
         # IntelliJ
         - IdeaIC2016.3/config/colors
@@ -57,7 +56,6 @@
         - gemrc
         - psqlrc
         - config/nvim/init.vim
-        - config/dwb/keys
         - bashrc
         - inputrc
         - bash.d/prompt.bash
@@ -80,7 +78,6 @@
         - Xresources.d/rxvt-unicode
         - bash.d/theme.bash
         - gitconfig
-        - config/dwb/settings
       tags: [dotfiles]
 
     - name: Install scripts into ~/.bin
