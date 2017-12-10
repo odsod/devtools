@@ -39,9 +39,6 @@
         - config/nvim/autoload
         - config/qutebrowser
         - urxvt/ext
-        # IntelliJ
-        - IdeaIC2016.3/config/colors
-        - IdeaIC2016.3/config/options
       tags: [dotfolders]
 
     - name: Install dotfiles
@@ -62,14 +59,6 @@
         - inputrc
         - bash.d/prompt.bash
         - urxvt/ext/clipboard
-        # IntelliJ
-        - IdeaIC2016.3/config/disabled_plugins.txt
-        - IdeaIC2016.3/config/colors/poscar.icls
-        - IdeaIC2016.3/config/options/colors.scheme.xml
-        - IdeaIC2016.3/config/options/editor.codeinsight.xml
-        - IdeaIC2016.3/config/options/editor.xml
-        - IdeaIC2016.3/config/options/parameter.hints.xml
-        - IdeaIC2016.3/config/options/ui.lnf.xml
       tags: [dotfiles]
 
     - name: Render dotfile templates
