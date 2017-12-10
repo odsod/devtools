@@ -21,7 +21,7 @@
     # XOrg
     - xorg-server
     - xorg-xinit
-    - xorg-server-utils
+    - xorg
     - xsel
     - xclip
     - arandr
