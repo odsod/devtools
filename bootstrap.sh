@@ -17,9 +17,6 @@ mkfs.ext4 /dev/sda1
 cowsay 'Mounting /dev/sda1 to /mnt'
 mount /dev/sda1 /mnt
 
-cowsay 'Writing /etc/fstab'
-genfstab -U /mnt >> /mnt/etc/fstab
-
 cowsay 'Configuring Swedish Pacman mirrors'
 cat \
   <(grep --no-group-separator -A1 Sweden /etc/pacman.d/mirrorlist) \
@@ -28,6 +25,9 @@ cat \
 
 cowsay 'Installing Arch Linux to /mnt'
 pacstrap /mnt base base-devel
+
+cowsay 'Writing /etc/fstab'
+genfstab -U /mnt >> /mnt/etc/fstab
 
 cowsay 'Setting keyboard layout to dvorak'
 echo 'KEYMAP=dvorak' >> /mnt/etc/vconsole.conf
