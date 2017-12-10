@@ -37,6 +37,7 @@
         - Xresources.d
         - xkb/symbols
         - config/nvim/autoload
+        - config/qutebrowser
         - urxvt/ext
         # IntelliJ
         - IdeaIC2016.3/config/colors
@@ -56,6 +57,7 @@
         - gemrc
         - psqlrc
         - config/nvim/init.vim
+        - config/qutebrowser/config.py
         - bashrc
         - inputrc
         - bash.d/prompt.bash
