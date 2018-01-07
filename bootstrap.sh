@@ -37,7 +37,7 @@ echo 'FONT=Lat2-Terminus16' >> /mnt/etc/vconsole.conf
 
 cowsay 'Setting time zone'
 arch-chroot /mnt \
-  ln -s /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
+  ln -fs /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 
 cowsay 'Configuring locale'
 sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /mnt/etc/locale.gen
