@@ -88,10 +88,10 @@
         - mvn-autoenforce
       tags: [scripts]
 
-    - name: Symlink pbox script
+    - name: Symlink odbox script
       file:
-        src: '{{playbook_dir}}/files/scripts/pbox'
-        dest: ~/.bin/pbox
+        src: '{{playbook_dir}}/files/scripts/odbox'
+        dest: ~/.bin/odbox
         state: link
       tags: [scripts]
 

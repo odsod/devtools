@@ -70,14 +70,14 @@ cowsay 'Installing packages required for bootstrapping'
 arch-chroot /mnt \
   pacman --noconfirm -S grub git ansible
 
-cowsay 'Cloning pbox'
+cowsay 'Cloning odbox'
 arch-chroot /mnt \
   sudo -u "$username" \
-    git clone https://github.com/odsod/pbox /home/"$username"/pbox
-sed -i 's#https://github.com/#git@github.com:#' /mnt/home/"$username"/pbox/.git/config
+    git clone https://github.com/odsod/odbox /home/"$username"/odbox
+sed -i 's#https://github.com/#git@github.com:#' /mnt/home/"$username"/odbox/.git/config
 
-cowsay 'Writing pbox variables'
-cat > /mnt/home/"$username"/pbox/vars.json <<EOF
+cowsay 'Writing odbox variables'
+cat > /mnt/home/"$username"/odbox/vars.json <<EOF
 {
   "fullName": "${full_name}",
   "email": "${email}",
@@ -86,12 +86,12 @@ cat > /mnt/home/"$username"/pbox/vars.json <<EOF
 }
 EOF
 arch-chroot /mnt \
-  chown "$username":users /home/"$username"/pbox/vars.json
+  chown "$username":users /home/"$username"/odbox/vars.json
 
-cowsay 'Bootstrapping pbox'
+cowsay 'Bootstrapping odbox'
 arch-chroot /mnt \
   sudo -u "$username" \
-    /home/"$username"/pbox/files/scripts/pbox
+    /home/"$username"/odbox/files/scripts/odbox
 
 cowsay 'Setting root password'
 arch-chroot /mnt \

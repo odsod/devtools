@@ -7,4 +7,4 @@ ansible-playbook \
   --extra-vars @"${script_dir}"/../../vars.json \
   --extra-vars @"${script_dir}"/../../themes/dark.json \
   "$@" \
-  "${script_dir}"/../../pbox.yml
+  "${script_dir}"/../../odbox.yml
