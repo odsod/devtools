@@ -8,6 +8,7 @@ Plug 'Valloric/ListToggle'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular', { 'on': 'TableFormat' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -89,6 +90,9 @@ let g:neomake_python_enabled_makers = []
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
 autocmd FileType markdown setlocal textwidth=74
+
+" Go
+let g:go_fmt_command = "goimports"
 
 " NERDTree
 let g:NERDTreeMinimalUI=1
