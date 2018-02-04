@@ -29,6 +29,9 @@ if [[ $OSTYPE =~ ^linux ]]; then
   alias ls='ls --color=auto --classify'
 fi
 
+export GOPATH="${HOME}/go"
+
+export PATH="${GOPATH}/bin:${PATH}"
 export PATH=~/.bin:$PATH
 export PATH=~/.cabal/bin:$PATH
 
