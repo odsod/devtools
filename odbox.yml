@@ -140,6 +140,7 @@
         # Tools
         - units
         - neovim
+        - fzf
         - moreutils
         - wget
         - git
