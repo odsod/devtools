@@ -144,7 +144,6 @@
         - moreutils
         - wget
         - git
-        - hub
         - ansible
         - fabric
         - openssh
@@ -165,6 +164,10 @@
         # Java
         - jdk8-openjdk
         - maven
+
+        # Go
+        - go
+        - go-tools
 
         # Docker
         - docker
