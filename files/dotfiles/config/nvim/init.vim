@@ -1,13 +1,13 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'jwhitley/vim-colors-solarized'
 Plug 'sheerun/vim-polyglot'
-Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/ListToggle'
-Plug 'godlygeek/tabular'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'godlygeek/tabular', { 'on': 'TableFormat' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 call plug#end()
