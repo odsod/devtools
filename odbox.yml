@@ -123,6 +123,9 @@
         - xclip
         - arandr
 
+        # OpenGL
+        - glfw-x11
+
         # XMonad
         - xmonad
         - xmonad-contrib
