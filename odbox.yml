@@ -37,6 +37,7 @@
         - Xresources.d
         - xkb/symbols
         - local/share/nvim/site/autoload
+        - config/nvim
         - config/qutebrowser
         - urxvt/ext
       tags: [dotfolders]
