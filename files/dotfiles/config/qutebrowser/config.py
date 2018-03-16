@@ -125,6 +125,7 @@ c.colors.hints.match.fg = blue
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'g': 'https://encrypted.google.com/search?q={}',
+    'gh': 'https://github.com/search?q={}',
 }
 
 c.url.start_pages = [
