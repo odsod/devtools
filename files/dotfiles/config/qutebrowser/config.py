@@ -1,9 +1,8 @@
 import os
 
 # Theme
-font_size = os.environ.get('THEME_FONT_SIZE') + 'pt'
+font_size = int(os.environ.get('THEME_FONT_SIZE'))
 font_family = os.environ.get('THEME_FONT_FAMILY')
-font_size = os.environ.get('THEME_FONT_SIZE')
 black = os.environ.get('THEME_BLACK')
 red = os.environ.get('THEME_RED')
 green = os.environ.get('THEME_GREEN')
@@ -99,24 +98,25 @@ c.tabs.background = True
 c.completion.height = '40%'
 c.completion.web_history_max_items = 0
 
-c.fonts.completion.category = 'bold ' + font_size + ' monospace'
-c.fonts.completion.entry = font_size + ' monospace'
-c.fonts.debug_console = font_size + ' monospace'
-c.fonts.downloads = font_size + ' monospace'
-c.fonts.keyhint = font_size + ' monospace'
-c.fonts.messages.error = font_size + ' monospace'
-c.fonts.messages.info = font_size + ' monospace'
-c.fonts.messages.warning = font_size + ' monospace'
+monospace = '{}pt monospace'.format(font_size)
+c.fonts.completion.category = 'bold ' + monospace
+c.fonts.completion.entry = monospace
+c.fonts.debug_console = monospace
+c.fonts.downloads = monospace
+c.fonts.keyhint = monospace
+c.fonts.messages.error = monospace
+c.fonts.messages.info = monospace
+c.fonts.messages.warning = monospace
 c.fonts.monospace = 'Iosevka'
-c.fonts.prompts = font_size + ' sans-serif'
-c.fonts.statusbar = font_size + ' monospace'
-c.fonts.tabs = font_size + ' monospace'
+c.fonts.prompts = str(font_size) + ' sans-serif'
+c.fonts.statusbar = monospace
+c.fonts.tabs = monospace
 c.fonts.web.family.fixed = 'Iosevka'
 c.fonts.web.family.sans_serif = 'Noto Sans'
 c.fonts.web.family.serif = 'Georgia'
 c.fonts.web.family.standard = 'Noto Sans'
 
-c.fonts.hints = font_size + ' monospace'
+c.fonts.hints = '{}pt monospace'.format(font_size - 1)
 c.hints.border = '1px solid ' + dark_gray
 c.colors.hints.bg = background
 c.colors.hints.fg = light_gray
