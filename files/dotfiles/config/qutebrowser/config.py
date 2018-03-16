@@ -1,103 +1,126 @@
 import os
 
-c.colors.completion.category.bg = os.environ.get('THEME_DARK_GRAY')
-c.colors.completion.category.border.bottom = os.environ.get('THEME_DARK_GRAY')
-c.colors.completion.category.border.top = os.environ.get('THEME_DARK_GRAY')
-c.colors.completion.category.fg = os.environ.get('THEME_WHITE')
-c.colors.completion.even.bg = os.environ.get('THEME_BLACK')
-c.colors.completion.fg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.completion.item.selected.bg = os.environ.get('THEME_LIGHT_MAGENTA')
-c.colors.completion.item.selected.border.bottom = os.environ.get('THEME_LIGHT_MAGENTA')
-c.colors.completion.item.selected.border.top = os.environ.get('THEME_LIGHT_MAGENTA')
-c.colors.completion.item.selected.fg = os.environ.get('THEME_WHITE')
-c.colors.completion.match.fg = os.environ.get('THEME_LIGHT_GRAY')
-c.colors.completion.odd.bg = os.environ.get('THEME_BLACK')
-c.colors.completion.scrollbar.bg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.completion.scrollbar.fg = os.environ.get('THEME_LIGHT_GRAY')
+# Theme
+font_size = os.environ.get('THEME_FONT_SIZE') + 'pt'
+font_family = os.environ.get('THEME_FONT_FAMILY')
+font_size = os.environ.get('THEME_FONT_SIZE')
+black = os.environ.get('THEME_BLACK')
+red = os.environ.get('THEME_RED')
+green = os.environ.get('THEME_GREEN')
+yellow = os.environ.get('THEME_YELLOW')
+blue = os.environ.get('THEME_BLUE')
+magenta = os.environ.get('THEME_MAGENTA')
+cyan = os.environ.get('THEME_CYAN')
+light_gray = os.environ.get('THEME_LIGHT_GRAY')
+dark_gray = os.environ.get('THEME_DARK_GRAY')
+light_red = os.environ.get('THEME_LIGHT_RED')
+light_green = os.environ.get('THEME_LIGHT_GREEN')
+light_yellow = os.environ.get('THEME_LIGHT_YELLOW')
+light_blue = os.environ.get('THEME_LIGHT_BLUE')
+light_magenta = os.environ.get('THEME_LIGHT_MAGENTA')
+light_cyan = os.environ.get('THEME_LIGHT_CYAN')
+white = os.environ.get('THEME_WHITE')
+background = os.environ.get('THEME_BACKGROUND')
+foreground = os.environ.get('THEME_FOREGROUND')
 
-c.colors.downloads.bar.bg = os.environ.get('THEME_DARK_GRAY')
-c.colors.downloads.error.bg = os.environ.get('THEME_RED')
-c.colors.downloads.error.fg = os.environ.get('THEME_WHITE')
-c.colors.downloads.start.fg = os.environ.get('THEME_WHITE')
-c.colors.downloads.stop.fg = os.environ.get('THEME_WHITE')
-c.colors.keyhint.fg = os.environ.get('THEME_WHITE')
-c.colors.keyhint.suffix.fg = os.environ.get('THEME_YELLOW')
-c.colors.messages.error.bg = os.environ.get('THEME_RED')
-c.colors.messages.error.border = os.environ.get('THEME_RED')
-c.colors.messages.error.fg = os.environ.get('THEME_WHITE')
-c.colors.messages.info.bg = os.environ.get('THEME_DARK_GRAY')
-c.colors.messages.info.border = os.environ.get('THEME_DARK_GRAY')
-c.colors.messages.info.fg = os.environ.get('THEME_WHITE')
-c.colors.messages.warning.bg = os.environ.get('THEME_LIGHT_RED')
-c.colors.messages.warning.border = os.environ.get('THEME_LIGHT_RED')
-c.colors.messages.warning.fg = os.environ.get('THEME_WHITE')
-c.colors.prompts.bg = os.environ.get('THEME_BLACK')
-c.colors.prompts.border = '1px solid ' + os.environ.get('THEME_WHITE')
-c.colors.prompts.fg = os.environ.get('THEME_WHITE')
-c.colors.prompts.selected.bg = os.environ.get('THEME_LIGHT_GREEN')
-c.colors.statusbar.caret.bg = os.environ.get('THEME_BLUE')
-c.colors.statusbar.caret.fg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.statusbar.caret.selection.bg = os.environ.get('THEME_LIGHT_MAGENTA')
-c.colors.statusbar.caret.selection.fg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.statusbar.command.bg = os.environ.get('THEME_DARK_GRAY')
-c.colors.statusbar.command.fg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.statusbar.command.private.bg = os.environ.get('THEME_LIGHT_GREEN')
-c.colors.statusbar.command.private.fg = os.environ.get('THEME_WHITE')
-c.colors.statusbar.insert.bg = os.environ.get('THEME_BLACK')
-c.colors.statusbar.insert.fg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.statusbar.normal.bg = os.environ.get('THEME_DARK_GRAY')
-c.colors.statusbar.normal.fg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.statusbar.private.bg = os.environ.get('THEME_LIGHT_GREEN')
-c.colors.statusbar.private.fg = os.environ.get('THEME_WHITE')
-c.colors.statusbar.progress.bg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.statusbar.url.error.fg = os.environ.get('THEME_RED')
-c.colors.statusbar.url.fg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.statusbar.url.hover.fg = os.environ.get('THEME_LIGHT_GRAY')
-c.colors.statusbar.url.success.http.fg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.statusbar.url.success.https.fg = os.environ.get('THEME_LIGHT_CYAN')
-c.colors.statusbar.url.warn.fg = os.environ.get('THEME_YELLOW')
+c.colors.completion.category.bg = dark_gray
+c.colors.completion.category.border.bottom = dark_gray
+c.colors.completion.category.border.top = dark_gray
+c.colors.completion.category.fg = white
+c.colors.completion.even.bg = black
+c.colors.completion.fg = light_cyan
+c.colors.completion.item.selected.bg = light_magenta
+c.colors.completion.item.selected.border.bottom = light_magenta
+c.colors.completion.item.selected.border.top = light_magenta
+c.colors.completion.item.selected.fg = white
+c.colors.completion.match.fg = light_gray
+c.colors.completion.odd.bg = black
+c.colors.completion.scrollbar.bg = light_cyan
+c.colors.completion.scrollbar.fg = light_gray
 
-c.colors.tabs.indicator.error = os.environ.get('THEME_RED')
-c.colors.tabs.indicator.start = os.environ.get('THEME_LIGHT_MAGENTA')
-c.colors.tabs.indicator.stop = os.environ.get('THEME_BLUE')
+c.colors.downloads.bar.bg = dark_gray
+c.colors.downloads.error.bg = red
+c.colors.downloads.error.fg = white
+c.colors.downloads.start.fg = white
+c.colors.downloads.stop.fg = white
+c.colors.keyhint.fg = white
+c.colors.keyhint.suffix.fg = yellow
+c.colors.messages.error.bg = red
+c.colors.messages.error.border = red
+c.colors.messages.error.fg = white
+c.colors.messages.info.bg = dark_gray
+c.colors.messages.info.border = dark_gray
+c.colors.messages.info.fg = white
+c.colors.messages.warning.bg = light_red
+c.colors.messages.warning.border = light_red
+c.colors.messages.warning.fg = white
+c.colors.prompts.bg = black
+c.colors.prompts.border = f'1px solid {white}'
+c.colors.prompts.fg = white
+c.colors.prompts.selected.bg = light_green
+c.colors.statusbar.caret.bg = blue
+c.colors.statusbar.caret.fg = light_cyan
+c.colors.statusbar.caret.selection.bg = light_magenta
+c.colors.statusbar.caret.selection.fg = light_cyan
+c.colors.statusbar.command.bg = dark_gray
+c.colors.statusbar.command.fg = light_cyan
+c.colors.statusbar.command.private.bg = light_green
+c.colors.statusbar.command.private.fg = white
+c.colors.statusbar.insert.bg = black
+c.colors.statusbar.insert.fg = light_cyan
+c.colors.statusbar.normal.bg = dark_gray
+c.colors.statusbar.normal.fg = light_cyan
+c.colors.statusbar.private.bg = light_green
+c.colors.statusbar.private.fg = white
+c.colors.statusbar.progress.bg = light_cyan
+c.colors.statusbar.url.error.fg = red
+c.colors.statusbar.url.fg = light_cyan
+c.colors.statusbar.url.hover.fg = light_gray
+c.colors.statusbar.url.success.http.fg = light_cyan
+c.colors.statusbar.url.success.https.fg = light_cyan
+c.colors.statusbar.url.warn.fg = yellow
 
-c.colors.tabs.even.bg = os.environ.get('THEME_BLACK')
-c.colors.tabs.odd.bg = os.environ.get('THEME_BLACK')
-c.colors.tabs.even.fg = os.environ.get('THEME_LIGHT_BLUE')
-c.colors.tabs.odd.fg = os.environ.get('THEME_LIGHT_BLUE')
+c.colors.tabs.indicator.error = red
+c.colors.tabs.indicator.start = light_magenta
+c.colors.tabs.indicator.stop = blue
 
-c.colors.tabs.selected.even.bg = os.environ.get('THEME_DARK_GRAY')
-c.colors.tabs.selected.odd.bg = os.environ.get('THEME_DARK_GRAY')
-c.colors.tabs.selected.even.fg = os.environ.get('THEME_LIGHT_GRAY')
-c.colors.tabs.selected.odd.fg = os.environ.get('THEME_LIGHT_GRAY')
+c.colors.tabs.even.bg = black
+c.colors.tabs.odd.bg = black
+c.colors.tabs.even.fg = light_blue
+c.colors.tabs.odd.fg = light_blue
+
+c.colors.tabs.selected.even.bg = dark_gray
+c.colors.tabs.selected.odd.bg = dark_gray
+c.colors.tabs.selected.even.fg = light_gray
+c.colors.tabs.selected.odd.fg = light_gray
 
 c.tabs.background = True
 
 c.completion.height = '40%'
 c.completion.web_history_max_items = 0
 
-c.fonts.completion.category = 'bold 11pt monospace'
-c.fonts.completion.entry = '11pt monospace'
-c.fonts.debug_console = '11pt monospace'
-c.fonts.downloads = '11pt monospace'
-c.fonts.keyhint = '11pt monospace'
-c.fonts.messages.error = '11pt monospace'
-c.fonts.messages.info = '11pt monospace'
-c.fonts.messages.warning = '11pt monospace'
+c.fonts.completion.category = 'bold ' + font_size + ' monospace'
+c.fonts.completion.entry = font_size + ' monospace'
+c.fonts.debug_console = font_size + ' monospace'
+c.fonts.downloads = font_size + ' monospace'
+c.fonts.keyhint = font_size + ' monospace'
+c.fonts.messages.error = font_size + ' monospace'
+c.fonts.messages.info = font_size + ' monospace'
+c.fonts.messages.warning = font_size + ' monospace'
 c.fonts.monospace = 'Iosevka'
-c.fonts.prompts = '11pt sans-serif'
-c.fonts.statusbar = '11pt monospace'
-c.fonts.tabs = '11pt monospace'
+c.fonts.prompts = font_size + ' sans-serif'
+c.fonts.statusbar = font_size + ' monospace'
+c.fonts.tabs = font_size + ' monospace'
 c.fonts.web.family.fixed = 'Iosevka'
 c.fonts.web.family.sans_serif = 'Noto Sans'
 c.fonts.web.family.serif = 'Georgia'
 c.fonts.web.family.standard = 'Noto Sans'
 
-c.fonts.hints = '12pt monospace'
-c.hints.border = '1px solid ' + os.environ.get('THEME_DARK_GRAY')
-c.colors.hints.bg = os.environ.get('THEME_BLACK')
-c.colors.hints.fg = os.environ.get('THEME_LIGHT_BLUE')
-c.colors.hints.match.fg = os.environ.get('THEME_BLUE')
+c.fonts.hints = font_size + ' monospace'
+c.hints.border = '1px solid ' + dark_gray
+c.colors.hints.bg = background
+c.colors.hints.fg = light_gray
+c.colors.hints.match.fg = blue
 
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
@@ -105,7 +128,9 @@ c.url.searchengines = {
 }
 
 c.url.start_pages = [
-    'https://start.duckduckgo.com',
-    'https://encrypted.google.com',
-    'https://en.wikipedia.org',
+    'about:blank',
 ]
+
+config.bind('a', 'hint all')
+config.bind('s', 'hint all tab')
+config.bind('b', 'back')
