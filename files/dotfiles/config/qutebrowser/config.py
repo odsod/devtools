@@ -53,22 +53,24 @@ c.colors.messages.info.fg = white
 c.colors.messages.warning.bg = light_red
 c.colors.messages.warning.border = light_red
 c.colors.messages.warning.fg = white
+
 c.colors.prompts.bg = black
 c.colors.prompts.border = f'1px solid {white}'
 c.colors.prompts.fg = white
 c.colors.prompts.selected.bg = light_green
+
 c.colors.statusbar.caret.bg = blue
 c.colors.statusbar.caret.fg = light_cyan
 c.colors.statusbar.caret.selection.bg = light_magenta
 c.colors.statusbar.caret.selection.fg = light_cyan
-c.colors.statusbar.command.bg = dark_gray
-c.colors.statusbar.command.fg = light_cyan
+c.colors.statusbar.command.bg = black
+c.colors.statusbar.command.fg = light_blue
 c.colors.statusbar.command.private.bg = light_green
 c.colors.statusbar.command.private.fg = white
 c.colors.statusbar.insert.bg = black
 c.colors.statusbar.insert.fg = light_cyan
-c.colors.statusbar.normal.bg = dark_gray
-c.colors.statusbar.normal.fg = light_cyan
+c.colors.statusbar.normal.bg = black
+c.colors.statusbar.normal.fg = light_blue
 c.colors.statusbar.private.bg = light_green
 c.colors.statusbar.private.fg = white
 c.colors.statusbar.progress.bg = light_cyan
@@ -83,15 +85,15 @@ c.colors.tabs.indicator.error = red
 c.colors.tabs.indicator.start = light_magenta
 c.colors.tabs.indicator.stop = blue
 
-c.colors.tabs.even.bg = black
-c.colors.tabs.odd.bg = black
-c.colors.tabs.even.fg = light_blue
-c.colors.tabs.odd.fg = light_blue
+c.colors.tabs.even.bg = dark_gray
+c.colors.tabs.odd.bg = dark_gray
+c.colors.tabs.even.fg = light_green
+c.colors.tabs.odd.fg = light_green
 
-c.colors.tabs.selected.even.bg = dark_gray
-c.colors.tabs.selected.odd.bg = dark_gray
-c.colors.tabs.selected.even.fg = light_gray
-c.colors.tabs.selected.odd.fg = light_gray
+c.colors.tabs.selected.even.bg = black
+c.colors.tabs.selected.odd.bg = black
+c.colors.tabs.selected.even.fg = light_blue
+c.colors.tabs.selected.odd.fg = light_blue
 
 c.tabs.background = True
 
@@ -118,14 +120,13 @@ c.fonts.web.family.standard = 'Noto Sans'
 
 c.fonts.hints = '{}pt monospace'.format(font_size - 1)
 c.hints.border = '1px solid ' + dark_gray
-c.colors.hints.bg = background
+c.colors.hints.bg = black
 c.colors.hints.fg = light_gray
 c.colors.hints.match.fg = blue
 
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'g': 'https://encrypted.google.com/search?q={}',
-    'gh': 'https://github.com/search?q={}',
 }
 
 c.url.start_pages = [
