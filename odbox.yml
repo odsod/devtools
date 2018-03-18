@@ -60,6 +60,7 @@
         - inputrc
         - bash.d/prompt.bash
         - urxvt/ext/clipboard
+        - mdl.rb
       tags: [dotfiles]
 
     - name: Render dotfile templates
@@ -87,6 +88,7 @@
         - setxkb
         - dmenu
         - mvn-autoenforce
+        - mdl
       tags: [scripts]
 
     - name: Symlink odbox script
