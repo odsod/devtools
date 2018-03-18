@@ -6,7 +6,7 @@ Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/ListToggle'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'godlygeek/tabular', { 'on': 'TableFormat' }
+Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
