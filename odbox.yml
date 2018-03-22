@@ -294,6 +294,7 @@
         - icdiff
         - ttf-ms-fonts
         - ttf-iosevka
+        - resin-cli
       tags: [packages, aur]
 
     - name: Create symlink aliases in /usr/local/bin
