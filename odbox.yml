@@ -113,6 +113,7 @@
         - zip
         - parallel
         - gthumb
+        - rsync
 
         # VirtualBox guest additions
         - virtualbox-guest-modules-arch
