@@ -52,25 +52,28 @@ set wildmode=list:longest,full
 " Keymaps
 set timeoutlen=400
 imap <silent> uu <Esc><Esc>:w<CR>
-nnoremap <Space> <Nop>
-let mapleader = " "
-nnoremap <Leader>t :NERDTreeToggle<CR>
-nnoremap <Leader>i gg=G<C-O><C-O>
-nnoremap <Leader>n :nohlsearch<CR>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>z :qa!<CR>
-nnoremap <Leader>a :wqa<CR>
-
 nnoremap <C-n> :GFiles<CR>
-
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
-" Plugin-based keymaps
-let g:lt_quickfix_list_toggle_map = '<leader>f'
+" Leader keymaps
+nnoremap <Space> <Nop>
+let mapleader = " "
+" Leader: Top row
+let g:lt_quickfix_list_toggle_map = '<Leader>f'
+" Leader: Home row
+nnoremap <Leader>a :wqa<CR>
+nnoremap <Leader>i gg=G<C-O><C-O>
+nnoremap <Leader>t :NERDTreeToggle<CR>
+nnoremap <Leader>n :nohlsearch<CR>
+" Leader: Bottom row
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>z :qa!<CR>
+" Leader: U
+nnoremap <Leader>ut :TableFormat<CR>
 
 " Autocommands
 autocmd FileType python set tabstop=4 expandtab shiftwidth=4 softtabstop=4
