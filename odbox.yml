@@ -71,7 +71,7 @@
         - Xresources.d/rxvt-unicode
         - bash.d/theme.bash
         - gitconfig
-      tags: [dotfiles]
+      tags: [dotfiles, templates]
 
     - name: Install scripts into ~/.bin
       copy:
