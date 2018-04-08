@@ -5,6 +5,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/ListToggle'
+Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
