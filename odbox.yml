@@ -61,6 +61,7 @@
         - bash.d/prompt.bash
         - urxvt/ext/clipboard
         - mdl.rb
+        - gitconfig
       tags: [dotfiles]
 
     - name: Render dotfile templates
@@ -70,7 +71,6 @@
       with_items:
         - Xresources.d/rxvt-unicode
         - bash.d/theme.bash
-        - gitconfig
       tags: [dotfiles, templates]
 
     - name: Install scripts into ~/.bin
