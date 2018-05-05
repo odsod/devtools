@@ -7,8 +7,6 @@ pacman --noconfirm -Sy cowsay moreutils
 cowsay 'Collecting variables'
 read -rp 'Hostname: ' hostname
 read -rp 'Username: ' username
-read -rp 'Full name: ' full_name
-read -rp 'Email: ' email
 
 cowsay 'Creating single bootable /dev/sda1 partition'
 sfdisk /dev/sda <<< '2048,,L,*'
@@ -79,8 +77,6 @@ sed -i 's#https://github.com/#git@github.com:#' /mnt/home/"$username"/odbox/.git
 cowsay 'Writing odbox variables'
 cat > /mnt/home/"$username"/odbox/vars.json <<EOF
 {
-  "fullName": "${full_name}",
-  "email": "${email}",
   "username": "${username}",
   "host": "${hostname}"
 }
