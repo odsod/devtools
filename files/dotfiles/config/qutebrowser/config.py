@@ -136,4 +136,5 @@ c.url.start_pages = [
 config.bind('a', 'hint all')
 config.bind('s', 'hint all tab')
 config.bind('b', 'back')
+config.bind('w', 'forward')
 config.bind('t', 'set-cmd-text -s :open -t')
