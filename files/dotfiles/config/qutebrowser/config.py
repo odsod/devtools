@@ -138,3 +138,10 @@ config.bind('s', 'hint all tab')
 config.bind('b', 'back')
 config.bind('w', 'forward')
 config.bind('t', 'set-cmd-text -s :open -t')
+
+# Load local config file, if it exists
+config_dir = os.path.dirname(os.path.realpath(__file__))
+local_config_file = config_dir + '/local_config.py'
+if os.path.isfile(local_config_file):
+    with open(local_config_file, 'r') as f:
+        exec(f.read())
