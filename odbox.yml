@@ -237,6 +237,18 @@
           - tox
       tags: [packages, python]
 
+    - name: Install pip2 packages
+      become: yes
+      become_user: root
+      pip:
+        name: '{{item}}'
+        state: latest
+        executable: /usr/bin/pip2
+      with_items:
+        - grpcio
+        - grpcio-tools
+      tags: [packages, pip2]
+
     - name: Install pip3 packages
       become: yes
       become_user: root
