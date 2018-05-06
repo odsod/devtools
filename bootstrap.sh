@@ -75,14 +75,12 @@ arch-chroot /mnt \
 sed -i 's#https://github.com/#git@github.com:#' /mnt/home/"$username"/odbox/.git/config
 
 cowsay 'Writing odbox variables'
-cat > /mnt/home/"$username"/odbox/vars.json <<EOF
-{
-  "username": "${username}",
-  "host": "${hostname}"
-}
+cat > /mnt/home/"$username"/odbox/vars.yml <<EOF
+username: ${username}
+host: ${hostname}
 EOF
 arch-chroot /mnt \
-  chown "$username":users /home/"$username"/odbox/vars.json
+  chown "$username":users /home/"$username"/odbox/vars.yml
 
 cowsay 'Bootstrapping odbox'
 arch-chroot /mnt \
