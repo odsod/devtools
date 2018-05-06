@@ -104,6 +104,7 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'python': ['yapf'],
 \   'json': ['prettier'],
+\   'markdown': ['prettier'],
 \}
 
 " fzf
