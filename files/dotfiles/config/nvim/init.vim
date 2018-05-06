@@ -2,12 +2,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'jwhitley/vim-colors-solarized'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
-Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/ListToggle'
-Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
+Plug 'w0rp/ale'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -84,12 +83,6 @@ autocmd FileType conf set tabstop=2 expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-t> <ESC>viw"tyea><ESC>bi<<ESC>lela</<ESC>"tpa><ESC>T>i
 autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-n> <CR><CR><ESC>ka<Tab>
 
-" Neomake
-autocmd! BufWritePost,BufRead * Neomake
-let g:neomake_verbose = 0
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_python_enabled_makers = []
-
 " Markdown
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
@@ -103,6 +96,15 @@ let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '.git', '\.o$']
+
+" Ale
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'python': ['yapf'],
+\   'json': ['prettier'],
+\}
 
 " fzf
 let g:fzf_colors =
