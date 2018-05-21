@@ -128,7 +128,9 @@ c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'g': 'https://encrypted.google.com/search?q={}',
     'gh': 'https://github.com/search?utf8=%E2%9C%93&q={}',
+    # Shortcuts, prefixed with 'g'
     'ggh': 'https://github.com/{}',
+    'gghe': 'https://github.com/einride/{}',
 }
 
 c.url.start_pages = [
