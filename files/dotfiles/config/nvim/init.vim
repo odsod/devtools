@@ -105,6 +105,7 @@ let g:ale_fixers = {
 \   'python': ['yapf'],
 \   'json': ['prettier'],
 \   'markdown': ['prettier'],
+\   'cpp': ['clang-format'],
 \}
 
 " fzf
