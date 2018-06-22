@@ -11,25 +11,29 @@ import qualified XMonad.ManageHook as ManageHook
 import qualified XMonad.Operations as Operations
 
 import qualified System.Exit as Exit
+import qualified XMonad.Actions.DynamicProjects as DynamicProjects
 import qualified XMonad.Layout.NoBorders as NoBorders
 import qualified XMonad.Layout.Tabbed as Tabbed
 import qualified XMonad.StackSet as StackSet
 import qualified XMonad.Util.NamedScratchpad as NamedScratchpad
 
+import qualified Data.List as List
 import qualified Data.Map as Map
 import qualified System.Environment as Environment
 import qualified System.IO.Unsafe as Unsafe
+import qualified Data.Monoid as Monoid
 
 import Graphics.X11 hiding (refreshKeyboardMapping)
 
 import Data.Bits ((.|.))
 import XMonad.Layout ((|||))
-import XMonad.ManageHook ((=?))
+import XMonad.ManageHook ((-->), (=?))
 
 env = Unsafe.unsafePerformIO . Environment.getEnv
 
 main =
   Main.xmonad $
+  DynamicProjects.dynamicProjects projects $
   Config.def
     { Core.modMask = mod4Mask
     , Core.terminal = "urxvtc"
@@ -38,8 +42,36 @@ main =
     , Core.keys = myKeys
     , Core.layoutHook = myLayout
     , Core.focusFollowsMouse = False
-    , Core.manageHook = NamedScratchpad.namedScratchpadManageHook myScratchpads
+    , Core.manageHook = managehook
+    , Core.workspaces = workspaces
     }
+
+managehook =
+  Monoid.mconcat
+    [ NamedScratchpad.namedScratchpadManageHook myScratchpads
+    , fmap (List.isPrefixOf "google-chrome") ManageHook.appName -->
+      ManageHook.doShift "google-chrome"
+    ]
+
+projects =
+  [ wwwProject "work-mail" "work" "mail.google.com"
+  , wwwProject "work-calendar" "work" "calendar.google.com"
+  , wwwProject "work-drive" "work" "drive.google.com"
+  , wwwProject "work-admin" "work" "admin.google.com"
+  , wwwProject "work-groups" "work" "groups.google.com"
+  ]
+  where
+    wwwProject name profile url =
+      DynamicProjects.Project
+        { DynamicProjects.projectName = name
+        , DynamicProjects.projectDirectory = "~/"
+        , DynamicProjects.projectStartHook =
+            Just $ Core.spawn $ "www " ++ profile ++ " " ++ url
+        }
+
+workspaces =
+  map show [1 .. 9] ++
+  map DynamicProjects.projectName projects ++ ["google-chrome"]
 
 tabTheme =
   Tabbed.defaultTheme
@@ -120,6 +152,17 @@ myKeys conf =
   , ((mod4Mask .|. shiftMask, xK_q), Core.io (Exit.exitWith Exit.ExitSuccess))
   -- Restart XMonad
   , ((mod4Mask, xK_q), Core.spawn "xmonad --recompile && xmonad --restart")
+  ] ++
+  -- project workspaces
+  [ ( (mod4Mask .|. mod1Mask, key)
+    , Operations.windows $ StackSet.greedyView workspace)
+  | (workspace, key) <-
+      [ ("work-mail", xK_m)
+      , ("work-calendar", xK_c)
+      , ("work-drive", xK_d)
+      , ("work-admin", xK_a)
+      , ("google-chrome", xK_g)
+      ]
   ] ++
   -- mod-[1..9]: Switch to workspace N
   [ ((mod4Mask, key), Operations.windows $ StackSet.greedyView workspace)
