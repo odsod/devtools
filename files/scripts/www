@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+BROWSER=${BROWSER:-'google-chrome-stable'}
+
+profile=$1
+app_url=$2
+
+# Parse argument 1: Profile
+if [[ $profile ]]; then
+  profile_dir="${HOME}/.config/google-chrome-profiles/${profile}"
+  [[ -d $profile_dir ]] || { echo "Unknown profile: ${profile}"; exit 1; }
+  user_data_dir_flag="--user-data-dir=${profile_dir}"
+else
+  user_data_dir_flag=''
+fi
+
+
+# Argument 2 (optional): App URL
+if [[ $app_url ]]; then
+  if [[ $app_url != *http ]]; then
+    app_flag="--app=https://${app_url}"
+  else
+    app_flag="--app=${app_url}"
+  fi
+else
+  app_flag=''
+fi
+
+exec "$BROWSER" "$user_data_dir_flag" "$app_flag"

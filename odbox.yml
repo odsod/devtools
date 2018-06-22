@@ -90,6 +90,7 @@
         - dmenu
         - mvn-autoenforce
         - mdl
+        - www
       tags: [scripts]
 
     - name: Symlink odbox script
