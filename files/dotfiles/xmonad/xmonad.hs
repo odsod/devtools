@@ -39,9 +39,9 @@ main =
     , Core.terminal = "urxvtc"
     , Core.focusedBorderColor = env "THEME_LIGHT_GREEN"
     , Core.normalBorderColor = env "THEME_BLACK"
-    , Core.keys = myKeys
-    , Core.layoutHook = myLayout
-    , Core.focusFollowsMouse = False
+    , Core.keys = keys
+    , Core.layoutHook = layout
+    , Core.focusFollowsMouse = True
     , Core.manageHook = managehook
     , Core.workspaces = workspaces
     }
@@ -86,7 +86,7 @@ tabTheme =
     , Tabbed.inactiveTextColor = env "THEME_LIGHT_GREEN"
     }
 
-myLayout =
+layout =
   NoBorders.smartBorders $
   tall ||| Layout.Mirror tall ||| Tabbed.tabbed Tabbed.shrinkText tabTheme
   where
@@ -99,7 +99,7 @@ myLayout =
 
 toggleScratchpad = NamedScratchpad.namedScratchpadAction myScratchpads
 
-myKeys conf =
+keys conf =
   Map.fromList $
   [ ((mod4Mask .|. shiftMask, xK_Return), Core.spawn $ Core.terminal conf) -- %! Launch terminal
   , ((mod4Mask .|. mod1Mask, xK_l), toggleScratchpad "qutebrowser")
