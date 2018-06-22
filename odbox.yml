@@ -117,10 +117,6 @@
         - gthumb
         - rsync
 
-        # VirtualBox guest additions
-        - virtualbox-guest-modules-arch
-        - virtualbox-guest-utils
-
         # XOrg
         - xorg-server
         - xorg-xinit
@@ -347,7 +343,6 @@
         enabled: yes
       with_items:
         - dhcpcd
-        - vboxservice
         - docker
       tags: [services]
 
@@ -360,5 +355,9 @@
         append: yes
       with_items:
         - docker
-        - vboxsf
       tags: [groups]
+
+    - name: Include VirtualBox guest role
+      include_role:
+        name: virtualbox_guest
+      when: is_virtualbox_guest

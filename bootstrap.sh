@@ -7,6 +7,7 @@ pacman --noconfirm -Sy cowsay moreutils
 cowsay 'Collecting variables'
 read -rp 'Hostname: ' hostname
 read -rp 'Username: ' username
+read -rp 'VirtualBox Guest?: ' is_virtualbox_guest
 
 cowsay 'Creating single bootable /dev/sda1 partition'
 sfdisk /dev/sda <<< '2048,,L,*'
@@ -78,6 +79,7 @@ cowsay 'Writing odbox variables'
 cat > /mnt/home/"$username"/odbox/vars.yml <<EOF
 username: ${username}
 host: ${hostname}
+is_virtualbox_guest: ${is_virtualbox_guest}
 EOF
 arch-chroot /mnt \
   chown "$username":users /home/"$username"/odbox/vars.yml
