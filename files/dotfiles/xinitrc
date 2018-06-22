@@ -5,21 +5,17 @@ xrdb -merge ~/.Xresources
 xsetroot -cursor_name 'left_ptr'
 xsetroot -solid "$THEME_BACKGROUND"
 hsetroot -solid "$THEME_BACKGROUND"
-xcompmgr & # fix border redraw issue
 
-setxkb poskeys
+# See /usr/share/X11/xkb/symbols/custom
+setxkbmap custom
 
-# power saving off
-xset -dpms &
-xset s noblank &
-xset s off &
-
-# rxvt daemon
 urxvtd -q -f -o
 
 # autohide mouse cursor
 unclutter -root -idle 5 &
 
-/usr/bin/VBoxClient-all
+xcape -e 'Control_L=Escape;Super_L=Tab'
+
+[[ -x /usr/bin/VBoxClient-all ]] && /usr/bin/VBoxClient-all
 
 exec xmonad

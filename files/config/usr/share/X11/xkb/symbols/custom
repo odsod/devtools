@@ -1,0 +1,62 @@
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "custom" {
+  include "level3(ralt_switch)"
+  include "ctrl(nocaps)"
+
+  name[Group1]= "Custom (Dvorak)";
+
+  // Use xcape to generate Tab on keypress
+  key <TAB>  { [ Super_L , Super_L ] };
+  key <I252> { [ Tab     , ISO_Left_Tab ] };
+
+  key <PRSC> { [ Super_R ] };
+
+  key <AE01> { [ 1       , Aring      , aring      , none ] };
+  key <AE02> { [ 2       , Adiaeresis , adiaeresis , none ] };
+  key <AE03> { [ 3       , Odiaeresis , odiaeresis , none ] };
+  key <AE04> { [ 4       , none       , EuroSign   , none ] };
+  key <AE05> { [ 5       , none       , sterling   , none ] };
+  key <AE06> { [ 6       , none       , cent       , none ] };
+  key <AE07> { [ 7       , none       , none       , none ] };
+  key <AE08> { [ 8       , none       , none       , none ] };
+  key <AE09> { [ 9       , none       , none       , none ] };
+  key <AE10> { [ 0       , none       , none       , none ] };
+  key <AE11> { [ plus    , none       , none       , none ] };
+  key <AE12> { [ section , none       , none       , none ] };
+
+  key <AD01> { [ apostrophe     , Aring      , quotedbl     , none ] };
+  key <AD02> { [ comma          , Adiaeresis , equal        , none ] };
+  key <AD03> { [ period         , Odiaeresis , bracketleft  , none ] };
+  key <AD04> { [ p              , P          , bracketright , none ] };
+  key <AD05> { [ y              , Y          , dollar       , none ] };
+  key <AD06> { [ f              , F          , none         , none ] };
+  key <AD07> { [ g              , G          , none         , none ] };
+  key <AD08> { [ c              , C          , ampersand    , none ] };
+  key <AD09> { [ r              , R          , underscore   , none ] };
+  key <AD10> { [ l              , L          , backslash    , none ] };
+  key <AD11> { [ slash          , none       , asciitilde   , none ] };
+  key <AD12> { [ dead_diaeresis , dead_acute , none         , none ] };
+
+  key <AC01> { [ a     , A    , braceleft   , none ] };
+  key <AC02> { [ o     , O    , braceright  , none ] };
+  key <AC03> { [ e     , E    , parenleft   , none ] };
+  key <AC04> { [ u     , U    , parenright  , none ] };
+  key <AC05> { [ i     , I    , bar         , none ] };
+  key <AC06> { [ d     , D    , none        , none ] };
+  key <AC07> { [ h     , H    , less        , none ] };
+  key <AC08> { [ t     , T    , greater     , none ] };
+  key <AC09> { [ n     , N    , plus        , none ] };
+  key <AC10> { [ s     , S    , asterisk    , none ] };
+  key <AC11> { [ minus , none , asciicircum , none ] };
+
+  key <AB01> { [ semicolon , none , colon      , none ] };
+  key <AB02> { [ q         , Q    , at         , none ] };
+  key <AB03> { [ j         , J    , question   , none ] };
+  key <AB04> { [ k         , K    , exclam     , none ] };
+  key <AB05> { [ x         , X    , grave      , none ] };
+  key <AB06> { [ b         , B    , numbersign , none ] };
+  key <AB07> { [ m         , M    , percent    , none ] };
+  key <AB08> { [ w         , W    , none       , none ] };
+  key <AB09> { [ v         , V    , none       , none ] };
+  key <AB10> { [ z         , Z    , none       , none ] };
+};

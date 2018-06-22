@@ -1,19 +1,6 @@
 - hosts: all
 
   tasks:
-    - name: Add config lines
-      become: yes
-      become_user: root
-      lineinfile:
-        dest: '/etc/{{item.file}}'
-        line: '{{item.line}}'
-        state: present
-        create: yes
-      with_items:
-        - {file: vconsole.conf, line: FONT=Lat2-Terminus16}
-        - {file: vconsole.conf, line: KEYMAP=dvorak}
-        - {file: locale.conf, line: LANG=en_US.UTF-8}
-      tags: [config]
 
     - name: Render config templates
       become: yes
@@ -35,12 +22,23 @@
         - xmonad
         - bash.d
         - Xresources.d
-        - xkb/symbols
         - local/share/nvim/site/autoload
         - config/nvim
         - config/qutebrowser
         - urxvt/ext
       tags: [dotfolders]
+
+    - name: Add config files
+      become: yes
+      become_user: root
+      copy:
+        src: 'config/{{item}}'
+        dest: '/{{item}}'
+      with_items:
+        - etc/locale.conf
+        - etc/vconsole.conf
+        - usr/share/X11/xkb/symbols/custom
+      tags: [config]
 
     - name: Install dotfiles
       copy:
@@ -50,7 +48,6 @@
         - Xresources
         - tmux.conf
         - xmonad/xmonad.hs
-        - xkb/symbols/poskeys
         - xinitrc
         - gemrc
         - psqlrc
@@ -86,7 +83,6 @@
         - tmuxargs
         - tmuxssh
         - ttymux
-        - setxkb
         - dmenu
         - mvn-autoenforce
         - mdl
