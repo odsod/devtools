@@ -1,0 +1,11 @@
+- name: Fetch {{dropbox_version}} package
+  get_url:
+    url: 'https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_{{dropbox_version}}_amd64.deb'
+    dest: '{{cache_dir}}/dropbox_{{dropbox_version}}_amd64.deb'
+  tags: [dropbox]
+
+- name: Install {{dropbox_version}} package
+  become: yes
+  apt:
+    deb: '{{cache_dir}}/dropbox_{{dropbox_version}}_amd64.deb'
+  tags: [dropbox]

@@ -1,0 +1,44 @@
+- name: Create directories
+  file:
+    dest: '{{item}}'
+    state: directory
+  loop:
+    - '{{share_dir}}/iosevka/{{iosevka_version}}'
+    - ~/.local/share/fonts
+  tags: [iosevka]
+
+- name: Fetch and unpack {{iosevka_version}}
+  unarchive:
+    src: https://github.com/be5invis/Iosevka/releases/download/v{{iosevka_version}}/01-iosevka-{{iosevka_version}}.zip
+    dest: '{{share_dir}}/iosevka/{{iosevka_version}}'
+    remote_src: yes
+    creates: '{{share_dir}}/iosevka/{{iosevka_version}}/ttf'
+  tags: [iosevka]
+
+- name: Symlink Iosevka {{iosevka_version}} folder
+  file:
+    src: '{{share_dir}}/iosevka/{{iosevka_version}}/ttf'
+    dest: ~/.local/share/fonts/iosevka
+    state: link
+  tags: [iosevka]
+
+- name: Create Iosevka Term install folder
+  file:
+    path: '{{share_dir}}/iosevka-term/{{iosevka_version}}'
+    state: directory
+  tags: [iosevka]
+
+- name: Fetch and unpack Iosevka Term {{iosevka_version}}
+  unarchive:
+    src: https://github.com/be5invis/Iosevka/releases/download/v{{iosevka_version}}/02-iosevka-term-{{iosevka_version}}.zip
+    dest: '{{share_dir}}/iosevka-term/{{iosevka_version}}'
+    remote_src: yes
+    creates: '{{share_dir}}/iosevka-term/{{iosevka_version}}/ttf'
+  tags: [iosevka]
+
+- name: Symlink Iosevka {{iosevka_version}} folder
+  file:
+    src: '{{share_dir}}/iosevka-term/{{iosevka_version}}/ttf'
+    dest: ~/.local/share/fonts/iosevka-term
+    state: link
+  tags: [iosevka]

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+pkill urxvtd
+urxvtd --quiet --fork --opendisplay

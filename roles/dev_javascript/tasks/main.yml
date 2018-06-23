@@ -1,0 +1,19 @@
+- name: Install NodeJS snap from channel {{nodejs_snap_channel}}
+  become: yes
+  command: snap install node --classic --channel={{nodejs_snap_channel}}
+  args:
+    creates: /snap/bin/node
+  tags: [dev_javascript]
+
+- name: Install NPM packages
+  become: yes
+  npm:
+    name: '{{item}}'
+    global: yes
+    state: present
+  with_items:
+    - yarn
+    - create-react-app
+    # TypeScript
+    - ts-protoc-gen
+  tags: [dev_javascript]

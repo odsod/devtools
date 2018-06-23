@@ -1,0 +1,56 @@
+- name: Install packages
+  become: yes
+  apt:
+    name: '{{item}}'
+    state: present
+  with_items:
+    - xmonad
+    - libghc-xmonad-contrib-dev
+    # Required by xmonad.hs
+    - rxvt-unicode
+    - keepassxc
+    - xclip
+    - tmux
+  tags: [desktop]
+
+- name: Create dotfolders
+  file:
+    path: ~/.{{item}}
+    state: directory
+  loop:
+    - urxvt/ext
+    - xmonad
+    - config/plasma-workspace/env
+  tags: [desktop]
+
+- name: Install dotfiles
+  copy:
+    src: '{{item}}'
+    dest: ~/.{{item}}
+  loop:
+    - Xresources
+    - urxvt/ext/clipboard
+    - xmonad/xmonad.hs
+  tags: [desktop]
+
+- name: Install scripts
+  copy:
+    src: '{{item}}'
+    dest: '{{bin_dir}}/{{item}}'
+    mode: 0755
+  loop:
+    - init-urxvt
+    - urxvtmux
+  tags: [desktop]
+
+- name: Add startup config
+  copy:
+    content: init-urxvt
+    dest: '{{startup_dir}}/desktop'
+  tags: [desktop]
+
+- name: Register XMonad as KDE Plasma WM
+  copy:
+    content: 'KDEWM=/usr/bin/xmonad'
+    dest: ~/.config/plasma-workspace/env/set_window_manager.sh
+  tags: [desktop]

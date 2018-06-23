@@ -1,0 +1,23 @@
+- name: Install packages
+  become: yes
+  apt:
+    name: '{{item}}'
+  loop:
+    - openjdk-11-jdk-headless
+    - maven
+  tags: [dev_java]
+
+- name: Install IntelliJ IDEA snap
+  become: yes
+  command: snap install intellij-idea-community --classic
+  args:
+    creates: /snap/bin/intellij-idea-community
+  tags: [dev_java]
+
+- name: Add startup config
+  copy:
+    content: |
+      export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+      export PATH=$JAVA_HOME/bin:$PATH
+    dest: '{{startup_dir}}/dev_java'
+  tags: [dev_java]

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+export EDITOR='vim'
+export HISTCONTROL='ignoredups'
+export HISTSIZE=100000
+unset MAILCHECK
+
+export GREP_COLOR='34'
+
+export LS_COLORS='di=1;94'
+
+export PYTHONDONTWRITEBYTECODE='1'
+
+shopt -s histappend
+shopt -s extglob
+bind Space:magic-space
+
+stty -ixon # disable XON/XOFF flow control
+
+alias xi='xclip -selection clipboard -i'
+alias xo='xclip -selection clipboard -o'
+
+source ~/.bash.d/theme.bash
+source ~/.bash.d/prompt.bash
+
+if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+  source /usr/share/bash-completion/bash_completion
+fi
+
+if [[ $OSTYPE =~ ^linux ]]; then
+  alias ls='ls --color=auto --classify'
+fi
+
+function cd() {
+  if [[ $# == 0 ]]; then
+    builtin cd ~ && ls
+  else
+    builtin cd "$*" && ls
+  fi
+}
+
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

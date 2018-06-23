@@ -1,0 +1,23 @@
+- name: Install Haskell packages
+  become: yes
+  apt:
+    name: '{{item}}'
+    state: present
+  with_items:
+    - haskell-stack
+    - cabal-install
+    - happy
+    - alex
+  tags: [dev_haskell]
+
+- name: Install hfmt
+  shell: cabal install hfmt
+  args:
+    creates: ~/.cabal/bin/hfmt
+  tags: [dev_haskell]
+
+- name: Add startup config
+  copy:
+    content: export PATH=$HOME/.cabal/bin:$PATH
+    dest: '{{startup_dir}}/dev_haskell'
+  tags: [dev_haskell]

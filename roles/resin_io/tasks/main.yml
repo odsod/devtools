@@ -1,0 +1,20 @@
+- name: Create resin-cli {{resin_cli_version}} folder
+  file:
+    path: '{{share_dir}}/resin-cli/{{resin_cli_version}}'
+    state: directory
+  tags: [resin_io]
+
+- name: Fetch and unpack resin-cli {{resin_cli_version}}
+  unarchive:
+    src: https://github.com/resin-io/resin-cli/releases/download/v{{resin_cli_version}}/resin-cli-v{{resin_cli_version}}-linux-x64.zip
+    dest: '{{share_dir}}/resin-cli/{{resin_cli_version}}'
+    remote_src: yes
+    creates: '{{share_dir}}/resin-cli/{{resin_cli_version}}/resin-cli/resin'
+  tags: [resin_io]
+
+- name: Symlink resin-cli {{resin_cli_version}} binary
+  file:
+    src: '{{share_dir}}/resin-cli/{{resin_cli_version}}/resin-cli/resin'
+    dest: '{{bin_dir}}/resin'
+    state: link
+  tags: [resin_io]

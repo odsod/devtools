@@ -1,0 +1,70 @@
+- hosts: [localhost]
+  connection: local
+
+  vars:
+    startup_dir: '{{ansible_env.HOME}}/.config/devtools/xsession.d'
+    bin_dir: '{{ansible_env.HOME}}/.local/share/devtools/bin'
+    cache_dir: '{{ansible_env.HOME}}/.cache/devtools'
+    share_dir: '{{ansible_env.HOME}}/.local/share/devtools'
+
+    cmpl_version: 1-12-0
+    dropbox_version: 2015.10.28
+    intellij_idea_edition: community
+    iosevka_version: 1.14.3
+    nodejs_snap_channel: 10/stable
+    protobuf_version: 3.6.0
+    resin_cli_version: 7.6.0
+
+  tasks:
+
+    - name: Wipe startup dir
+      file:
+        path: '{{startup_dir}}'
+        state: absent
+
+    - name: Create devtools dirs
+      file:
+        path: '{{item}}'
+        state: directory
+      loop:
+        - '{{startup_dir}}'
+        - '{{cache_dir}}'
+        - '{{bin_dir}}'
+
+    - name: Source files in {{startup_dir}} at startup
+      template:
+        src: xsessionrc.j2
+        dest: ~/.xsessionrc
+
+    - name: Add startup config
+      copy:
+        content: export PATH={{bin_dir}}:$PATH
+        dest: '{{startup_dir}}/00-devtools'
+
+    - name: Symlink devtools script
+      file:
+        src: '{{playbook_dir}}/run'
+        dest: '{{bin_dir}}/devtools'
+        state: link
+
+    - import_role: name=dev_golang
+    - import_role: name=dev_haskell
+    - import_role: name=dev_java
+    - import_role: name=dev_javascript
+    - import_role: name=dev_python
+    - import_role: name=dev
+
+    - import_role: name=bash
+    - import_role: name=cmpl
+    - import_role: name=custom_keyboard
+    - import_role: name=desktop
+    - import_role: name=dropbox
+    - import_role: name=git
+    - import_role: name=google_chrome
+    - import_role: name=google_cloud_sdk
+    - import_role: name=iosevka
+    - import_role: name=neovim
+    - import_role: name=protobuf
+    - import_role: name=resin_io
+    - import_role: name=slack
+    - import_role: name=tmux

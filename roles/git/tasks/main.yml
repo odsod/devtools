@@ -1,0 +1,33 @@
+- name: Add PPA
+  become: yes
+  apt_repository:
+    repo: ppa:git-core/ppa
+    update_cache: yes
+  tags: [git]
+
+- name: Install APT packages
+  become: yes
+  apt:
+    name: '{{item}}'
+    state: present
+  loop:
+    - git
+  tags: [git]
+
+- name: Install dotfiles
+  copy:
+    src: '{{item}}'
+    dest: ~/.{{item}}
+  loop:
+    - gitconfig
+  tags: [git]
+
+- name: Install NPM packages
+  become: yes
+  npm:
+    name: '{{item}}'
+    global: yes
+    state: present
+  with_items:
+    - diff-so-fancy
+  tags: [git]

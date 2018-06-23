@@ -1,0 +1,25 @@
+- name: Create dotfolders
+  file:
+    path: '{{item}}'
+    state: directory
+  loop:
+    - ~/.bash.d
+  tags: [bash]
+
+- name: Install dotfiles
+  copy:
+    src: '{{item}}'
+    dest: ~/.{{item}}
+  loop:
+    - bashrc
+    - inputrc
+    - bash.d/prompt.bash
+    - bash.d/theme.bash
+  tags: [bash]
+
+- name: Install print-bash-colors script
+  copy:
+    src: print-bash-colors
+    dest: '{{bin_dir}}/print-bash-colors'
+    mode: 0755
+  tags: [bash]

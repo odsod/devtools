@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -eux
+
+script_dir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+
+ansible-playbook \
+  -i ,localhost \
+  "${script_dir}"/devtools.yml \
+  "$@"

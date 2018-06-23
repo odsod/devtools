@@ -1,0 +1,50 @@
+[user]
+  name = Oscar Söderlund
+  email = odsod@users.noreply.github.com
+[core]
+  editor = vim
+  pager = "diff-so-fancy | less --tabs=4 -RFX"
+[push]
+  default = simple
+[branch]
+  autosetuprebase = always
+[color]
+  ui = true
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[rebase]
+  autosquash = true
+[mergetool]
+  prompt = false
+  keepBackup = false
+[alias]
+  # Status
+  s = status --short
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  d = diff --patch --stat
+  root = !git rev-parse --show-toplevel
+
+  # Branching
+  cob = checkout -b
+  lb = for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'
+
+  # Committing
+  a = add --all
+  c = commit --verbose
+  ca = commit --verbose --amend
+  ic = commit --allow-empty --message='Initial commit'
+
+  # Resetting
+  rom = !git fetch origin master && git checkout master && git reset --hard origin/master
+  rum = !git fetch upstream master && git checkout master && git reset --hard upstream/master && git push -f origin master
+
+  # Pushing
+  po = !git push origin "$(git rev-parse --abbrev-ref HEAD)"
+  pfo = !git push --force-with-lease origin "$(git rev-parse --abbrev-ref HEAD)"
+  upr = !git add -u && git commit --amend --no-edit && git push --force-with-lease origin "$(git rev-parse --abbrev-ref HEAD)"
+
+  # Rebasing
+  rc = rebase --continue
+  ra = rebase --abort
+  rs = rebase --skip

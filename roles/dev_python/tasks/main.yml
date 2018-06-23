@@ -1,0 +1,30 @@
+- name: Install APT packages
+  become: yes
+  apt:
+    name: '{{item}}'
+    state: present
+  with_items:
+    - python-pip
+    - python3-pip
+  tags: [dev_python]
+
+- name: Install pip2 packages
+  become: yes
+  pip:
+    name: '{{item}}'
+    executable: pip2
+  with_items:
+    - grpcio
+    - grpcio-tools
+  tags: [dev_python]
+
+- name: Install pip3 packages
+  become: yes
+  pip:
+    name: '{{item}}'
+    executable: pip3
+  with_items:
+    - yapf
+    - grpcio
+    - grpcio-tools
+  tags: [dev_python]

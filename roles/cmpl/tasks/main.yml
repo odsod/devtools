@@ -1,0 +1,19 @@
+- name: Create {{cmpl_version}} dir
+  file:
+    path: '{{share_dir}}/cmpl/{{cmpl_version}}'
+    state: directory
+  tags: [cmpl]
+
+- name: Fetch and unpack {{cmpl_version}}
+  unarchive:
+    src: http://www.coliop.org/_download/Cmpl-{{cmpl_version}}-Linux64.tar.gz
+    dest: '{{share_dir}}/cmpl/{{cmpl_version}}'
+    remote_src: yes
+    creates: '{{share_dir}}/cmpl/{{cmpl_version}}/Cmpl/cmpl'
+  tags: [cmpl]
+
+- name: Add startup config
+  copy:
+    content: 'export CMPLBINARY={{share_dir}}/cmpl/{{cmpl_version}}/Cmpl/cmpl'
+    dest: '{{startup_dir}}/cmpl'
+  tags: [cmpl]

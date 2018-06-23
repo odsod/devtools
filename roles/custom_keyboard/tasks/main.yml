@@ -1,0 +1,26 @@
+- name: Install XKB symbols
+  become: yes
+  copy:
+    src: symbols
+    dest: /usr/share/X11/xkb/symbols/custom
+  tags: [custom_keyboard]
+
+- name: Install xcape package
+  become: yes
+  apt:
+    name: xcape
+    state: present
+  tags: [custom_keyboard]
+
+- name: Install init-keyboard script
+  copy:
+    src: init-keyboard
+    dest: '{{bin_dir}}/init-keyboard'
+    mode: 0755
+  tags: [custom_keyboard]
+
+- name: Add startup config
+  copy:
+    content: init-keyboard
+    dest: '{{startup_dir}}/custom_keyboard'
+  tags: [custom_keyboard]

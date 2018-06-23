@@ -1,0 +1,19 @@
+- name: Create {{protobuf_version}} folder
+  file:
+    path: '{{share_dir}}/protobuf/{{protobuf_version}}'
+    state: directory
+  tags: [protobuf]
+
+- name: Fetch and unpack {{protobuf_version}}
+  unarchive:
+    src: https://github.com/google/protobuf/releases/download/v{{protobuf_version}}/protoc-{{protobuf_version}}-linux-x86_64.zip
+    dest: '{{share_dir}}/protobuf/{{protobuf_version}}'
+    remote_src: yes
+    creates: '{{share_dir}}/protobuf/{{protobuf_version}}/bin/protoc'
+  tags: [protobuf]
+
+- name: Add startup config
+  copy:
+    content: export PATH={{share_dir}}/protobuf/{{protobuf_version}}/bin:$PATH
+    dest: '{{startup_dir}}/protobuf'
+  tags: [protobuf]

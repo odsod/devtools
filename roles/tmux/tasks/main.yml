@@ -1,0 +1,26 @@
+- name: Install packages
+  become: yes
+  apt:
+    name: '{{item}}'
+    state: present
+  loop:
+    - tmux
+  tags: [tmux]
+
+- name: Install dotfiles
+  copy:
+    src: '{{item}}'
+    dest: ~/.{{item}}
+  loop:
+    - tmux.conf
+  tags: [tmux]
+
+- name: Install scripts
+  copy:
+    src: '{{item}}'
+    dest: '{{bin_dir}}/{{item}}'
+  loop:
+    - tmuxssh
+    - tmuxargs
+    - print-tmux-colors
+  tags: [tmux]
