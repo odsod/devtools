@@ -11,6 +11,7 @@ import qualified XMonad.Operations           as Operations
 
 -- XMonad Contrib
 import qualified XMonad.Config.Desktop       as Desktop
+import qualified XMonad.Hooks.SetWMName      as SetWMName
 import qualified XMonad.Layout.NoBorders     as NoBorders
 import qualified XMonad.StackSet             as StackSet
 import qualified XMonad.Util.NamedScratchpad as NamedScratchpad
@@ -42,6 +43,8 @@ main =
     , Core.focusedBorderColor = "#586e75"
     , Core.manageHook = manageHook
     , Core.workspaces = workspaces
+    , Core.startupHook =
+        Core.startupHook Desktop.desktopConfig >> SetWMName.setWMName "LG3D"
     }
 
 manageHook =

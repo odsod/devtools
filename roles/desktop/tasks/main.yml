@@ -45,7 +45,9 @@
 
 - name: Add startup config
   copy:
-    content: init-urxvt
+    content: |
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      init-urxvt
     dest: '{{startup_dir}}/desktop'
   tags: [desktop]
 
