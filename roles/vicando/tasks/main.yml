@@ -1,0 +1,17 @@
+- name: Create shared folder
+  file:
+    path: '{{share_dir}}/vicando'
+    state: directory
+  tags: [vicando]
+
+- name: Fetch ViCANdo 3.1-25
+  get_url:
+    url: http://www.zuragon.com/wp-content/download/ViCANdo-3.1-25-x86_64.AppImage
+    dest: '{{share_dir}}/vicando/ViCANdo-3.1-25-x86_64.AppImage'
+  tags: [vicando]
+
+- name: Make ViCANdo 3.1-25 executable
+  file: 
+    path: '{{share_dir}}/vicando/ViCANdo-3.1-25-x86_64.AppImage'
+    mode: 0755
+  tags: [vicando]

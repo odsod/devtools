@@ -73,3 +73,4 @@
     - import_role: name=resin_io
     - import_role: name=slack
     - import_role: name=tmux
+    - import_role: name=vicando
