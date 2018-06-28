@@ -60,6 +60,7 @@
     - import_role: name=dev
 
     - import_role: name=bash
+    - import_role: name=can
     - import_role: name=cmpl
     - import_role: name=custom_keyboard
     - import_role: name=desktop
