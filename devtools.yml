@@ -47,6 +47,7 @@
         dest: '{{bin_dir}}/devtools'
         state: link
 
+    - import_role: name=dev_arduino
     - import_role: name=dev_golang
     - import_role: name=dev_haskell
     - import_role: name=dev_java
