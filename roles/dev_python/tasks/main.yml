@@ -16,6 +16,8 @@
   with_items:
     - grpcio
     - grpcio-tools
+    - docopt
+    - jinja2
   tags: [dev_python]
 
 - name: Install pip3 packages
@@ -27,4 +29,6 @@
     - yapf
     - grpcio
     - grpcio-tools
+    - docopt
+    - jinja2
   tags: [dev_python]
