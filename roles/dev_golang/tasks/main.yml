@@ -16,7 +16,7 @@
   tags: [dev_golang]
 
 - name: Install Go packages
-  shell: go get {{item}}
+  shell: /usr/lib/go-1.10/bin/go get {{item}}
   args:
     creates: '{{ansible_env.HOME}}/go/src/{{item}}'
   environment:
