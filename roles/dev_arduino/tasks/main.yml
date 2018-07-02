@@ -18,3 +18,9 @@
     dest: '{{bin_dir}}/arduino'
     state: link
   tags: [dev_arduino]
+
+- name: Install IDE shortcuts
+  shell: '{{share_dir}}/arduino/arduino-{{ide_version}}/install.sh'
+  args:
+    creates: ~/.local/share/icons/hicolor/128x128/apps/arduino-arduinoide.png
+  tags: [dev_arduino]
