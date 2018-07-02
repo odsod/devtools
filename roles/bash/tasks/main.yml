@@ -14,7 +14,6 @@
     - bashrc
     - inputrc
     - bash.d/prompt.bash
-    - bash.d/theme.bash
   tags: [bash]
 
 - name: Install print-bash-colors script
