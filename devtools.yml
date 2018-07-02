@@ -11,7 +11,6 @@
     # Share directory for application data
     share_dir: '{{ansible_env.HOME}}/.local/share/devtools'
 
-    protobuf_version: 3.6.0
     resin_cli_version: 7.6.0
 
   tasks:
@@ -91,7 +90,12 @@
         version: 1.14.3
 
     - import_role: name=neovim
-    - import_role: name=protobuf
+
+    - import_role:
+        name: protobuf
+      vars:
+        version: 3.6.0
+
     - import_role: name=resin_io
     - import_role: name=slack
     - import_role: name=spotify
