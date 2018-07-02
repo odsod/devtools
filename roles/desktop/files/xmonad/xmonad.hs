@@ -76,7 +76,7 @@ layoutHook =
 scratchpads =
   [ terminalScratchpad "mid" 0 0 1 1
   , terminalScratchpad "top" 0 0 1 0.5
-  , terminalScratchpad "bottom" 0 0.5 1 1
+  , terminalScratchpad "bottom" 0 0.5 1 0.5
   , terminalScratchpad "left" 0 0 0.5 1
   , terminalScratchpad "right" 0.5 0 0.5 1
   , NamedScratchpad.NS
