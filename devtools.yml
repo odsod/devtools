@@ -11,7 +11,6 @@
     # Share directory for application data
     share_dir: '{{ansible_env.HOME}}/.local/share/devtools'
 
-    nodejs_snap_channel: 10/stable
     protobuf_version: 3.6.0
     resin_cli_version: 7.6.0
 
@@ -51,7 +50,12 @@
     - import_role: name=dev_golang
     - import_role: name=dev_haskell
     - import_role: name=dev_java
-    - import_role: name=dev_javascript
+
+    - import_role:
+        name: dev_javascript
+      vars:
+        nodejs_snap_channel: 10/stable
+
     - import_role: name=dev_python
     - import_role: name=dev_ruby
     - import_role: name=dev
