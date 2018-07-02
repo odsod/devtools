@@ -11,7 +11,6 @@
     # Share directory for application data
     share_dir: '{{ansible_env.HOME}}/.local/share/devtools'
 
-    dropbox_version: 2015.10.28
     iosevka_version: 1.14.3
     nodejs_snap_channel: 10/stable
     protobuf_version: 3.6.0
@@ -68,7 +67,12 @@
 
     - import_role: name=custom_keyboard
     - import_role: name=desktop
-    - import_role: name=dropbox
+
+    - import_role:
+        name: dropbox
+      vars:
+        version: 2015.10.28
+
     - import_role: name=git
     - import_role: name=google_chrome
     - import_role: name=google_cloud_sdk
