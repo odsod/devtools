@@ -3,37 +3,37 @@
     dest: '{{item}}'
     state: directory
   loop:
-    - '{{share_dir}}/iosevka/{{iosevka_version}}'
-    - '{{share_dir}}/iosevka-term/{{iosevka_version}}'
+    - '{{share_dir}}/iosevka/{{version}}'
+    - '{{share_dir}}/iosevka-term/{{version}}'
     - ~/.local/share/fonts
   tags: [iosevka]
 
-- name: Fetch and unpack {{iosevka_version}}
+- name: Fetch and unpack {{version}}
   unarchive:
-    src: https://github.com/be5invis/Iosevka/releases/download/v{{iosevka_version}}/01-iosevka-{{iosevka_version}}.zip
-    dest: '{{share_dir}}/iosevka/{{iosevka_version}}'
+    src: https://github.com/be5invis/Iosevka/releases/download/v{{version}}/01-iosevka-{{version}}.zip
+    dest: '{{share_dir}}/iosevka/{{version}}'
     remote_src: yes
-    creates: '{{share_dir}}/iosevka/{{iosevka_version}}/ttf'
+    creates: '{{share_dir}}/iosevka/{{version}}/ttf'
   tags: [iosevka]
 
-- name: Symlink Iosevka {{iosevka_version}} folder
+- name: Symlink Iosevka {{version}} folder
   file:
-    src: '{{share_dir}}/iosevka/{{iosevka_version}}/ttf'
+    src: '{{share_dir}}/iosevka/{{version}}/ttf'
     dest: ~/.local/share/fonts/iosevka
     state: link
   tags: [iosevka]
 
-- name: Fetch and unpack Term {{iosevka_version}}
+- name: Fetch and unpack Term {{version}}
   unarchive:
-    src: https://github.com/be5invis/Iosevka/releases/download/v{{iosevka_version}}/02-iosevka-term-{{iosevka_version}}.zip
-    dest: '{{share_dir}}/iosevka-term/{{iosevka_version}}'
+    src: https://github.com/be5invis/Iosevka/releases/download/v{{version}}/02-iosevka-term-{{version}}.zip
+    dest: '{{share_dir}}/iosevka-term/{{version}}'
     remote_src: yes
-    creates: '{{share_dir}}/iosevka-term/{{iosevka_version}}/ttf'
+    creates: '{{share_dir}}/iosevka-term/{{version}}/ttf'
   tags: [iosevka]
 
-- name: Symlink Iosevka {{iosevka_version}} folder
+- name: Symlink Iosevka {{version}} folder
   file:
-    src: '{{share_dir}}/iosevka-term/{{iosevka_version}}/ttf'
+    src: '{{share_dir}}/iosevka-term/{{version}}/ttf'
     dest: ~/.local/share/fonts/iosevka-term
     state: link
   tags: [iosevka]
