@@ -14,6 +14,7 @@
     - xmonad
     - libghc-xmonad-contrib-dev
     - gnome-session-xmonad
+    - gnome-tweaks
     # Required by xmonad.hs
     - rxvt-unicode
     - keepassxc
