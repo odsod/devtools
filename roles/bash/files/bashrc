@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-export EDITOR='vim'
 export HISTCONTROL='ignoredups'
 export HISTSIZE=100000
 unset MAILCHECK
