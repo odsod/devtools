@@ -2,6 +2,7 @@
   connection: local
 
   vars:
+
     # Files in this directory are sourced upon login
     startup_dir: '{{ansible_env.HOME}}/.config/devtools/xsession.d'
     # Files in this directory are added to the PATH
@@ -12,6 +13,10 @@
     share_dir: '{{ansible_env.HOME}}/.local/share/devtools'
 
   tasks:
+
+    ###########################################################################
+    # Prerequisites
+    ###########################################################################
 
     - name: Wipe startup dir
       file:
@@ -43,39 +48,66 @@
         dest: '{{bin_dir}}/devtools'
         state: link
 
-    - import_role: name=dev_arduino
-    - import_role: name=dev_golang
-    - import_role: name=dev_haskell
-    - import_role: name=dev_java
+    ###########################################################################
+    # Roles
+    ###########################################################################
+
+    - import_role:
+        name: dev_arduino
+
+    - import_role:
+        name: dev_golang
+
+    - import_role:
+        name: dev_haskell
+
+    - import_role:
+        name: dev_java
 
     - import_role:
         name: dev_javascript
       vars:
         nodejs_snap_channel: 10/stable
 
-    - import_role: name=dev_python
-    - import_role: name=dev_ruby
-    - import_role: name=dev
+    - import_role:
+        name: dev_python
 
-    - import_role: name=bash
-    - import_role: name=can
+    - import_role:
+        name: dev_ruby
+
+    - import_role:
+        name: dev
+
+    - import_role:
+        name: bash
+
+    - import_role:
+        name: can
 
     - import_role:
         name: cmpl
       vars:
         version: 1-12-0
 
-    - import_role: name=custom_keyboard
-    - import_role: name=desktop
+    - import_role:
+        name: custom_keyboard
+
+    - import_role:
+        name: desktop
 
     - import_role:
         name: dropbox
       vars:
         version: 2015.10.28
 
-    - import_role: name=git
-    - import_role: name=google_chrome
-    - import_role: name=google_cloud_sdk
+    - import_role:
+        name: git
+
+    - import_role:
+        name: google_chrome
+
+    - import_role:
+        name: google_cloud_sdk
 
     - import_role:
         name: intellij_idea
@@ -87,20 +119,27 @@
       vars:
         version: 1.14.3
 
-    - import_role: name=neovim
+    - import_role:
+        name: neovim
 
     - import_role:
         name: protobuf
       vars:
         version: 3.6.0
 
-    - import_role: name=resin_io
-    - import_role: name=slack
-    - import_role: name=spotify
-    - import_role: name=tmux
-    - import_role: name=vicando
     - import_role:
         name: resin_io
       vars:
         cli_version: 7.6.0
 
+    - import_role:
+        name: slack
+
+    - import_role:
+        name: spotify
+
+    - import_role:
+        name: tmux
+
+    - import_role:
+        name: vicando
