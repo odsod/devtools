@@ -90,9 +90,6 @@
         version: 1-12-0
 
     - import_role:
-        name: custom_keyboard
-
-    - import_role:
         name: desktop
 
     - import_role:

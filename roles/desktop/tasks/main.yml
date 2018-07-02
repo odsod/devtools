@@ -20,6 +20,8 @@
     - keepassxc
     - xclip
     - tmux
+    # Required by keyboard
+    - xcape
   tags: [desktop]
 
 - name: Create dotfolders
@@ -48,7 +50,17 @@
     mode: 0755
   loop:
     - init-urxvt
+    - init-keyboard
     - urxvtmux
+  tags: [desktop]
+
+- name: Install config files
+  become: yes
+  copy:
+    src: '{{item}}'
+    dest: /{{item}}
+  loop:
+    - usr/share/X11/xkb/symbols/custom
   tags: [desktop]
 
 - name: Add startup config
@@ -56,5 +68,6 @@
     content: |
       export _JAVA_AWT_WM_NONREPARENTING=1
       init-urxvt
+      init-keyboard
     dest: '{{startup_dir}}/desktop'
   tags: [desktop]
