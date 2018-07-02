@@ -1,3 +1,10 @@
+- name: Add gnome-session-xmonad PPA
+  become: yes
+  apt_repository:
+    repo: ppa:gekkio/xmonad
+    update_cache: yes
+  tags: [desktop]
+
 - name: Install packages
   become: yes
   apt:
@@ -6,6 +13,7 @@
   with_items:
     - xmonad
     - libghc-xmonad-contrib-dev
+    - gnome-session-xmonad
     # Required by xmonad.hs
     - rxvt-unicode
     - keepassxc
