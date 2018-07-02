@@ -7,13 +7,6 @@
     - maven
   tags: [dev_java]
 
-- name: Install IntelliJ IDEA snap
-  become: yes
-  command: snap install intellij-idea-community --classic
-  args:
-    creates: /snap/bin/intellij-idea-community
-  tags: [dev_java]
-
 - name: Add startup config
   copy:
     content: |

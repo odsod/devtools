@@ -13,7 +13,6 @@
 
     cmpl_version: 1-12-0
     dropbox_version: 2015.10.28
-    intellij_idea_edition: community
     iosevka_version: 1.14.3
     nodejs_snap_channel: 10/stable
     protobuf_version: 3.6.0
@@ -69,6 +68,12 @@
     - import_role: name=git
     - import_role: name=google_chrome
     - import_role: name=google_cloud_sdk
+
+    - import_role:
+        name: intellij_idea
+      vars:
+        edition: community
+
     - import_role: name=iosevka
     - import_role: name=neovim
     - import_role: name=protobuf
