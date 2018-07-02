@@ -18,3 +18,26 @@
     dest: '{{bin_dir}}/resin'
     state: link
   tags: [resin_io]
+
+- name: Add Etcher APT key
+  become: yes
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 379CE192D401AB61
+  tags: [resin_io]
+
+- name: Add Etcher APT repository
+  become: yes
+  apt_repository:
+    repo: deb https://dl.bintray.com/resin-io/debian stable etcher
+    state: present
+    filename: etcher
+    update_cache: yes
+  tags: [resin_io]
+
+- name: Install Etcher APT package
+  become: yes
+  apt:
+    name: etcher-electron
+    state: present
+  tags: [resin_io]
