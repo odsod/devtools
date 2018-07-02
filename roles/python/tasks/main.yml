@@ -6,7 +6,7 @@
   with_items:
     - python-pip
     - python3-pip
-  tags: [dev_python]
+  tags: [python]
 
 - name: Install pip2 packages
   become: yes
@@ -18,7 +18,7 @@
     - grpcio-tools
     - docopt
     - jinja2
-  tags: [dev_python]
+  tags: [python]
 
 - name: Install pip3 packages
   become: yes
@@ -31,4 +31,4 @@
     - grpcio-tools
     - docopt
     - jinja2
-  tags: [dev_python]
+  tags: [python]

@@ -6,7 +6,7 @@
   with_items:
     - ruby
     - ruby-dev
-  tags: [dev_ruby]
+  tags: [ruby]
 
 - name: Install dotfiles
   copy:
@@ -14,4 +14,4 @@
     dest: ~/.{{item}}
   loop:
     - gemrc
-  tags: [dev_ruby]
+  tags: [ruby]

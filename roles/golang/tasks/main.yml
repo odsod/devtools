@@ -3,7 +3,7 @@
   apt_repository:
     repo: ppa:gophers/archive
     update_cache: yes
-  tags: [dev_golang]
+  tags: [golang]
 
 - name: Install APT packages
   become: yes
@@ -13,7 +13,7 @@
   with_items:
     - golang-1.10-go
     - go-dep
-  tags: [dev_golang]
+  tags: [golang]
 
 - name: Install Go packages
   shell: /usr/lib/go-1.10/bin/go get {{item}}
@@ -34,7 +34,7 @@
     # Blessed 3rd party packages
     - github.com/stretchr/testify/assert
     - github.com/pkg/errors
-  tags: [dev_golang]
+  tags: [golang]
 
 - name: Add startup config
   copy:
@@ -43,12 +43,12 @@
       export GOPATH=$HOME/go
       export PATH=$GOPATH/bin:$PATH
       export PATH=$GOROOT/bin:$PATH
-    dest: '{{startup_dir}}/dev_golang'
-  tags: [dev_golang]
+    dest: '{{startup_dir}}/golang'
+  tags: [golang]
 
 - name: Install JetBrains Goland IDE
   become: yes
   command: snap install goland --classic
   args:
     creates: /snap/bin/goland
-  tags: [dev_golang]
+  tags: [golang]

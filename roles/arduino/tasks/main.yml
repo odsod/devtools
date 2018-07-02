@@ -2,7 +2,7 @@
   file:
     path: '{{share_dir}}/arduino'
     state: directory
-  tags: [dev_arduino]
+  tags: [arduino]
 
 - name: Fetch and unpack IDE {{ide_version}}
   unarchive:
@@ -10,17 +10,17 @@
     dest: '{{share_dir}}/arduino'
     creates: '{{share_dir}}/arduino/arduino-{{ide_version}}/arduino'
     remote_src: yes
-  tags: [dev_arduino]
+  tags: [arduino]
 
 - name: Symlink IDE binary
   file:
     src: '{{share_dir}}/arduino/arduino-{{ide_version}}/arduino'
     dest: '{{bin_dir}}/arduino'
     state: link
-  tags: [dev_arduino]
+  tags: [arduino]
 
 - name: Install IDE shortcuts
   shell: '{{share_dir}}/arduino/arduino-{{ide_version}}/install.sh'
   args:
     creates: ~/.local/share/icons/hicolor/128x128/apps/arduino-arduinoide.png
-  tags: [dev_arduino]
+  tags: [arduino]

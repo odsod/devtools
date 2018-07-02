@@ -49,36 +49,37 @@
         state: link
 
     ###########################################################################
-    # Roles
+    # Programming languages and package managers
     ###########################################################################
 
     - import_role:
-        name: dev_arduino
+        name: golang
+
+    - import_role:
+        name: haskell
+
+    - import_role:
+        name: java
+
+    - import_role:
+        name: nodejs
+      vars:
+        snap_channel: 10/stable
+
+    - import_role:
+        name: python
+
+    - import_role:
+        name: ruby
+
+    ###########################################################################
+    # Misc roles
+    ###########################################################################
+
+    - import_role:
+        name: arduino
       vars:
         ide_version: 1.8.5
-
-    - import_role:
-        name: dev_golang
-
-    - import_role:
-        name: dev_haskell
-
-    - import_role:
-        name: dev_java
-
-    - import_role:
-        name: dev_javascript
-      vars:
-        nodejs_snap_channel: 10/stable
-
-    - import_role:
-        name: dev_python
-
-    - import_role:
-        name: dev_ruby
-
-    - import_role:
-        name: dev
 
     - import_role:
         name: bash
@@ -93,6 +94,9 @@
 
     - import_role:
         name: desktop
+
+    - import_role:
+        name: dev
 
     - import_role:
         name: dropbox

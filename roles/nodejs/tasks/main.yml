@@ -1,9 +1,9 @@
-- name: Install NodeJS snap from channel {{nodejs_snap_channel}}
+- name: Install snap from channel {{snap_channel}}
   become: yes
-  command: snap install node --classic --channel={{nodejs_snap_channel}}
+  command: snap install node --classic --channel={{snap_channel}}
   args:
     creates: /snap/bin/node
-  tags: [dev_javascript]
+  tags: [nodejs]
 
 - name: Install NPM packages
   become: yes
@@ -16,4 +16,4 @@
     - create-react-app
     # TypeScript
     - ts-protoc-gen
-  tags: [dev_javascript]
+  tags: [nodejs]

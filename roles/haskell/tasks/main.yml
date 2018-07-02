@@ -8,16 +8,16 @@
     - cabal-install
     - happy
     - alex
-  tags: [dev_haskell]
+  tags: [haskell]
 
 - name: Install hfmt
   shell: cabal update && cabal install hfmt
   args:
     creates: ~/.cabal/bin/hfmt
-  tags: [dev_haskell]
+  tags: [haskell]
 
 - name: Add startup config
   copy:
     content: export PATH=$HOME/.cabal/bin:$PATH
-    dest: '{{startup_dir}}/dev_haskell'
-  tags: [dev_haskell]
+    dest: '{{startup_dir}}/haskell'
+  tags: [haskell]

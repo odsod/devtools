@@ -5,12 +5,12 @@
   loop:
     - openjdk-11-jdk-headless
     - maven
-  tags: [dev_java]
+  tags: [java]
 
 - name: Add startup config
   copy:
     content: |
       export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
       export PATH=$JAVA_HOME/bin:$PATH
-    dest: '{{startup_dir}}/dev_java'
-  tags: [dev_java]
+    dest: '{{startup_dir}}/java'
+  tags: [java]
