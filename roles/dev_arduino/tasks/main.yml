@@ -1,22 +1,20 @@
-
-
 - name: Create IDE folder
   file:
     path: '{{share_dir}}/arduino'
     state: directory
   tags: [dev_arduino]
 
-- name: Fetch and unpack IDE 1.8.5
+- name: Fetch and unpack IDE {{ide_version}}
   unarchive:
-    src: 'https://downloads.arduino.cc/arduino-1.8.5-linux64.tar.xz'
+    src: 'https://downloads.arduino.cc/arduino-{{ide_version}}-linux64.tar.xz'
     dest: '{{share_dir}}/arduino'
-    creates: '{{share_dir}}/arduino/arduino-1.8.5/arduino'
+    creates: '{{share_dir}}/arduino/arduino-{{ide_version}}/arduino'
     remote_src: yes
   tags: [dev_arduino]
 
-- name: Symlink binary
+- name: Symlink IDE binary
   file:
-    src: '{{share_dir}}/arduino/arduino-1.8.5/arduino'
+    src: '{{share_dir}}/arduino/arduino-{{ide_version}}/arduino'
     dest: '{{bin_dir}}/arduino'
     state: link
   tags: [dev_arduino]

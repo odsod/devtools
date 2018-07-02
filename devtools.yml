@@ -54,6 +54,8 @@
 
     - import_role:
         name: dev_arduino
+      vars:
+        ide_version: 1.8.5
 
     - import_role:
         name: dev_golang
