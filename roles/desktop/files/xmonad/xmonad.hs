@@ -50,8 +50,6 @@ workspaces =
   ["7", "8", "9", "0"] ++ ["google-chrome", "mail", "calendar", "drive"]
 
 startupHook = do
-  Core.spawn "init-keyboard"
-  Core.spawn "init-urxvt"
   Core.startupHook Gnome.gnomeConfig
   SetWMName.setWMName "LG3D"
 
@@ -118,6 +116,7 @@ scratchpads =
 keys conf =
   Map.fromList $
   [ ((mod3Mask .|. shiftMask, xK_Return), Core.spawn $ Core.terminal conf)
+  , ((mod1Mask .|. controlMask, xK_semicolon), Core.spawn "init-keyboard")
   , ((mod3Mask, xK_minus), Gnome.gnomeRun)
   , ((mod3Mask, xK_space), Operations.sendMessage Layout.NextLayout)
   , ((mod3Mask .|. shiftMask, xK_space), resetLayout)

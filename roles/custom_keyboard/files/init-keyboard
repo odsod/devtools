@@ -1,3 +1,4 @@
 setxkbmap custom
 pkill xcape
-xcape -e 'Control_L=Escape;Hyper_L=Tab' -t 200
+xcape -e 'Control_L=Escape;Hyper_L=Tab' -t 250
+notify-send --expire-time 750 'Keyboard initialized'
