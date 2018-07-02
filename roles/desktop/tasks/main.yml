@@ -20,7 +20,6 @@
   loop:
     - urxvt/ext
     - xmonad
-    - config/plasma-workspace/env
   tags: [desktop]
 
 - name: Install dotfiles
@@ -49,10 +48,4 @@
       export _JAVA_AWT_WM_NONREPARENTING=1
       init-urxvt
     dest: '{{startup_dir}}/desktop'
-  tags: [desktop]
-
-- name: Register XMonad as KDE Plasma WM
-  copy:
-    content: 'KDEWM=/usr/bin/xmonad'
-    dest: ~/.config/plasma-workspace/env/set_window_manager.sh
   tags: [desktop]
