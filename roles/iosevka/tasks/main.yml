@@ -4,6 +4,7 @@
     state: directory
   loop:
     - '{{share_dir}}/iosevka/{{iosevka_version}}'
+    - '{{share_dir}}/iosevka-term/{{iosevka_version}}'
     - ~/.local/share/fonts
   tags: [iosevka]
 
@@ -22,13 +23,7 @@
     state: link
   tags: [iosevka]
 
-- name: Create Iosevka Term install folder
-  file:
-    path: '{{share_dir}}/iosevka-term/{{iosevka_version}}'
-    state: directory
-  tags: [iosevka]
-
-- name: Fetch and unpack Iosevka Term {{iosevka_version}}
+- name: Fetch and unpack Term {{iosevka_version}}
   unarchive:
     src: https://github.com/be5invis/Iosevka/releases/download/v{{iosevka_version}}/02-iosevka-term-{{iosevka_version}}.zip
     dest: '{{share_dir}}/iosevka-term/{{iosevka_version}}'
