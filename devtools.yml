@@ -57,6 +57,7 @@
     - import_role: name=dev_java
     - import_role: name=dev_javascript
     - import_role: name=dev_python
+    - import_role: name=dev_ruby
     - import_role: name=dev
 
     - import_role: name=bash
