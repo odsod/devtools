@@ -11,7 +11,7 @@
   tags: [dev_haskell]
 
 - name: Install hfmt
-  shell: cabal install hfmt
+  shell: cabal update && cabal install hfmt
   args:
     creates: ~/.cabal/bin/hfmt
   tags: [dev_haskell]
