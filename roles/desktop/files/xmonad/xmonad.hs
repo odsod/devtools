@@ -90,6 +90,11 @@ scratchpads =
       (ManageHook.appName =? "gnome-screenshot")
       (centeredLayout 0.30)
   , NamedScratchpad.NS
+      "gnome-control-center"
+      "gnome-control-center"
+      (className "gnome-control-center")
+      (centeredLayout 0.05)
+  , NamedScratchpad.NS
       "google-chrome"
       "google-chrome --user-data-dir=.config/google-chrome-scratchpad"
       (ManageHook.appName =? "google-chrome (.config/google-chrome-scratchpad)")
@@ -112,6 +117,7 @@ scratchpads =
         (ManageHook.appName =? name)
         (NamedScratchpad.customFloating $
          StackSet.RationalRect left top right bottom)
+    className c = (fmap . fmap) Char.toLower ManageHook.className =? c
 
 keys conf =
   Map.fromList $
@@ -120,6 +126,7 @@ keys conf =
   , ((mod3Mask, xK_minus), Gnome.gnomeRun)
   , ((mod3Mask, xK_space), Operations.sendMessage Layout.NextLayout)
   , ((mod3Mask .|. shiftMask, xK_space), resetLayout)
+  , ((mod3Mask, xK_c), toggleScratchpad "gnome-control-center")
   , ((mod3Mask .|. shiftMask, xK_c), Operations.kill)
   , ((mod3Mask, xK_p), toggleScratchpad "gnome-screenshot")
   , ((mod3Mask, xK_n), toggleScratchpad "mid")
