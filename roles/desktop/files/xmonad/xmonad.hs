@@ -194,42 +194,25 @@ wmQuery s =
     or = Monad.liftM2 (||)
 
 viewWorkspace :: String -> Core.X ()
-viewWorkspace s = Operations.windows $ StackSet.greedyView s
+viewWorkspace s = do
+  Operations.windows $ StackSet.greedyView s
+  Core.spawn ("notify-send --expire-time=300 " ++ s)
 
-keys conf = Map.fromList (theseKeys ++ projectKeys ++ scratchpadKeys)
+keys conf =
+  Map.fromList
+    (layoutKeys ++
+     projectKeys ++ scratchpadKeys ++ screenKeys ++ workspaceKeys ++ otherKeys)
   where
     projectKeys =
       [ (maskAndKey, viewWorkspace $ DynamicProjects.projectName project)
       | (maskAndKey, project) <- keysAndProjects
       ]
-    scratchpads = map snd keysAndScratchpads
-    toggleScratchpad = NamedScratchpad.namedScratchpadAction scratchpads
     scratchpadKeys =
       [ (maskAndKey, toggleScratchpad (NamedScratchpad.name scratchpad))
       | (maskAndKey, scratchpad) <- keysAndScratchpads
       ]
-    theseKeys =
-      [ ((mod1Mask .|. controlMask, xK_semicolon), Core.spawn "init-keyboard")
-        -- Terminals
-        -- Commands
-      , ((mod3Mask, xK_minus), Gnome.gnomeRun)
-      , ((mod3Mask, xK_space), Operations.sendMessage Layout.NextLayout)
-      , ((mod3Mask, xK_Return), Operations.windows StackSet.swapMaster)
-      , ((mod3Mask, xK_j), Operations.windows StackSet.focusDown)
-      , ((mod3Mask, xK_k), Operations.windows StackSet.focusUp)
-      , ((mod3Mask, xK_comma), Operations.sendMessage (Layout.IncMasterN 1))
-      , ((mod3Mask, xK_period), Operations.sendMessage (Layout.IncMasterN (-1)))
-        -- Shift commands
-      , ((mod3Mask .|. shiftMask, xK_Return), Core.spawn $ Core.terminal conf)
-      , ((mod3Mask .|. shiftMask, xK_space), resetLayout)
-      , ((mod3Mask .|. shiftMask, xK_c), Operations.kill)
-      , ((mod3Mask .|. shiftMask, xK_u), Operations.sendMessage Layout.Shrink)
-      , ((mod3Mask .|. shiftMask, xK_h), Operations.sendMessage Layout.Expand)
-      , ((mod3Mask .|. shiftMask, xK_t), Operations.windows StackSet.swapDown)
-      , ((mod3Mask .|. shiftMask, xK_n), Operations.windows StackSet.swapUp)
-      , ((mod3Mask .|. shiftMask, xK_s), sinkWindow)
-        -- Generic workspaces
-      , ((mod3Mask, xK_7), viewWorkspace "7")
+    workspaceKeys =
+      [ ((mod3Mask, xK_7), viewWorkspace "7")
       , ((mod3Mask .|. shiftMask, xK_7), moveWindowToWorkspace "7")
       , ((mod3Mask, xK_8), viewWorkspace "8")
       , ((mod3Mask .|. shiftMask, xK_8), moveWindowToWorkspace "8")
@@ -237,16 +220,44 @@ keys conf = Map.fromList (theseKeys ++ projectKeys ++ scratchpadKeys)
       , ((mod3Mask .|. shiftMask, xK_9), moveWindowToWorkspace "9")
       , ((mod3Mask, xK_0), viewWorkspace "0")
       , ((mod3Mask .|. shiftMask, xK_0), moveWindowToWorkspace "0")
-        -- Screens
-      , ((mod3Mask, xK_1), withScreen 0 viewWorkspace)
-      , ((mod3Mask .|. shiftMask, xK_1), withScreen 0 moveWindowToWorkspace)
-      , ((mod3Mask, xK_2), withScreen 1 viewWorkspace)
-      , ((mod3Mask .|. shiftMask, xK_2), withScreen 1 moveWindowToWorkspace)
       ]
-    moveWindowToWorkspace = Operations.windows . StackSet.shift
-    withScreen n op = Operations.screenWorkspace n >>= flip Core.whenJust op
+    screenKeys =
+      [ ( (mod3Mask, key)
+        , Operations.screenWorkspace sc >>=
+          flip Core.whenJust (Operations.windows . StackSet.view))
+      | (key, sc) <- zip [xK_1, xK_2] [0 ..]
+      ] ++
+      [ ( (mod3Mask .|. shiftMask, key)
+        , Operations.screenWorkspace sc >>=
+          flip Core.whenJust (Operations.windows . StackSet.shift))
+      | (key, sc) <- zip [xK_1, xK_2] [0 ..]
+      ]
+    layoutKeys =
+      [ ((mod3Mask, xK_space), Operations.sendMessage Layout.NextLayout)
+      , ((mod3Mask, xK_Return), Operations.windows StackSet.swapMaster)
+      , ((mod3Mask, xK_j), Operations.windows StackSet.focusDown)
+      , ((mod3Mask, xK_k), Operations.windows StackSet.focusUp)
+      , ((mod3Mask, xK_comma), Operations.sendMessage (Layout.IncMasterN 1))
+      , ((mod3Mask, xK_period), Operations.sendMessage (Layout.IncMasterN (-1)))
+      , ((mod3Mask .|. shiftMask, xK_u), Operations.sendMessage Layout.Shrink)
+      , ((mod3Mask .|. shiftMask, xK_h), Operations.sendMessage Layout.Expand)
+      , ((mod3Mask .|. shiftMask, xK_t), Operations.windows StackSet.swapDown)
+      , ((mod3Mask .|. shiftMask, xK_n), Operations.windows StackSet.swapUp)
+      ]
+    otherKeys =
+      [ ((mod1Mask .|. controlMask, xK_semicolon), Core.spawn "init-keyboard")
+      , ((mod3Mask, xK_minus), Gnome.gnomeRun)
+      , ((mod3Mask .|. shiftMask, xK_Return), Core.spawn $ Core.terminal conf)
+      , ((mod3Mask .|. shiftMask, xK_space), resetLayout)
+      , ((mod3Mask .|. shiftMask, xK_c), Operations.kill)
+      , ((mod3Mask .|. shiftMask, xK_s), sinkWindow)
+      ]
     sinkWindow = Operations.withFocused $ Operations.windows . StackSet.sink
     resetLayout = Operations.setLayout $ Core.layoutHook conf
+    scratchpads = map snd keysAndScratchpads
+    toggleScratchpad = NamedScratchpad.namedScratchpadAction scratchpads
+    moveWindowToWorkspace = Operations.windows . StackSet.shift
+    withScreen n op = Operations.screenWorkspace n >>= flip Core.whenJust op
 
 main :: IO ()
 main =
