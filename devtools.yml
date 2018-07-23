@@ -104,6 +104,11 @@
         version: 2015.10.28
 
     - import_role:
+        name: fzf
+      vars:
+        version: 0.17.4
+
+    - import_role:
         name: git
 
     - import_role:

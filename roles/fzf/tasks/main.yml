@@ -1,0 +1,29 @@
+- name: Create fzf {{version}} dir
+  file:
+    path: '{{share_dir}}/fzf/{{version}}'
+    state: directory
+  tags: [fzf]
+
+- name: Install fzf
+  unarchive:
+    src: https://github.com/junegunn/fzf-bin/releases/download/{{version}}/fzf-{{version}}-linux_amd64.tgz
+    dest: '{{share_dir}}/fzf/{{version}}'
+    remote_src: yes
+    creates: '{{share_dir}}/fzf/{{version}}/fzf'
+  tags: [fzf]
+
+- name: Symlink fzf {{version}} binary
+  file:
+    src: '{{share_dir}}/fzf/{{version}}/fzf'
+    dest: '{{bin_dir}}/fzf'
+    state: link
+  tags: [fzf]
+
+- name: Add fzf startup config
+  copy:
+    content: |
+      export FZF_DEFAULT_OPTS="
+        --color fg:10,bg:-1,hl:4,fg+:12,bg+:-1,hl+:4
+        --color info:12,prompt:10,pointer:12,marker:12,spinner:12"
+    dest: '{{startup_dir}}/fzf'
+  tags: [fzf]
