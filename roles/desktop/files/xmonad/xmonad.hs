@@ -11,11 +11,12 @@ import qualified XMonad.Operations              as Operations
 
 -- XMonad Contrib
 import qualified XMonad.Actions.DynamicProjects as DynamicProjects
-import qualified XMonad.Config.Gnome            as Gnome
+import qualified XMonad.Config.Kde              as Kde
 import qualified XMonad.Hooks.SetWMName         as SetWMName
 import qualified XMonad.Layout.NoBorders        as NoBorders
 import qualified XMonad.StackSet                as StackSet
 import qualified XMonad.Util.NamedScratchpad    as NamedScratchpad
+import qualified XMonad.Hooks.ManageHelpers     as ManageHelpers
 
 -- X11 keyboard symbols
 import           Graphics.X11
@@ -51,19 +52,19 @@ workspaces = ["7", "8", "9", "0"] ++ projectWorkspaces
     projectWorkspaces = map DynamicProjects.projectName projects
 
 startupHook = do
-  Core.startupHook Gnome.gnomeConfig
+  Core.startupHook Kde.kde4Config
   SetWMName.setWMName "LG3D"
 
 manageHook =
   Monoid.mconcat
-    [ Core.manageHook Gnome.gnomeConfig
+    [ Core.manageHook Kde.kde4Config
     , NamedScratchpad.namedScratchpadManageHook scratchpads
     ]
   where
     scratchpads = map snd keysAndScratchpads
 
 layoutHook =
-  Gnome.desktopLayoutModifiers $
+  Kde.desktopLayoutModifiers $
   NoBorders.smartBorders (tall ||| Layout.Mirror tall ||| Layout.Full)
   where
     tall =
@@ -246,7 +247,7 @@ keys conf =
       ]
     otherKeys =
       [ ((mod1Mask .|. controlMask, xK_semicolon), Core.spawn "init-keyboard")
-      , ((mod3Mask, xK_minus), Gnome.gnomeRun)
+      {-, ((mod3Mask, xK_minus), Gnome.gnomeRun)-}
       , ((mod3Mask .|. shiftMask, xK_Return), Core.spawn $ Core.terminal conf)
       , ((mod3Mask .|. shiftMask, xK_space), resetLayout)
       , ((mod3Mask .|. shiftMask, xK_c), Operations.kill)
@@ -263,7 +264,7 @@ main :: IO ()
 main =
   Main.xmonad $
   DynamicProjects.dynamicProjects projects $
-  Gnome.gnomeConfig
+  Kde.kde4Config
     { Core.modMask = mod3Mask
     , Core.terminal = "urxvtc"
     , Core.keys = keys
