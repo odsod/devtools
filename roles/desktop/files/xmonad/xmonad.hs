@@ -53,6 +53,7 @@ workspaces = ["7", "8", "9", "0"] ++ projectWorkspaces
 startupHook = do
   Core.startupHook Kde.kde4Config
   SetWMName.setWMName "LG3D"
+  viewWorkspace "7"
 
 manageHook =
   Monoid.mconcat
