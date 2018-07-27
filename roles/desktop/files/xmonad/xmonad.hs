@@ -249,7 +249,7 @@ keys conf =
       ]
     otherKeys =
       [ ((mod1Mask .|. controlMask, xK_semicolon), Core.spawn "init-keyboard")
-      {-, ((mod3Mask, xK_minus), Gnome.gnomeRun)-}
+      , ((mod3Mask, xK_r), Core.spawn "rofi -show run")
       , ((mod3Mask .|. shiftMask, xK_Return), Core.spawn $ Core.terminal conf)
       , ((mod3Mask .|. shiftMask, xK_space), resetLayout)
       , ((mod3Mask .|. shiftMask, xK_c), Operations.kill)
