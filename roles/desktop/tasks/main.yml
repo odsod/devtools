@@ -13,6 +13,8 @@
     - tmux
     # Required by keyboard
     - xcape
+    # KDE
+    - dolphin-plugins
   tags: [desktop]
 
 - name: Create dotfolders

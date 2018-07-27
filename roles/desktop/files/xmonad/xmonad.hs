@@ -16,7 +16,6 @@ import qualified XMonad.Hooks.SetWMName         as SetWMName
 import qualified XMonad.Layout.NoBorders        as NoBorders
 import qualified XMonad.StackSet                as StackSet
 import qualified XMonad.Util.NamedScratchpad    as NamedScratchpad
-import qualified XMonad.Hooks.ManageHelpers     as ManageHelpers
 
 -- X11 keyboard symbols
 import           Graphics.X11
@@ -58,6 +57,8 @@ startupHook = do
 manageHook =
   Monoid.mconcat
     [ Core.manageHook Kde.kde4Config
+    , wmQuery "plasma-desktop" --> ManageHook.doFloat
+    , wmQuery "plasmashell" --> ManageHook.doFloat
     , NamedScratchpad.namedScratchpadManageHook scratchpads
     ]
   where
@@ -77,12 +78,13 @@ layoutHook =
 keysAndProjects :: [((KeyMask, KeySym), DynamicProjects.Project)]
 keysAndProjects =
   [ ((tabMask .|. altMask, xK_h), project "goland")
-  , ((tabMask .|. altMask, xK_s), project "slack")
   , ((tabMask .|. altMask, xK_m), project "evince")
   , ((tabMask .|. altMask, xK_p), project "spotify")
   , ((tabMask .|. altMask, xK_g), chromeProject "mail.google.com")
   , ((tabMask .|. altMask, xK_c), chromeProject "calendar.google.com")
   , ((tabMask .|. altMask, xK_r), chromeProject "drive.google.com")
+  , ((tabMask .|. altMask, xK_l), chromeProject "meet.google.com")
+  , ((tabMask .|. altMask, xK_s), chromeProject "einride.slack.com")
   ]
   where
     project cmd =
@@ -102,13 +104,13 @@ keysAndProjects =
 keysAndScratchpads :: [((KeyMask, KeySym), NamedScratchpad.NamedScratchpad)]
 keysAndScratchpads =
   [ ((tabMask, xK_u), midTerminal)
-  , ((tabMask, xK_h), topTerminal)
-  , ((tabMask, xK_t), bottomTerminal)
-  , ((tabMask, xK_n), leftTerminal)
-  , ((tabMask, xK_s), rightTerminal)
-  , ((tabMask, xK_e), nautilus)
-  , ((tabMask, xK_c), gnomeControlCenter)
-  , ((tabMask, xK_p), gnomeScreenshot)
+  , ((tabMask, xK_h), leftTerminal)
+  , ((tabMask, xK_t), rightTerminal)
+  , ((tabMask, xK_n), topTerminal)
+  , ((tabMask, xK_s), bottomTerminal)
+  , ((tabMask, xK_e), dolphin)
+  , ((tabMask, xK_c), systemsettings)
+  , ((tabMask, xK_p), spectacle)
   , ((tabMask .|. altGrMask, xK_u), keepassxc)
   , ((tabMask .|. altGrMask, xK_h), googleChrome)
   ]
@@ -154,17 +156,17 @@ keysAndScratchpads =
         "urxvtmux right"
         (wmQuery "right")
         (floating $ rect 0.5 0 0.5 1)
-    nautilus =
+    dolphin =
       NamedScratchpad.NS
-        "nautilus"
-        "nautilus"
-        (wmQuery "nautilus")
+        "dolphin"
+        "dolphin"
+        (wmQuery "dolphin")
         (floating $ rectWithMargin 0.05)
-    gnomeControlCenter =
+    systemsettings =
       NamedScratchpad.NS
-        "gnome-control-center"
-        "gnome-control-center"
-        (wmQuery "gnome-control-center")
+        "systemsettings5"
+        "systemsettings5"
+        (wmQuery "systemsettings5")
         (floating $ rectWithMargin 0.05)
     keepassxc =
       NamedScratchpad.NS
@@ -172,11 +174,11 @@ keysAndScratchpads =
         "keepassxc"
         (wmQuery "keepassxc")
         (floating $ rectWithMargin 0.20)
-    gnomeScreenshot =
+    spectacle =
       NamedScratchpad.NS
-        "gnome-screenshot"
-        "gnome-screenshot --interactive"
-        (wmQuery "gnome-screenshot")
+        "spectacle"
+        "spectacle"
+        (wmQuery "spectacle")
         (floating $ rectWithMargin 0.3)
     googleChrome =
       NamedScratchpad.NS
