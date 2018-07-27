@@ -47,6 +47,14 @@
     - urxvtmux
   tags: [desktop]
 
+- name: Install shared files
+  copy:
+    src: '{{item}}'
+    dest: '{{share_dir}}/{{item}}'
+  loop:
+    - rofi-theme.rasi
+  tags: [desktop]
+
 - name: Install config files
   become: yes
   copy:
@@ -63,4 +71,12 @@
       init-urxvt
       init-keyboard
     dest: '{{startup_dir}}/desktop'
+  tags: [desktop]
+
+- name: Add themed rofi script
+  copy:
+    content: |
+      /usr/bin/rofi -theme {{share_dir}}/rofi-theme.rasi "$@"
+    dest: '{{bin_dir}}/rofi'
+    mode: 0755
   tags: [desktop]
