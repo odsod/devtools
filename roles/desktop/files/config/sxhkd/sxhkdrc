@@ -1,0 +1,6 @@
+mod1 + ctrl + semicolon
+  init-keyboard
+mod3 + r
+  rofi -show run
+mod3 + shift + Return
+  urxvtc

@@ -13,6 +13,7 @@
     - tmux
     # Required by keyboard
     - xcape
+    - sxhkd
     # KDE
     - dolphin-plugins
   tags: [desktop]
@@ -24,6 +25,7 @@
   loop:
     - urxvt/ext
     - xmonad
+    - config/sxhkd
   tags: [desktop]
 
 - name: Install dotfiles
@@ -34,6 +36,7 @@
     - Xresources
     - urxvt/ext/clipboard
     - xmonad/xmonad.hs
+    - config/sxhkd/sxhkdrc
   tags: [desktop]
 
 - name: Install scripts
@@ -55,7 +58,7 @@
     - rofi-theme.rasi
   tags: [desktop]
 
-- name: Install config files
+- name: Install global config files
   become: yes
   copy:
     src: '{{item}}'

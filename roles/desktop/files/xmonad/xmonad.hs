@@ -51,16 +51,16 @@ workspaces = ["7", "8", "9", "0"] ++ projectWorkspaces
     projectWorkspaces = map DynamicProjects.projectName projects
 
 startupHook = do
-  Core.startupHook Kde.kde4Config
-  SetWMName.setWMName "LG3D"
   viewWorkspace "7"
+  SetWMName.setWMName "LG3D"
+  Core.startupHook Kde.kde4Config
 
 manageHook =
   Monoid.mconcat
-    [ Core.manageHook Kde.kde4Config
+    [ NamedScratchpad.namedScratchpadManageHook scratchpads
+    , Core.manageHook Kde.kde4Config
     , wmQuery "plasma-desktop" --> ManageHook.doFloat
     , wmQuery "plasmashell" --> ManageHook.doFloat
-    , NamedScratchpad.namedScratchpadManageHook scratchpads
     ]
   where
     scratchpads = map snd keysAndScratchpads
@@ -81,6 +81,7 @@ keysAndProjects =
   [ ((tabMask .|. altMask, xK_h), project "goland")
   , ((tabMask .|. altMask, xK_m), project "evince")
   , ((tabMask .|. altMask, xK_p), project "spotify")
+  , ((tabMask .|. altMask, xK_y), chromeProject "youtube.com")
   , ((tabMask .|. altMask, xK_g), chromeProject "mail.google.com")
   , ((tabMask .|. altMask, xK_c), chromeProject "calendar.google.com")
   , ((tabMask .|. altMask, xK_r), chromeProject "drive.google.com")
@@ -249,10 +250,7 @@ keys conf =
       , ((mod3Mask .|. shiftMask, xK_n), Operations.windows StackSet.swapUp)
       ]
     otherKeys =
-      [ ((mod1Mask .|. controlMask, xK_semicolon), Core.spawn "init-keyboard")
-      , ((mod3Mask, xK_r), Core.spawn "rofi -show run")
-      , ((mod3Mask .|. shiftMask, xK_Return), Core.spawn $ Core.terminal conf)
-      , ((mod3Mask .|. shiftMask, xK_space), resetLayout)
+      [ ((mod3Mask .|. shiftMask, xK_space), resetLayout)
       , ((mod3Mask .|. shiftMask, xK_c), Operations.kill)
       , ((mod3Mask .|. shiftMask, xK_s), sinkWindow)
       ]
