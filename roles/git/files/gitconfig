@@ -46,6 +46,7 @@
   upr = !git add -u && git commit --amend --no-edit && git push --force-with-lease origin "$(git rev-parse --abbrev-ref HEAD)"
 
   # Rebasing
+  rio = rebase --interactive origin/master
   rc = rebase --continue
   ra = rebase --abort
   rs = rebase --skip
