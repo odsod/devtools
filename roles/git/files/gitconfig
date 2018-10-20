@@ -33,6 +33,7 @@
   a = add --all
   c = commit --verbose
   ca = commit --verbose --amend
+  cf = commit --fixup
   ic = commit --allow-empty --message='Initial commit'
 
   # Resetting
