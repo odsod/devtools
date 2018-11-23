@@ -33,7 +33,7 @@ git_prompt() {
   local git_branch
   git_branch=$(which git &> /dev/null && git_branch 2>/dev/null)
   if [[ -n $git_branch ]]; then
-    echo -e " $(color 92)[$(color 96)${git_branch}$(git_ahead_state)$(color 91)$(git_dirty_state)$(color 92)]"
+    echo -e " $(color 37)[$(color 97)${git_branch}$(git_ahead_state)$(color 91)$(git_dirty_state)$(color 37)]"
   fi
 }
 

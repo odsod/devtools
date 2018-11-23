@@ -1,126 +1,25 @@
+#- import_playbook: '{{playbook_dir}}/einride/devtools.yml'
+
 - hosts: [localhost]
   connection: local
-
-  vars:
-
-    # Files in this directory are sourced upon login
-    startup_dir: '{{ansible_env.HOME}}/.config/devtools/xsession.d'
-    # Files in this directory are added to the PATH
-    bin_dir: '{{ansible_env.HOME}}/.local/share/devtools/bin'
-    # Cache directory for transient data
-    cache_dir: '{{ansible_env.HOME}}/.cache/devtools'
-    # Share directory for application data
-    share_dir: '{{ansible_env.HOME}}/.local/share/devtools'
+  vars_files:
+    - '{{playbook_dir}}/einride/vars/dirs.yml'
+    - '{{playbook_dir}}/einride/vars/user.yml'
 
   tasks:
-
-    ###########################################################################
-    # Prerequisites
-    ###########################################################################
-
-    - name: Wipe startup dir
-      file:
-        path: '{{startup_dir}}'
-        state: absent
-
-    - name: Create devtools dirs
-      file:
-        path: '{{item}}'
-        state: directory
-      loop:
-        - '{{startup_dir}}'
-        - '{{cache_dir}}'
-        - '{{bin_dir}}'
-
-    - name: Source files in {{startup_dir}} at startup
-      template:
-        src: xsessionrc.j2
-        dest: ~/.xsessionrc
-
-    - name: Add startup config
-      copy:
-        content: export PATH={{bin_dir}}:$PATH
-        dest: '{{startup_dir}}/00-devtools'
-
-    - name: Symlink devtools script
-      file:
-        src: '{{playbook_dir}}/run'
-        dest: '{{bin_dir}}/devtools'
-        state: link
-
-    ###########################################################################
-    # Programming languages and package managers
-    ###########################################################################
-
-    - import_role:
-        name: golang
-
-    - import_role:
-        name: haskell
-
-    - import_role:
-        name: java
-
-    - import_role:
-        name: nodejs
-      vars:
-        snap_channel: 10/stable
-
-    - import_role:
-        name: python
-
-    - import_role:
-        name: ruby
-
-    ###########################################################################
-    # Misc roles
-    ###########################################################################
-
-    - import_role:
-        name: arduino
-      vars:
-        ide_version: 1.8.5
-
     - import_role:
         name: bash
 
     - import_role:
-        name: can
-
-    - import_role:
-        name: cmpl
-      vars:
-        version: 1-12-0
-
-    - import_role:
         name: desktop
-
-    - import_role:
-        name: dev
-
-    - import_role:
-        name: dropbox
       vars:
-        version: 2015.10.28
-
-    - import_role:
-        name: fzf
-      vars:
-        version: 0.17.4
+        fzf_version: 0.17.4
 
     - import_role:
         name: git
 
     - import_role:
-        name: google_chrome
-
-    - import_role:
-        name: google_cloud_sdk
-
-    - import_role:
-        name: intellij_idea
-      vars:
-        edition: community
+        name: haskell
 
     - import_role:
         name: iosevka
@@ -131,25 +30,7 @@
         name: neovim
 
     - import_role:
-        name: protobuf
-      vars:
-        version: 3.6.0
-
-    - import_role:
-        name: resin_io
-      vars:
-        cli_version: 7.6.0
-
-    - import_role:
-        name: slack
-
-    - import_role:
         name: spotify
 
     - import_role:
         name: tmux
-
-    - import_role:
-        name: vicando
-      vars:
-        version: 3.1-27

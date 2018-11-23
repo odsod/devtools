@@ -1,6 +1,0 @@
-- name: Install {{edition}} snap
-  become: yes
-  command: snap install intellij-idea-{{edition}} --classic
-  args:
-    creates: /snap/bin/intellij-idea-{{edition}}
-  tags: [intellij_idea]

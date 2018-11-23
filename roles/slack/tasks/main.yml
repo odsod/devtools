@@ -1,6 +1,0 @@
-- name: Install snap package
-  become: yes
-  command: snap install slack --classic
-  args:
-    creates: /snap/bin/slack
-  tags: [slack]

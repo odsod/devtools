@@ -4,18 +4,13 @@
     name: '{{item}}'
     state: present
   with_items:
-    - xmonad
-    - libghc-xmonad-contrib-dev
-    # Required by xmonad.hs
+    - bspwm
+    - sxhkd
+    - tmux
     - rxvt-unicode
     - keepassxc
     - xclip
-    - tmux
-    # Required by keyboard
     - xcape
-    - sxhkd
-    # KDE
-    - dolphin-plugins
   tags: [desktop]
 
 - name: Create dotfolders
@@ -24,8 +19,9 @@
     state: directory
   loop:
     - urxvt/ext
-    - xmonad
     - config/sxhkd
+    - config/bspwm
+    - config/rofi
   tags: [desktop]
 
 - name: Install dotfiles
@@ -35,8 +31,10 @@
   loop:
     - Xresources
     - urxvt/ext/clipboard
-    - xmonad/xmonad.hs
     - config/sxhkd/sxhkdrc
+    - config/bspwm/bspwmrc
+    - config/rofi/config
+    - config/compton.conf
   tags: [desktop]
 
 - name: Install scripts
@@ -48,14 +46,6 @@
     - init-urxvt
     - init-keyboard
     - urxvtmux
-  tags: [desktop]
-
-- name: Install shared files
-  copy:
-    src: '{{item}}'
-    dest: '{{share_dir}}/{{item}}'
-  loop:
-    - rofi-theme.rasi
   tags: [desktop]
 
 - name: Install global config files
@@ -73,13 +63,29 @@
       export _JAVA_AWT_WM_NONREPARENTING=1
       init-urxvt
       init-keyboard
+      export FZF_DEFAULT_OPTS="
+        --color fg:10,bg:-1,hl:4,fg+:12,bg+:-1,hl+:4
+        --color info:12,prompt:10,pointer:12,marker:12,spinner:12"
     dest: '{{startup_dir}}/desktop'
   tags: [desktop]
 
-- name: Add themed rofi script
-  copy:
-    content: |
-      /usr/bin/rofi -theme {{share_dir}}/rofi-theme.rasi "$@"
-    dest: '{{bin_dir}}/rofi'
-    mode: 0755
-  tags: [desktop]
+- name: Create fzf {{fzf_version}} dir
+  file:
+    path: '{{share_dir}}/fzf/{{fzf_version}}'
+    state: directory
+  tags: [fzf]
+
+- name: Install fzf
+  unarchive:
+    src: https://github.com/junegunn/fzf-bin/releases/download/{{fzf_version}}/fzf-{{fzf_version}}-linux_amd64.tgz
+    dest: '{{share_dir}}/fzf/{{fzf_version}}'
+    remote_src: yes
+    creates: '{{share_dir}}/fzf/{{fzf_version}}/fzf'
+  tags: [fzf]
+
+- name: Symlink fzf {{fzf_version}} binary
+  file:
+    src: '{{share_dir}}/fzf/{{fzf_version}}/fzf'
+    dest: '{{bin_dir}}/fzf'
+    state: link
+  tags: [fzf]

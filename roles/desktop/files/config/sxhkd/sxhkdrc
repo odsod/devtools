@@ -1,6 +1,59 @@
 mod1 + ctrl + semicolon
-  init-keyboard
+  init-keyboard; \
+  ~/.config/bspwm/bspwmrc; \
+	pkill -USR1 -x sxhkd
+
+mod3 + {j, k}
+  bspc node {prev, next}.active --focus
+
+mod3 + mod1 + {j, k}
+  bspc monitor {prev, next} --focus
+
+# Desktops: mod3 + mod5
+
+mod3 + mod5 + {h, t, n, s, g, c, r, l, 7, 8, 9, 0}
+  bspc desktop {h, t, n, s, g, c, r, l, 7, 8, 9, 0} --focus
+
+# Move nodes: mod3 + mod1 + mod5
+
+mod3 + mod1 + mod5 + {h, t, n, s, g, c, r, l, 7, 8, 9, 0}
+  bspc node --to-desktop {h, t, n, s, g, c, r, l, 7, 8, 9, 0}
+
+mod3 + mod1 + mod5 + {j, k}
+  bspc node --to-monitor {prev, next}
+
+mod3 + mod1 + Return
+  urxvtmux
+
+mod3 + mod1 + c
+  bspc node --close
+
 mod3 + r
-  rofi -show run
-mod3 + shift + Return
-  urxvtc
+  rofi -show run -display-run '' -theme-str "#window \{ border: 5; \}"
+
+mod3 + space
+  bspc desktop --layout next
+
+mod3 + {u,h,t,n,s}
+  ~/.config/bspwm/bspwmrc toggle-scratchpad-terminal {mid,left,right,top,bottom}
+
+mod3 + {g, c}
+  ~/.config/bspwm/bspwmrc toggle {google-chrome, keepassx}-scratchpad
+
+XF86MonBrightnessDown
+  sudo brightnessctl set 10%-
+
+XF86MonBrightnessUp
+  sudo brightnessctl set +10%
+
+XF86AudioLowerVolume
+  pulsemixer --change-volume -10
+
+XF86AudioRaiseVolume
+  pulsemixer --change-volume +10
+
+XF86AudioMute
+  pulsemixer --toggle-mute
+
+XF86AudioMicMute
+  amixer sset Capture toggle

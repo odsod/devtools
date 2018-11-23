@@ -1,0 +1,30 @@
+[global]
+    font = "Iosevka 13"
+    markup = yes
+    format = "<b>%s</b>\n%b"
+    alignment = center
+    word_wrap = yes
+    geometry = "200x5-20+20"
+    follow = keyboard
+    padding = 20
+    horizontal_padding = 20
+    separator_color = "#585858"
+    frame_width = 5
+    frame_color = "#ebdbb2"
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#282828"
+    foreground = "#ebdbb2"
+
+[urgency_normal]
+    background = "#282828"
+    foreground = "#ebdbb2"
+
+[urgency_critical]
+    background = "#282828"
+    foreground = "#ebdbb2"

@@ -1,8 +1,0 @@
-- name: Install pip3 packages
-  become: yes
-  pip:
-    name: '{{item}}'
-    executable: pip3
-  with_items:
-    - cantools
-  tags: [can]

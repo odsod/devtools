@@ -1,0 +1,3 @@
+[submodule "einride"]
+	path = einride
+	url = git@github.com:einride/devtools

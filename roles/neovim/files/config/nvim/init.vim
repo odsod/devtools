@@ -1,5 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'jwhitley/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
@@ -7,10 +8,12 @@ Plug 'Valloric/ListToggle'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
 Plug 'w0rp/ale'
+Plug 'uber/prototool', { 'rtp':'vim/prototool' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -18,14 +21,19 @@ filetype plugin indent on
 " Disable mouse integration
 set mouse=
 
-if $THEME_NAME == 'contrast'
-  set background=light
-else
-  let g:solarized_termtrans=0
-  set background=dark
-  autocmd ColorScheme * highlight LineNr ctermbg=8
-  silent! colorscheme solarized
-endif
+"if $THEME_NAME == 'contrast'
+  "set background=light
+"else
+  "let g:solarized_termtrans=0
+  "set background=dark
+  "autocmd ColorScheme * highlight LineNr ctermbg=8
+  "silent! colorscheme solarized
+"endif
+
+set background=dark
+let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_invert_selection=0
+colorscheme gruvbox
 
 " Statusline
 set statusline=[%f]\ %r%=[%l,%c]\ %y\ [%{strlen(&fenc)?&fenc:'none'}]\ [%p%%]
@@ -98,8 +106,12 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '.git', '\.o$']
 
 " Ale
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
+let g:ale_linters = {
+\   'proto': ['prototool'],
+\}
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'python': ['yapf'],
@@ -108,6 +120,8 @@ let g:ale_fixers = {
 \   'cpp': ['clang-format'],
 \   'haskell': ['hfmt'],
 \}
+
+let g:prototool_format_enable = 1
 
 " fzf
 let g:fzf_colors =
