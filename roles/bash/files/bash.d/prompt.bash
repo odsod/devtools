@@ -29,18 +29,18 @@ git_branch() {
   fi
 }
 
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
 git_prompt() {
-  local git_branch
-  git_branch=$(which git &> /dev/null && git_branch 2>/dev/null)
-  if [[ -n $git_branch ]]; then
-    echo -e " $(color 37)[$(color 97)${git_branch}$(git_ahead_state)$(color 91)$(git_dirty_state)$(color 37)]"
-  fi
+  is_in_git_repo || return
+  echo -e " $(color 37)[$(color 97)$(git_branch)$(git_ahead_state)$(color 91)$(git_dirty_state)$(color 37)]"
 }
 
 virtualenv_prompt() {
-  if [[ -n $VIRTUAL_ENV ]]; then
-    echo -e " $(color 92)[$(color 34)$(basename "$VIRTUAL_ENV")$(color 92)]"
-  fi
+  [[ -n $VIRTUAL_ENV ]] || return
+  echo -e " $(color 92)[$(color 34)$(basename "$VIRTUAL_ENV")$(color 92)]"
 }
 
 prompt_command() {
