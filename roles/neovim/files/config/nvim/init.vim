@@ -1,7 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'jwhitley/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot', { 'do': './build' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/ListToggle'
@@ -9,26 +8,14 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
 Plug 'w0rp/ale'
 Plug 'uber/prototool', { 'rtp':'vim/prototool' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 filetype plugin indent on
 
 " Disable mouse integration
 set mouse=
-
-"if $THEME_NAME == 'contrast'
-  "set background=light
-"else
-  "let g:solarized_termtrans=0
-  "set background=dark
-  "autocmd ColorScheme * highlight LineNr ctermbg=8
-  "silent! colorscheme solarized
-"endif
 
 set background=dark
 let g:gruvbox_contrast_dark='soft'
@@ -68,7 +55,7 @@ nmap <silent> <C-l> :wincmd l<CR>
 
 " Leader keymaps
 nnoremap <Space> <Nop>
-let mapleader = " "
+let mapleader = ' '
 " Leader: Top row
 let g:lt_quickfix_list_toggle_map = '<Leader>f'
 " Leader: Home row
@@ -84,20 +71,33 @@ nnoremap <Leader>z :qa!<CR>
 nnoremap <Leader>ut :TableFormat<CR>
 
 " Autocommands
-autocmd FileType python set tabstop=4 expandtab shiftwidth=4 softtabstop=4
-autocmd FileType conf set tabstop=2 expandtab shiftwidth=2 softtabstop=2
+augroup filetype_python
+  autocmd!
+  autocmd FileType python set tabstop=4 expandtab shiftwidth=4 softtabstop=4
+augroup END
+
+augroup filetype_conf
+  autocmd!
+  autocmd FileType conf set tabstop=2 expandtab shiftwidth=2 softtabstop=2
+augroup END
 
 " Tag manipulation
-autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-t> <ESC>viw"tyea><ESC>bi<<ESC>lela</<ESC>"tpa><ESC>T>i
-autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-n> <CR><CR><ESC>ka<Tab>
+augroup xml
+  autocmd!
+  autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-t> <ESC>viw"tyea><ESC>bi<<ESC>lela</<ESC>"tpa><ESC>T>i
+  autocmd FileType html,xml,javascript.jsx inoremap <buffer> <C-n> <CR><CR><ESC>ka<Tab>
+augroup END
 
 " Markdown
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
-autocmd FileType markdown setlocal textwidth=74
+augroup filetype_markdown
+  autocmd!
+  autocmd FileType markdown setlocal textwidth=74
+augroup END
 
 " Go
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command='goimports'
 
 " NERDTree
 let g:NERDTreeMinimalUI=1
@@ -108,18 +108,22 @@ let NERDTreeIgnore = ['\.pyc$', '.git', '\.o$']
 " Ale
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 1
-let g:ale_fix_on_save = 1
 let g:ale_linters = {
-\   'proto': ['prototool'],
+\   'go': ['golangci-lint'],
+\   'proto': ['prototool-lint'],
 \}
 let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'python': ['yapf'],
 \   'json': ['prettier'],
 \   'markdown': ['prettier'],
+\   'sh': ['shfmt'],
+\   'go': ['goimports'],
 \   'cpp': ['clang-format'],
 \   'haskell': ['hfmt'],
 \}
+let g:ale_fix_on_save = 1
 
 let g:prototool_format_enable = 1
 
@@ -137,9 +141,7 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Normal'],
   \ 'spinner': ['fg', 'Normal'],
   \ 'header':  ['fg', 'Normal'] }
-autocmd! User FzfStatusLine setlocal statusline=Finding..
-
-" Local rc
-if filereadable('~/.vimrc.local')
-  source ~/.vimrc.local
-endif
+augroup fzf
+  autocmd!
+  autocmd User FzfStatusLine setlocal statusline=Finding..
+augroup END
