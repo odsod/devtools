@@ -6,6 +6,26 @@
     - ~/.bash.d
   tags: [bash]
 
+- name: Create shfmt {{shfmt_version}} dir
+  file:
+    path: '{{share_dir}}/shfmt/{{shfmt_version}}'
+    state: directory
+  tags: [bash]
+
+- name: Download shfmt {{shfmt_version}}
+  get_url:
+    url: https://github.com/mvdan/sh/releases/download/v{{shfmt_version}}/shfmt_v{{shfmt_version}}_linux_amd64
+    dest: '{{share_dir}}/shfmt/{{shfmt_version}}/shfmt'
+    mode: '0755'
+  tags: [bash]
+
+- name: Install shfmt {{shfmt_version}}
+  file:
+    src: '{{share_dir}}/shfmt/{{shfmt_version}}/shfmt'
+    dest: '{{bin_dir}}/shfmt'
+    state: link
+  tags: [bash]
+
 - name: Install dotfiles
   copy:
     src: '{{item}}'

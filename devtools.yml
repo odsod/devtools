@@ -9,6 +9,8 @@
   tasks:
     - import_role:
         name: bash
+      vars:
+        shfmt_version: 2.6.4
 
     - import_role:
         name: desktop
