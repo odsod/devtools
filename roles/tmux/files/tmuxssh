@@ -14,12 +14,15 @@ usage() {
 }
 
 if [[ ! -t 0 ]]; then
-  hostnames=( $(xargs) )
+  hostnames=($(xargs))
 else
-  hostnames=( "$@" )
+  hostnames=("$@")
 fi
 
-[[ ${#hostnames[@]} -gt 0 ]] || { usage; exit 1; }
+[[ ${#hostnames[@]} -gt 0 ]] || {
+  usage
+  exit 1
+}
 
 tmux new-window -a "ssh ${hostnames[0]}"
 tmux rename-window "tmuxssh ${hostnames[0]:0:20}..."

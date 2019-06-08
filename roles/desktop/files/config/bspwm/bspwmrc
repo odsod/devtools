@@ -23,115 +23,115 @@ config() {
 
 external_rules() {
   case $3 in
-    scratchpad-terminal)
-      scratchpad_terminal_rule "$@"
-      ;;
-    *google-chrome-scratchpad)
-      scratchpad_rule "$@"
-      ;;
+  scratchpad-terminal)
+    scratchpad_terminal_rule "$@"
+    ;;
+  *google-chrome-scratchpad)
+    scratchpad_rule "$@"
+    ;;
   esac
 }
 
 scratchpad_terminal_rule() {
   state=$(bspc wm -d)
-  focused_monitor_id=$(jq .focusedMonitorId <<< "$state")
-  focused_monitor=$(jq ".monitors[] | select(.id == ${focused_monitor_id})" <<< "$state")
-  focused_monitor_width=$(jq .rectangle.width <<< "$focused_monitor")
-  focused_monitor_height=$(jq .rectangle.height <<< "$focused_monitor")
-  case $(< /tmp/scratchpad-terminal-layout) in
-    mid)
-      width=$((focused_monitor_width - 2*window_gap - 2*border_width))
-      height=$((focused_monitor_height - top_padding - 2*window_gap - 2*border_width))
-      x=$((window_gap))
-      y=$((top_padding + window_gap))
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
-    top)
-      width=$((focused_monitor_width - 2*window_gap - 2*border_width))
-      height=$(( (focused_monitor_height - top_padding - 3*window_gap - 4*border_width) / 2 ))
-      x=$window_gap
-      y=$(( top_padding + window_gap ))
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
-    bottom)
-      width=$((focused_monitor_width - 2*window_gap - 2*border_width))
-      height=$(( (focused_monitor_height - top_padding - 3*window_gap - 4*border_width) / 2 ))
-      x=$window_gap
-      y=$((top_padding + 2*window_gap + 2*border_width + height))
-      if [[ -f /tmp/scratchpad ]]; then
-        height=$((height / 2))
-      fi
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
-    left)
-      width=$(( (focused_monitor_width - 3*window_gap - 4*border_width) / 2 ))
-      height=$((focused_monitor_height - top_padding - 2*window_gap - 2*border_width))
-      x=$window_gap
-      y=$(( top_padding + window_gap ))
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
-    right)
-      width=$(( (focused_monitor_width - 3*window_gap - 4*border_width) / 2 ))
-      height=$((focused_monitor_height - top_padding - 2*window_gap - 2*border_width))
-      x=$(( width + 2*window_gap + 2*border_width))
-      y=$(( top_padding + window_gap ))
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
+  focused_monitor_id=$(jq .focusedMonitorId <<<"$state")
+  focused_monitor=$(jq ".monitors[] | select(.id == ${focused_monitor_id})" <<<"$state")
+  focused_monitor_width=$(jq .rectangle.width <<<"$focused_monitor")
+  focused_monitor_height=$(jq .rectangle.height <<<"$focused_monitor")
+  case $(</tmp/scratchpad-terminal-layout) in
+  mid)
+    width=$((focused_monitor_width - 2 * window_gap - 2 * border_width))
+    height=$((focused_monitor_height - top_padding - 2 * window_gap - 2 * border_width))
+    x=$((window_gap))
+    y=$((top_padding + window_gap))
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
+  top)
+    width=$((focused_monitor_width - 2 * window_gap - 2 * border_width))
+    height=$(((focused_monitor_height - top_padding - 3 * window_gap - 4 * border_width) / 2))
+    x=$window_gap
+    y=$((top_padding + window_gap))
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
+  bottom)
+    width=$((focused_monitor_width - 2 * window_gap - 2 * border_width))
+    height=$(((focused_monitor_height - top_padding - 3 * window_gap - 4 * border_width) / 2))
+    x=$window_gap
+    y=$((top_padding + 2 * window_gap + 2 * border_width + height))
+    if [[ -f /tmp/scratchpad ]]; then
+      height=$((height / 2))
+    fi
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
+  left)
+    width=$(((focused_monitor_width - 3 * window_gap - 4 * border_width) / 2))
+    height=$((focused_monitor_height - top_padding - 2 * window_gap - 2 * border_width))
+    x=$window_gap
+    y=$((top_padding + window_gap))
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
+  right)
+    width=$(((focused_monitor_width - 3 * window_gap - 4 * border_width) / 2))
+    height=$((focused_monitor_height - top_padding - 2 * window_gap - 2 * border_width))
+    x=$((width + 2 * window_gap + 2 * border_width))
+    y=$((top_padding + window_gap))
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
   esac
 }
 
 scratchpad_rule() {
   state=$(bspc wm -d)
-  focused_monitor_id=$(jq .focusedMonitorId <<< "$state")
-  focused_monitor=$(jq ".monitors[] | select(.id == ${focused_monitor_id})" <<< "$state")
-  focused_monitor_width=$(jq .rectangle.width <<< "$focused_monitor")
-  focused_monitor_height=$(jq .rectangle.height <<< "$focused_monitor")
+  focused_monitor_id=$(jq .focusedMonitorId <<<"$state")
+  focused_monitor=$(jq ".monitors[] | select(.id == ${focused_monitor_id})" <<<"$state")
+  focused_monitor_width=$(jq .rectangle.width <<<"$focused_monitor")
+  focused_monitor_height=$(jq .rectangle.height <<<"$focused_monitor")
   case $3 in
-    *google-chrome-scratchpad*)
-      width=$((focused_monitor_width - 2*window_gap - 2*border_width))
-      height=$((focused_monitor_height - top_padding - 2*window_gap - 2*border_width))
-      x=$((window_gap))
-      y=$((top_padding + window_gap))
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
-    scratchpad-terminal-mid)
-      width=$((focused_monitor_width - 2*window_gap - 2*border_width))
-      height=$((focused_monitor_height - top_padding - 2*window_gap - 2*border_width))
-      x=$((window_gap))
-      y=$((top_padding + window_gap))
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
-    scratchpad-terminal-top)
-      width=$((focused_monitor_width - 2*window_gap - 2*border_width))
-      height=$(( (focused_monitor_height - top_padding - 3*window_gap - 4*border_width) / 2 ))
-      x=$window_gap
-      y=$(( top_padding + window_gap ))
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
-    scratchpad-terminal-bottom)
-      width=$((focused_monitor_width - 2*window_gap - 2*border_width))
-      height=$(( (focused_monitor_height - top_padding - 3*window_gap - 4*border_width) / 2 ))
-      x=$window_gap
-      y=$((top_padding + 2*window_gap + 2*border_width + height))
-      if [[ -f /tmp/scratchpad ]]; then
-        height=$((height / 2))
-      fi
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
-    scratchpad-terminal-left)
-      width=$(( (focused_monitor_width - 3*window_gap - 4*border_width) / 2 ))
-      height=$((focused_monitor_height - top_padding - 2*window_gap - 2*border_width))
-      x=$window_gap
-      y=$(( top_padding + window_gap ))
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
-    scratchpad-terminal-right)
-      width=$(( (focused_monitor_width - 3*window_gap - 4*border_width) / 2 ))
-      height=$((focused_monitor_height - top_padding - 2*window_gap - 2*border_width))
-      x=$(( width + 2*window_gap + 2*border_width))
-      y=$(( top_padding + window_gap ))
-      echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
-      ;;
+  *google-chrome-scratchpad*)
+    width=$((focused_monitor_width - 2 * window_gap - 2 * border_width))
+    height=$((focused_monitor_height - top_padding - 2 * window_gap - 2 * border_width))
+    x=$((window_gap))
+    y=$((top_padding + window_gap))
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
+  scratchpad-terminal-mid)
+    width=$((focused_monitor_width - 2 * window_gap - 2 * border_width))
+    height=$((focused_monitor_height - top_padding - 2 * window_gap - 2 * border_width))
+    x=$((window_gap))
+    y=$((top_padding + window_gap))
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
+  scratchpad-terminal-top)
+    width=$((focused_monitor_width - 2 * window_gap - 2 * border_width))
+    height=$(((focused_monitor_height - top_padding - 3 * window_gap - 4 * border_width) / 2))
+    x=$window_gap
+    y=$((top_padding + window_gap))
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
+  scratchpad-terminal-bottom)
+    width=$((focused_monitor_width - 2 * window_gap - 2 * border_width))
+    height=$(((focused_monitor_height - top_padding - 3 * window_gap - 4 * border_width) / 2))
+    x=$window_gap
+    y=$((top_padding + 2 * window_gap + 2 * border_width + height))
+    if [[ -f /tmp/scratchpad ]]; then
+      height=$((height / 2))
+    fi
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
+  scratchpad-terminal-left)
+    width=$(((focused_monitor_width - 3 * window_gap - 4 * border_width) / 2))
+    height=$((focused_monitor_height - top_padding - 2 * window_gap - 2 * border_width))
+    x=$window_gap
+    y=$((top_padding + window_gap))
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
+  scratchpad-terminal-right)
+    width=$(((focused_monitor_width - 3 * window_gap - 4 * border_width) / 2))
+    height=$((focused_monitor_height - top_padding - 2 * window_gap - 2 * border_width))
+    x=$((width + 2 * window_gap + 2 * border_width))
+    y=$((top_padding + window_gap))
+    echo "sticky=on state=floating rectangle=${width}x${height}+${x}+${y}"
+    ;;
   esac
 }
 
@@ -141,17 +141,17 @@ toggle_scratchpad() {
     bspc node "$id" --flag hidden -f
     return
   fi
-  case $2 in 
-    *google-chrome-scratchpad*)
-      cd ~ && google-chrome --user-data-dir=.config/google-chrome-scratchpad &
-      xdotool search --sync --limit 1 --classname google-chrome-scratchpad > /tmp/google-chrome-scratchpad
-      ;;
+  case $2 in
+  *google-chrome-scratchpad*)
+    cd ~ && google-chrome --user-data-dir=.config/google-chrome-scratchpad &
+    xdotool search --sync --limit 1 --classname google-chrome-scratchpad >/tmp/google-chrome-scratchpad
+    ;;
   esac
 }
 
 toggle_scratchpad_terminal() {
   layout=$2
-  echo "$layout" > /tmp/scratchpad-terminal-layout
+  echo "$layout" >/tmp/scratchpad-terminal-layout
   id=$(xdotool search --limit 1 --classname scratchpad-terminal)
   if [[ $id ]]; then
     bspc node "$id" --close
@@ -166,6 +166,6 @@ elif [[ $1 == 'toggle-scratchpad-terminal' ]]; then
   toggle_scratchpad_terminal "$@"
 elif [[ $1 && $2 && $3 ]]; then
   external_rules "$@"
-else 
+else
   config "$@"
 fi

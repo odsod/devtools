@@ -10,11 +10,11 @@ git_dirty_state() {
 }
 
 git_ahead_state() {
-  num_commits_ahead=$(git status -bs --porcelain 2>/dev/null \
-    | head -1 | grep ahead | sed 's/.*ahead \([[:digit:]]*\).*/\1/')
+  num_commits_ahead=$(git status -bs --porcelain 2>/dev/null |
+    head -1 | grep ahead | sed 's/.*ahead \([[:digit:]]*\).*/\1/')
   [[ -n $num_commits_ahead ]] && echo -n "+$num_commits_ahead"
-  num_commits_behind=$(git status -bs --porcelain 2>/dev/null \
-    | head -1 | grep behind | sed 's/.*behind \([[:digit:]]*\).*/\1/')
+  num_commits_behind=$(git status -bs --porcelain 2>/dev/null |
+    head -1 | grep behind | sed 's/.*behind \([[:digit:]]*\).*/\1/')
   [[ -n $num_commits_behind ]] && echo -n "-$num_commits_behind"
 }
 
@@ -24,13 +24,13 @@ git_branch() {
   if [[ -n "$symbolic_ref" ]]; then
     echo "${symbolic_ref#refs/heads/}"
   else
-    git name-rev --name-only --no-undefined --always HEAD \
-      | sed 's#tags/##' | sed 's#remotes/##'
+    git name-rev --name-only --no-undefined --always HEAD |
+      sed 's#tags/##' | sed 's#remotes/##'
   fi
 }
 
 is_in_git_repo() {
-  git rev-parse HEAD > /dev/null 2>&1
+  git rev-parse HEAD >/dev/null 2>&1
 }
 
 git_prompt() {

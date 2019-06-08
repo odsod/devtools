@@ -13,9 +13,12 @@ usage() {
 }
 
 cmd="$*"
-args=( $(xargs) )
+args=($(xargs))
 
-[[ $cmd && ${#args[@]} -gt 0 ]] || { usage; exit 1; }
+[[ $cmd && ${#args[@]} -gt 0 ]] || {
+  usage
+  exit 1
+}
 
 tmux new-window -a "${cmd} ${args[0]}"
 tmux rename-window "tmuxargs ${cmd}"
