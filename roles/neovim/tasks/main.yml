@@ -35,6 +35,15 @@
     dest: ~/.local/share/nvim/site/autoload/plug.vim
   tags: [neovim]
 
+- name: Install pip3 packages
+  become: yes
+  pip:
+    name: '{{item}}'
+    executable: pip3
+  with_items:
+    - vim-vint
+  tags: [neovim]
+
 - name: Add startup config
   copy:
     content: export EDITOR=vim
