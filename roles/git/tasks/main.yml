@@ -37,4 +37,4 @@
     executable: pip3
     name:
       - gitlint
-  tags: [dev_python]
+  tags: [git]
