@@ -122,6 +122,8 @@ let g:ale_fixers = {
 \   'go': ['goimports'],
 \   'cpp': ['clang-format'],
 \   'haskell': ['hfmt'],
+\   'yaml': ['prettier'],
+\   'yaml.ansible': ['prettier'],
 \}
 let g:ale_fix_on_save = 1
 
