@@ -1,6 +1,5 @@
 - name: Install snap package
   become: yes
-  command: snap install spotify
-  args:
-    creates: /snap/bin/spotify
+  snap:
+    name: spotify
   tags: [spotify]

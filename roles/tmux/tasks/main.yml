@@ -1,24 +1,23 @@
 - name: Install packages
   become: yes
   apt:
-    name: '{{item}}'
-    state: present
-  loop:
-    - tmux
+    name:
+      - tmux
+    state: latest
   tags: [tmux]
 
 - name: Install dotfiles
   copy:
-    src: '{{item}}'
-    dest: ~/.{{item}}
+    src: "{{ item }}"
+    dest: ~/.{{ item }}
   loop:
     - tmux.conf
   tags: [tmux]
 
 - name: Install scripts
   copy:
-    src: '{{item}}'
-    dest: '{{bin_dir}}/{{item}}'
+    src: "{{ item }}"
+    dest: "{{ bin_dir }}/{{ item }}"
   loop:
     - tmuxssh
     - tmuxargs

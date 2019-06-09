@@ -8,16 +8,15 @@
 - name: Install APT packages
   become: yes
   apt:
-    name: '{{item}}'
-    state: present
-  loop:
-    - git
+    name:
+      - git
+    state: latest
   tags: [git]
 
 - name: Install dotfiles
   copy:
-    src: '{{item}}'
-    dest: ~/.{{item}}
+    src: "{{ item }}"
+    dest: ~/.{{ item }}
   loop:
     - gitconfig
   tags: [git]
@@ -25,18 +24,17 @@
 - name: Install NPM packages
   become: yes
   npm:
-    name: '{{item}}'
+    name: "{{ item }}"
     global: yes
-    state: present
-  with_items:
+    state: latest
+  loop:
     - diff-so-fancy
   tags: [git]
 
 - name: Install pip3 packages
   become: yes
   pip:
-    name: '{{item}}'
     executable: pip3
-  with_items:
-    - gitlint
+    name:
+      - gitlint
   tags: [dev_python]

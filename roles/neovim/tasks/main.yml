@@ -9,12 +9,12 @@
   become: yes
   apt:
     name: neovim
-    state: present
+    state: latest
   tags: [neovim]
 
 - name: Create dotfolders
   file:
-    path: '{{item}}'
+    path: "{{ item }}"
     state: directory
   with_items:
     - ~/.config/nvim
@@ -23,8 +23,8 @@
 
 - name: Install dotfiles
   copy:
-    src: '{{item}}'
-    dest: ~/.{{item}}
+    src: "{{ item }}"
+    dest: ~/.{{ item }}
   loop:
     - config/nvim/init.vim
   tags: [neovim]
@@ -38,14 +38,14 @@
 - name: Install pip3 packages
   become: yes
   pip:
-    name: '{{item}}'
     executable: pip3
+    name:
+      - vim-vint
   with_items:
-    - vim-vint
   tags: [neovim]
 
 - name: Add startup config
   copy:
     content: export EDITOR=vim
-    dest: '{{startup_dir}}/neovim'
+    dest: "{{ startup_dir }}/neovim"
   tags: [neovim]
