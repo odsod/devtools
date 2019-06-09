@@ -8,7 +8,7 @@ mod3 + {h, l}
   bspc monitor {prev, next} --focus
 
 mod3 + mod1 + {h, l}
-  bspc node --to-monitor {prev, next}
+  bspc node --to-monitor {prev, next} --focus
 
 mod3 + mod1 + Return
   urxvtmux
