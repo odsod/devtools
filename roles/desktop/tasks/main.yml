@@ -9,6 +9,8 @@
       - keepassxc
       - xclip
       - xcape
+      - pavucontrol
+      - arandr
     state: latest
   tags: [desktop]
 
