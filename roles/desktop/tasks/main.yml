@@ -14,6 +14,14 @@
     state: latest
   tags: [desktop]
 
+- name: Add {{ ansible_user_id }} to video,input groups
+  become: yes
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: video,input
+    append: yes
+  tags: [desktop]
+
 - name: Create dotfolders
   file:
     path: ~/.{{ item }}
