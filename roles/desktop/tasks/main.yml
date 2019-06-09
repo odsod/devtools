@@ -32,9 +32,7 @@
     - Xresources
     - urxvt/ext/clipboard
     - config/sxhkd/sxhkdrc
-    - config/bspwm/bspwmrc
     - config/rofi/config
-    - config/compton.conf
   tags: [desktop]
 
 - name: Install scripts
@@ -43,8 +41,6 @@
     dest: '{{bin_dir}}/{{item}}'
     mode: 0755
   loop:
-    - init-urxvt
-    - init-keyboard
     - urxvtmux
   tags: [desktop]
 
@@ -61,8 +57,6 @@
   copy:
     content: |
       export _JAVA_AWT_WM_NONREPARENTING=1
-      init-urxvt
-      init-keyboard
       export FZF_DEFAULT_OPTS="
         --color fg:10,bg:-1,hl:4,fg+:12,bg+:-1,hl+:4
         --color info:12,prompt:10,pointer:12,marker:12,spinner:12"

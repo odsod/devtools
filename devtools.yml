@@ -1,4 +1,4 @@
-#- import_playbook: '{{playbook_dir}}/einride/devtools.yml'
+- import_playbook: '{{playbook_dir}}/einride/devtools.yml'
 
 - hosts: [localhost]
   connection: local
@@ -15,7 +15,7 @@
     - import_role:
         name: desktop
       vars:
-        fzf_version: 0.17.4
+        fzf_version: 0.18.0
 
     - import_role:
         name: git
@@ -26,7 +26,7 @@
     - import_role:
         name: iosevka
       vars:
-        version: 1.14.3
+        version: 2.2.1
 
     - import_role:
         name: neovim

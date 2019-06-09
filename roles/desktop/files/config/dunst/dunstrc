@@ -18,13 +18,13 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#282828"
+    background = "#32302f"
     foreground = "#ebdbb2"
 
 [urgency_normal]
-    background = "#282828"
+    background = "#32302f"
     foreground = "#ebdbb2"
 
 [urgency_critical]
-    background = "#282828"
+    background = "#32302f"
     foreground = "#ebdbb2"
