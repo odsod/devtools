@@ -16,6 +16,9 @@ mod3 + mod1 + Return
 mod3 + u; mod3 + {u, g, c, r, l, h, t, n, s}
   ~/.config/bspwm/bspwmrc toggle-scratchpad {u, g, c, r, l, h, t, n, s}
 
+mod3 + b
+  ~/.config/bspwm/bspwmrc battery-charge
+
 mod3 + c
   ~/.config/bspwm/bspwmrc clock
 
