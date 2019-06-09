@@ -41,7 +41,6 @@
     executable: pip3
     name:
       - vim-vint
-  with_items:
   tags: [neovim]
 
 - name: Add startup config
