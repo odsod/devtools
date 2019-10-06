@@ -2,15 +2,12 @@
   become: yes
   apt:
     name:
-      - bspwm
       - sxhkd
       - tmux
       - rxvt-unicode
       - keepassxc
       - xclip
       - xcape
-      - pavucontrol
-      - arandr
     state: latest
   tags: [desktop]
 
@@ -29,7 +26,6 @@
   loop:
     - urxvt/ext
     - config/sxhkd
-    - config/bspwm
     - config/rofi
   tags: [desktop]
 
@@ -65,7 +61,6 @@
 - name: Add startup config
   copy:
     content: |
-      export _JAVA_AWT_WM_NONREPARENTING=1
       export FZF_DEFAULT_OPTS="
         --color fg:10,bg:-1,hl:4,fg+:12,bg+:-1,hl+:4
         --color info:12,prompt:10,pointer:12,marker:12,spinner:12"
