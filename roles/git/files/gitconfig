@@ -18,6 +18,8 @@
 [mergetool]
   prompt = false
   keepBackup = false
+[url "git@github.com:einride/"]
+  insteadOf = https://github.com/einride/
 [alias]
   # Status
   s = status --short
