@@ -32,7 +32,6 @@ set hidden
 set hlsearch
 set ignorecase
 set nobackup
-set noswapfile
 set nowritebackup
 set number
 set shiftwidth=2
