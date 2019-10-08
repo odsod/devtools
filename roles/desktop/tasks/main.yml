@@ -2,12 +2,13 @@
   become: yes
   apt:
     name:
-      - sxhkd
+      - rofi
       - tmux
       - rxvt-unicode
       - keepassxc
       - xclip
       - xcape
+      - xdotool
     state: latest
   tags: [desktop]
 
@@ -25,7 +26,6 @@
     state: directory
   loop:
     - urxvt/ext
-    - config/sxhkd
     - config/rofi
   tags: [desktop]
 
@@ -36,7 +36,6 @@
   loop:
     - Xresources
     - urxvt/ext/clipboard
-    - config/sxhkd/sxhkdrc
     - config/rofi/config
   tags: [desktop]
 
@@ -64,6 +63,7 @@
       export FZF_DEFAULT_OPTS="
         --color fg:10,bg:-1,hl:4,fg+:12,bg+:-1,hl+:4
         --color info:12,prompt:10,pointer:12,marker:12,spinner:12"
+      pkill -f xcape; xcape -e "Control_L=Escape;Hyper_L=Tab" -t 250
     dest: "{{ startup_dir }}/desktop"
   tags: [desktop]
 

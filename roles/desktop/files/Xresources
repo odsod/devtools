@@ -9,7 +9,6 @@ Xft.dpi: 96
 Xft.rgba: rgb
 
 URxvt.termName: rxvt-unicode-256color
-
 URxvt.transparent: false
 URxvt.letterSpace: -1
 URxvt.lineSpace: 1
@@ -17,45 +16,32 @@ URxvt.cursorUnderline: true
 URxvt.cursorBlink: true
 URxvt.scrollBar: false
 URxvt.saveLines: 0
-
 URxvt.font: xft:Iosevka:medium:size=13
 URxvt.boldFont: xft:Iosevka:bold:size=13
 URxvt.italicFont: xft:Iosevka:italic:size=13
 URxvt.boldItalicFont: xft:Iosevka:bold:italic:size=13
-
 URxvt.perl-ext-common: clipboard
 URxvt.keysym.C-S-V: perl:clipboard:paste
-
-! Remove C-V mapping
 URxvt.iso14755: false
 URxvt.intensityStyles: false
 URxvt.internalBorder: 15
-
-*background: #32302f
-*foreground: #ebdbb2
-*cursorColor: #ebdbb2
-
-*color0: #282828
-*color1: #cc241d
-*color2: #98971a
-*color3: #d79921
-*color4: #458588
-*color5: #b16286
-*color6: #689d6a
-*color7: #a89984
-*color8: #928374
-*color9: #fb4934
-*color10: #b8bb26
-*color11: #fabd2f
-*color12: #83a598
-*color13: #d3869b
-*color14: #8ec07c
-*color15: #ebdbb2
-
-bspwm.windowGap: 15
-bspwm.normalBorderColor: #a89984
-bspwm.activeBorderColor: #ebdbb2
-bspwm.focusedBorderColor: #ebdbb2
-bspwm.borderWidth: 2
-
-dunst.geometry: 200x5-30+30
+URxvt.background: #32302f
+URxvt.foreground: #ebdbb2
+URxvt.cursorColor: #ebdbb2
+URxvt.borderColor: #32302f
+URxvt.color0: #282828
+URxvt.color1: #cc241d
+URxvt.color2: #98971a
+URxvt.color3: #d79921
+URxvt.color4: #458588
+URxvt.color5: #b16286
+URxvt.color6: #689d6a
+URxvt.color7: #a89984
+URxvt.color8: #928374
+URxvt.color9: #fb4934
+URxvt.color10: #b8bb26
+URxvt.color11: #fabd2f
+URxvt.color12: #83a598
+URxvt.color13: #d3869b
+URxvt.color14: #8ec07c
+URxvt.color15: #ebdbb2
