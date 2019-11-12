@@ -18,6 +18,9 @@
         fzf_version: 0.18.0
 
     - import_role:
+        name: dropbox
+
+    - import_role:
         name: git
 
     - import_role:

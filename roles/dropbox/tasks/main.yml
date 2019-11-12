@@ -1,0 +1,5 @@
+- name: Add Dropbox signing key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+  tags: [dropbox]

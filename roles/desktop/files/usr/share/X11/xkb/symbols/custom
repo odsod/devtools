@@ -6,7 +6,7 @@ xkb_symbols "custom" {
   name[Group1]= "English (Dvorak, Custom)";
 
   // Use xcape to generate Tab on keypress
-  key <TAB>  { [ Hyper_L , Hyper_L ] };
+  key <TAB>  { [ Super_L , Super_L ] };
   key <I252> { [ Tab     , ISO_Left_Tab ] };
 
   key <PRSC> { [ Super_R ] };
