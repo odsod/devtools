@@ -6,8 +6,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'Valloric/ListToggle'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
-Plug 'w0rp/ale'
-Plug 'uber/prototool', { 'rtp':'vim/prototool' }
+Plug 'dense-analysis/ale'
+Plug 'bufbuild/vim-buf'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -106,15 +106,16 @@ let NERDTreeIgnore = ['\.pyc$', '.git', '\.o$']
 
 " Ale
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
 \   'go': ['golangci-lint'],
-\   'proto': ['prototool-lint'],
+\   'proto': ['buf-check-lint'],
 \}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
-\   'python': ['yapf'],
+\   'python': ['black'],
 \   'json': ['prettier'],
 \   'markdown': ['prettier'],
 \   'sh': ['shfmt'],
@@ -125,8 +126,6 @@ let g:ale_fixers = {
 \   'yaml.ansible': ['prettier'],
 \}
 let g:ale_fix_on_save = 1
-
-let g:prototool_format_enable = 1
 
 " fzf
 let g:fzf_colors =
