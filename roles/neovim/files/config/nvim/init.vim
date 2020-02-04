@@ -109,6 +109,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
+\   'sh': ['shellcheck'],
 \   'go': ['golangci-lint'],
 \   'proto': ['buf-check-lint'],
 \}
