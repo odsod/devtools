@@ -9,15 +9,8 @@
       - xclip
       - xcape
       - xdotool
+      - libnotify-bin
     state: latest
-  tags: [desktop]
-
-- name: Add {{ ansible_user_id }} to video,input groups
-  become: yes
-  user:
-    name: "{{ ansible_user_id }}"
-    groups: video,input
-    append: yes
   tags: [desktop]
 
 - name: Create dotfolders
@@ -60,30 +53,15 @@
 - name: Add startup config
   copy:
     content: |
-      export FZF_DEFAULT_OPTS="
-        --color fg:10,bg:-1,hl:4,fg+:12,bg+:-1,hl+:4
-        --color info:12,prompt:10,pointer:12,marker:12,spinner:12"
-      pkill -f xcape; xcape -e "Control_L=Escape;Meta_L=Tab" -t 250
+      #!/usr/bin/env bash
+      setxkbmap custom
+      pkill -f xcape; xcape -e "Control_L=Escape;Super_L=Tab" -t 200
+      notify-send -t 1000 'desktop initialized...'
     dest: "{{ startup_dir }}/desktop"
   tags: [desktop]
 
-- name: Create fzf {{ fzf_version }} dir
+- name: Make startup config executable
   file:
-    path: "{{ share_dir }}/fzf/{{ fzf_version }}"
-    state: directory
-  tags: [fzf]
-
-- name: Install fzf
-  unarchive:
-    src: https://github.com/junegunn/fzf-bin/releases/download/{{ fzf_version }}/fzf-{{ fzf_version }}-linux_amd64.tgz
-    dest: "{{ share_dir }}/fzf/{{ fzf_version }}"
-    remote_src: yes
-    creates: "{{ share_dir }}/fzf/{{ fzf_version }}/fzf"
-  tags: [fzf]
-
-- name: Symlink fzf {{ fzf_version }} binary
-  file:
-    src: "{{ share_dir }}/fzf/{{ fzf_version }}/fzf"
-    dest: "{{ bin_dir }}/fzf"
-    state: link
-  tags: [fzf]
+    path: "{{ startup_dir }}/desktop"
+    mode: 0755
+  tags: [desktop]

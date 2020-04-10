@@ -11,15 +11,15 @@ Xft.rgba: rgb
 URxvt.termName: rxvt-unicode-256color
 URxvt.transparent: false
 URxvt.letterSpace: -1
-URxvt.lineSpace: 1
+URxvt.lineSpace: 0.8
 URxvt.cursorUnderline: true
 URxvt.cursorBlink: true
 URxvt.scrollBar: false
 URxvt.saveLines: 0
-URxvt.font: xft:Iosevka:medium:size=13
-URxvt.boldFont: xft:Iosevka:bold:size=13
-URxvt.italicFont: xft:Iosevka:italic:size=13
-URxvt.boldItalicFont: xft:Iosevka:bold:italic:size=13
+URxvt.font: xft:Iosevka Fixed:medium:size=12
+URxvt.boldFont: xft:Iosevka Fixed:bold:size=12
+URxvt.italicFont: xft:Iosevka Fixed:italic:size=12
+URxvt.boldItalicFont: xft:Iosevka Fixed:bold:italic:size=12
 URxvt.perl-ext-common: clipboard
 URxvt.keysym.C-S-V: perl:clipboard:paste
 URxvt.iso14755: false
