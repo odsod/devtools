@@ -9,13 +9,11 @@
   tasks:
     - import_role:
         name: bash
-      vars:
-        shfmt_version: 3.0.1
 
     - import_role:
         name: desktop
       vars:
-        fzf_version: 0.18.0
+        fzf_version: 0.21.1
 
     - import_role:
         name: dropbox
@@ -26,7 +24,7 @@
     - import_role:
         name: iosevka
       vars:
-        version: 2.3.1
+        version: 3.0.0-rc.6
 
     - import_role:
         name: neovim
