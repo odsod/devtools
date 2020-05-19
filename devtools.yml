@@ -27,7 +27,7 @@
     - import_role:
         name: iosevka
       vars:
-        version: 3.0.0-rc.6
+        version: 3.0.0
 
     - import_role:
         name: neovim

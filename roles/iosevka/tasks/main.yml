@@ -11,7 +11,7 @@
 
 - name: Fetch and unpack {{ version }}
   unarchive:
-    src: https://github.com/be5invis/Iosevka/releases/download/v{{ version }}/01-iosevka-{{ version }}.zip
+    src: https://github.com/be5invis/Iosevka/releases/download/v{{ version }}/ttf-iosevka-{{ version }}.zip
     dest: "{{ share_dir }}/iosevka/{{ version }}"
     remote_src: yes
     creates: "{{ share_dir }}/iosevka/{{ version }}/ttf"
@@ -26,7 +26,7 @@
 
 - name: Fetch and unpack Fixed {{ version }}
   unarchive:
-    src: https://github.com/be5invis/Iosevka/releases/download/v{{ version }}/02-iosevka-fixed-{{ version }}.zip
+    src: https://github.com/be5invis/Iosevka/releases/download/v{{ version }}/ttf-iosevka-fixed-{{ version }}.zip
     dest: "{{ share_dir }}/iosevka-fixed/{{ version }}"
     remote_src: yes
     creates: "{{ share_dir }}/iosevka-fixed/{{ version }}/ttf"
@@ -41,7 +41,7 @@
 
 - name: Fetch and unpack Term {{ version }}
   unarchive:
-    src: https://github.com/be5invis/Iosevka/releases/download/v{{ version }}/03-iosevka-term-{{ version }}.zip
+    src: https://github.com/be5invis/Iosevka/releases/download/v{{ version }}/ttf-iosevka-term-{{ version }}.zip
     dest: "{{ share_dir }}/iosevka-term/{{ version }}"
     remote_src: yes
     creates: "{{ share_dir }}/iosevka-term/{{ version }}/ttf"
