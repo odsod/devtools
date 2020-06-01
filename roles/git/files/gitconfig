@@ -36,7 +36,7 @@
   c = commit --verbose
   ca = commit --verbose --amend
   cf = commit --fixup
-  ic = commit --allow-empty --message='Initial commit'
+  ic = commit --allow-empty --message='chore: initial commit'
 
   # Resetting
   rom = !git fetch origin master && git checkout master && git reset --hard origin/master
