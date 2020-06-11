@@ -1,15 +1,16 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox'
-Plug 'sheerun/vim-polyglot', { 'do': './build' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/ListToggle'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
-Plug 'dense-analysis/ale'
 Plug 'bufbuild/vim-buf'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'fatih/vim-go'
+Plug 'sheerun/vim-polyglot', { 'do': './build' }
+Plug 'dense-analysis/ale'
 call plug#end()
 
 filetype plugin indent on
@@ -42,6 +43,7 @@ set tabstop=2
 set title
 set wildignorecase
 set wildmode=list:longest,full
+set completeopt-=preview
 
 " Keymaps
 set timeoutlen=400
@@ -97,6 +99,7 @@ augroup END
 
 " Go
 let g:go_fmt_command='goimports'
+let g:go_auto_type_info = 1
 
 " NERDTree
 let g:NERDTreeMinimalUI=1
@@ -107,7 +110,7 @@ let NERDTreeIgnore = ['\.pyc$', '.git', '\.o$']
 " Ale
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters_explicit = 1
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_linters = {
 \   'sh': ['shellcheck'],
 \   'go': ['golangci-lint'],
@@ -127,6 +130,7 @@ let g:ale_fixers = {
 \   'yaml.ansible': ['prettier'],
 \}
 let g:ale_fix_on_save = 1
+let g:ale_go_golangci_lint_options = ''
 
 " fzf
 let g:fzf_colors =
