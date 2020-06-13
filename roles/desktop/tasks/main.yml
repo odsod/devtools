@@ -7,9 +7,13 @@
       - rxvt-unicode
       - keepassxc
       - xclip
-      - xcape
       - xdotool
       - libnotify-bin
+      # build deps for interception-tools
+      - cmake
+      - libyaml-cpp-dev
+      - libevdev-dev
+      - libsystemd-dev
     state: latest
   tags: [desktop]
 
