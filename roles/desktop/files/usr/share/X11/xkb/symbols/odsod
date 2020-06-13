@@ -3,13 +3,7 @@ xkb_symbols "custom" {
   include "level3(ralt_switch)"
   include "ctrl(nocaps)"
 
-  name[Group1]= "English (Dvorak, Custom)";
-
-  // Use xcape to generate Tab on keypress
-  key <TAB>  { [ Super_L , Super_L ] };
-  key <I252> { [ Tab     , ISO_Left_Tab ] };
-
-  key <PRSC> { [ Super_R ] };
+  name[Group1]= "odsod";
 
   key <AE01> { [ 1       , Aring      , aring      , none ] };
   key <AE02> { [ 2       , Adiaeresis , adiaeresis , none ] };

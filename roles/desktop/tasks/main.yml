@@ -51,21 +51,5 @@
     src: "{{ item }}"
     dest: /{{ item }}
   loop:
-    - usr/share/X11/xkb/symbols/custom
-  tags: [desktop]
-
-- name: Add startup config
-  copy:
-    content: |
-      #!/usr/bin/env bash
-      setxkbmap custom
-      pkill -f xcape; xcape -e "Control_L=Escape;Super_L=Tab" -t 200
-      notify-send -t 1000 'desktop initialized...'
-    dest: "{{ startup_dir }}/desktop"
-  tags: [desktop]
-
-- name: Make startup config executable
-  file:
-    path: "{{ startup_dir }}/desktop"
-    mode: 0755
+    - usr/share/X11/xkb/symbols/odsod
   tags: [desktop]
