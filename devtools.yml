@@ -17,6 +17,9 @@
         name: dropbox
 
     - import_role:
+        name: keepassxc
+
+    - import_role:
         name: fzf
       vars:
         version: 0.21.1
