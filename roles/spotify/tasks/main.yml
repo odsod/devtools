@@ -1,5 +1,23 @@
-- name: Install snap package
+- name: Add APT key
   become: yes
-  snap:
-    name: spotify
+  apt_key:
+    url: https://download.spotify.com/debian/pubkey.gpg
+    state: present
+  tags: [spotify]
+
+- name: Add APT repository
+  become: yes
+  apt_repository:
+    repo: deb http://repository.spotify.com stable non-free
+    state: present
+    filename: spotify
+    update_cache: yes
+  tags: [spotify]
+
+- name: Install APT package
+  become: yes
+  apt:
+    state: latest
+    name:
+      - spotify-client
   tags: [spotify]
