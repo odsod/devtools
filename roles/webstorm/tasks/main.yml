@@ -1,0 +1,20 @@
+- name: Create install dir
+  file:
+    path: "{{ share_dir }}/webstorm/{{ version }}"
+    state: directory
+  tags: [webstorm]
+
+- name: Fetch and unpack {{ version }}
+  unarchive:
+    src: "https://download.jetbrains.com/webstorm/WebStorm-{{ version }}.tar.gz"
+    dest: "{{ share_dir }}/webstorm/{{ version }}"
+    creates: "{{ share_dir }}/webstorm/{{ version }}/WebStorm-{{ build }}/bin/webstorm.sh"
+    remote_src: yes
+  tags: [webstorm]
+
+- name: Symlink IDE binary
+  file:
+    src: "{{ share_dir }}/webstorm/{{ version }}/WebStorm-{{ build }}/bin/webstorm.sh"
+    dest: "{{ bin_dir }}/webstorm"
+    state: link
+  tags: [webstorm]

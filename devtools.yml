@@ -40,3 +40,9 @@
 
     - import_role:
         name: tmux
+
+    - import_role:
+        name: webstorm
+      vars:
+        version: 2020.1.2
+        build: 201.7846.79
