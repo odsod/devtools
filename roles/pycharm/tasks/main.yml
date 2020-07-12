@@ -1,0 +1,20 @@
+- name: Create install dir
+  file:
+    path: "{{ share_dir }}/pycharm/{{ version }}"
+    state: directory
+  tags: [pycharm]
+
+- name: Fetch and unpack {{ version }}
+  unarchive:
+    src: "https://download.jetbrains.com/python/pycharm-professional-{{ version }}.tar.gz"
+    dest: "{{ share_dir }}/pycharm/{{ version }}"
+    creates: "{{ share_dir }}/pycharm/{{ version }}/pycharm-{{ version }}/bin/pycharm.sh"
+    remote_src: yes
+  tags: [pycharm]
+
+- name: Symlink IDE binary
+  file:
+    src: "{{ share_dir }}/pycharm/{{ version }}/pycharm-{{ version }}/bin/pycharm.sh"
+    dest: "{{ bin_dir }}/pycharm"
+    state: link
+  tags: [pycharm]
