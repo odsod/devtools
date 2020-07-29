@@ -8,13 +8,14 @@
   unarchive:
     src: "https://download.jetbrains.com/webstorm/WebStorm-{{ version }}.tar.gz"
     dest: "{{ share_dir }}/webstorm/{{ version }}"
-    creates: "{{ share_dir }}/webstorm/{{ version }}/WebStorm-{{ build }}/bin/webstorm.sh"
+    extra_opts: ["--strip-components=1"]
+    creates: "{{ share_dir }}/webstorm/{{ version }}/bin/webstorm.sh"
     remote_src: yes
   tags: [webstorm]
 
 - name: Symlink IDE binary
   file:
-    src: "{{ share_dir }}/webstorm/{{ version }}/WebStorm-{{ build }}/bin/webstorm.sh"
+    src: "{{ share_dir }}/webstorm/{{ version }}/bin/webstorm.sh"
     dest: "{{ bin_dir }}/webstorm"
     state: link
   tags: [webstorm]

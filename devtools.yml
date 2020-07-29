@@ -44,10 +44,9 @@
     - import_role:
         name: webstorm
       vars:
-        version: 2020.1.2
-        build: 201.7846.79
+        version: 2020.2
 
     - import_role:
         name: pycharm
       vars:
-        version: 2020.1.2
+        version: 2020.2
