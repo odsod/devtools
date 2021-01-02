@@ -22,3 +22,11 @@
     dest: "{{ bin_dir }}/print-bash-colors"
     mode: 0755
   tags: [bash]
+
+- name: Install APT packages
+  become: yes
+  apt:
+    name:
+      - direnv
+    state: latest
+  tags: [bash]

@@ -2,6 +2,7 @@
 
 export HISTCONTROL='ignoredups'
 export HISTSIZE=100000
+export HISTTIMEFORMAT="%F %T "
 unset MAILCHECK
 
 eval "$(dircolors -b)"
@@ -39,3 +40,4 @@ function cd() {
 }
 
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+eval "$(direnv hook bash)"

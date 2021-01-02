@@ -6,7 +6,7 @@
 
 - name: Install fzf
   unarchive:
-    src: https://github.com/junegunn/fzf-bin/releases/download/{{ version }}/fzf-{{ version }}-linux_amd64.tgz
+    src: https://github.com/junegunn/fzf/releases/download/{{ version }}/fzf-{{ version }}-linux_amd64.tar.gz
     dest: "{{ share_dir }}/fzf/{{ version }}"
     remote_src: yes
     creates: "{{ share_dir }}/fzf/{{ version }}/fzf"
