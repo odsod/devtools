@@ -1,25 +1,40 @@
 [user]
   name = Oscar Söderlund
   email = odsod@users.noreply.github.com
+
 [core]
   editor = vim
-  pager = "diff-so-fancy | less --tabs=4 -RFX"
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  syntax-theme = "gruvbox"
+
 [push]
   default = simple
+
 [branch]
   autosetuprebase = always
+
 [color]
   ui = true
+
 [merge]
   tool = vimdiff
   conflictstyle = diff3
+
 [rebase]
   autosquash = true
+
 [mergetool]
   prompt = false
   keepBackup = false
+
 [url "git@github.com:einride/"]
   insteadOf = https://github.com/einride/
+
 [alias]
   # Status
   s = status --short

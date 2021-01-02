@@ -20,21 +20,3 @@
   loop:
     - gitconfig
   tags: [git]
-
-- name: Install NPM packages
-  become: yes
-  npm:
-    name: "{{ item }}"
-    global: yes
-    state: latest
-  loop:
-    - diff-so-fancy
-  tags: [git]
-
-- name: Install pip3 packages
-  become: yes
-  pip:
-    executable: pip3
-    name:
-      - gitlint
-  tags: [git]
