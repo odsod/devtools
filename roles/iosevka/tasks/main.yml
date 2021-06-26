@@ -14,7 +14,7 @@
     src: https://github.com/be5invis/Iosevka/releases/download/v{{ version }}/ttf-iosevka-{{ version }}.zip
     dest: "{{ share_dir }}/iosevka/{{ version }}"
     remote_src: yes
-    creates: "{{ share_dir }}/iosevka/{{ version }}"
+    creates: "{{ share_dir }}/iosevka/{{ version }}/iosevka-regular.ttf"
   tags: [iosevka]
 
 - name: Symlink Iosevka {{ version }} folder
@@ -29,7 +29,7 @@
     src: https://github.com/be5invis/Iosevka/releases/download/v{{ version }}/ttf-iosevka-fixed-{{ version }}.zip
     dest: "{{ share_dir }}/iosevka-fixed/{{ version }}"
     remote_src: yes
-    creates: "{{ share_dir }}/iosevka-fixed/{{ version }}"
+    creates: "{{ share_dir }}/iosevka-fixed/{{ version }}/iosevka-fixed-regular.ttf"
   tags: [iosevka]
 
 - name: Symlink Fixed {{ version }} folder
@@ -44,7 +44,7 @@
     src: https://github.com/be5invis/Iosevka/releases/download/v{{ version }}/ttf-iosevka-term-{{ version }}.zip
     dest: "{{ share_dir }}/iosevka-term/{{ version }}"
     remote_src: yes
-    creates: "{{ share_dir }}/iosevka-term/{{ version }}"
+    creates: "{{ share_dir }}/iosevka-term/{{ version }}/iosevka-term-regular.ttf"
   tags: [iosevka]
 
 - name: Symlink Term {{ version }} folder
