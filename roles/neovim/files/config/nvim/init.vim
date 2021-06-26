@@ -8,8 +8,9 @@ Plug 'Valloric/ListToggle'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
 Plug 'bufbuild/vim-buf'
-Plug 'fatih/vim-go'
-Plug 'sheerun/vim-polyglot', { 'do': './build' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'neovim/nvim-lspconfig'
 Plug 'dense-analysis/ale'
 " Telescope
 Plug 'nvim-lua/popup.nvim'
