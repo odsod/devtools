@@ -1,0 +1,17 @@
+- name: Create {{ version }} folder
+  file:
+    path: "{{ share_dir }}/ripgrep/{{ version }}"
+    state: directory
+  tags: [ripgrep]
+
+- name: Fetch {{ version }} deb
+  get_url:
+    url: https://github.com/BurntSushi/ripgrep/releases/download/{{ version }}/ripgrep_{{ version }}_amd64.deb
+    dest: "{{ share_dir }}/ripgrep/{{ version }}/ripgrep.deb"
+  tags: [ripgrep]
+
+- name: Install {{ version }} deb
+  become: yes
+  apt:
+    deb: "{{ share_dir }}/ripgrep/{{ version }}/ripgrep.deb"
+  tags: [ripgrep]
