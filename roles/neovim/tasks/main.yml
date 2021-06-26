@@ -1,3 +1,10 @@
+- name: Add PPA
+  become: yes
+  apt_repository:
+    repo: ppa:neovim-ppa/unstable
+    update_cache: yes
+  tags: [neovim]
+
 - name: Install package
   become: yes
   apt:
