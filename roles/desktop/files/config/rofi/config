@@ -1,4 +1,4 @@
-rofi.theme: /usr/share/rofi/themes/gruvbox-dark-soft.rasi
+rofi.theme: nord
 rofi.font: Iosevka 13
 rofi.lines: 5
 rofi.width: 38.2

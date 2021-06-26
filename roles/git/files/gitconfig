@@ -4,13 +4,18 @@
 
 [core]
   editor = vim
-  pager = delta
+
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
 
 [interactive]
   diffFilter = delta --color-only
 
 [delta]
-  syntax-theme = "gruvbox"
+  syntax-theme = Nord
 
 [push]
   default = simple

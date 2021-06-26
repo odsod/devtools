@@ -35,6 +35,7 @@
     - Xresources
     - urxvt/ext/clipboard
     - config/rofi/config
+    - config/rofi/nord.rasi
   tags: [desktop]
 
 - name: Install scripts

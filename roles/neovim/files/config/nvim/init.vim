@@ -1,5 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
@@ -7,11 +8,13 @@ Plug 'Valloric/ListToggle'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
 Plug 'bufbuild/vim-buf'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
 Plug 'sheerun/vim-polyglot', { 'do': './build' }
 Plug 'dense-analysis/ale'
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 filetype plugin indent on
@@ -19,13 +22,9 @@ filetype plugin indent on
 " Disable mouse integration
 set mouse=
 
-set background=dark
-let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_invert_selection=0
-colorscheme gruvbox
+colorscheme nord
 
-" Statusline
-set statusline=[%f]\ %r%=[%l,%c]\ %y\ [%{strlen(&fenc)?&fenc:'none'}]\ [%p%%]
+let g:lightline = {'colorscheme': 'nord'}
 
 " Config
 set cursorline
@@ -48,8 +47,9 @@ set completeopt-=preview
 
 " Keymaps
 set timeoutlen=400
-imap <silent> uu <Esc><Esc>:w<CR>
-nnoremap <C-n> :GFiles<CR>
+nnoremap <C-n> <cmd>Telescope find_files<cr>
+nnoremap <C-g> <cmd>Telescope live_grep<cr>
+
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
@@ -132,22 +132,3 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 let g:ale_go_golangci_lint_options = ''
-
-" fzf
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'bg+':     ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Directory'],
-  \ 'hl+':     ['fg', 'Directory'],
-  \ 'info':    ['fg', 'Normal'],
-  \ 'prompt':  ['fg', 'Normal'],
-  \ 'pointer': ['fg', 'Normal'],
-  \ 'marker':  ['fg', 'Normal'],
-  \ 'spinner': ['fg', 'Normal'],
-  \ 'header':  ['fg', 'Normal'] }
-augroup fzf
-  autocmd!
-  autocmd User FzfStatusLine setlocal statusline=Finding..
-augroup END
