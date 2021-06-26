@@ -7,6 +7,14 @@
     - "{{playbook_dir}}/einride/vars/user.yml"
 
   tasks:
+    - name: Add {{ ansible_user_id }} to sudoers
+      become: yes
+      copy:
+        content: "{{ ansible_user_id }} ALL=(ALL:ALL) NOPASSWD:ALL"
+        dest: /etc/sudoers.d/{{ ansible_user_id }}
+        mode: 0440
+      tags: [user]
+
     - import_role:
         name: bash
 
