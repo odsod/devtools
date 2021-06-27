@@ -35,7 +35,7 @@ is_in_git_repo() {
 
 git_prompt() {
   is_in_git_repo || return
-  echo -e " $(color 90)[$(color 37)$(git_branch)$(git_ahead_state)$(color 91)$(git_dirty_state)$(color 90)]"
+  echo -e " $(color 34)[$(color 37)$(git_branch)$(git_ahead_state)$(color 91)$(git_dirty_state)$(color 34)]"
 }
 
 virtualenv_prompt() {
