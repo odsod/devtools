@@ -40,7 +40,7 @@
     - import_role:
         name: delta
       vars:
-        version: 0.8.1
+        version: 0.8.3
 
     - import_role:
         name: git
@@ -48,7 +48,7 @@
     - import_role:
         name: iosevka
       vars:
-        version: 7.2.0
+        version: 10.3.0
 
     - import_role:
         name: neovim
