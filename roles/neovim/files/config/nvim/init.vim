@@ -96,7 +96,7 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
 augroup filetype_markdown
   autocmd!
-  autocmd FileType markdown setlocal textwidth=74
+  autocmd FileType markdown setlocal textwidth=80
 augroup END
 
 " Go

@@ -62,4 +62,4 @@
     - import_role:
         name: webstorm
       vars:
-        version: 2021.1.2
+        version: 2021.2.1
