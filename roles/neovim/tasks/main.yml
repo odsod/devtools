@@ -1,8 +1,16 @@
+- name: Check if already installed
+  command: dpkg-query -W neovim
+  register: neovim_check_installed
+  failed_when: neovim_check_installed.rc > 1
+  changed_when: neovim_check_installed.rc == 1
+  tags: [neovim]
+
 - name: Add PPA
   become: yes
   apt_repository:
     repo: ppa:neovim-ppa/unstable
     update_cache: yes
+  when: neovim_check_installed.rc == 1
   tags: [neovim]
 
 - name: Install package
