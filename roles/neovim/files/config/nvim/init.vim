@@ -107,7 +107,7 @@ let g:go_auto_type_info = 1
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$', '.git', '\.o$']
+let NERDTreeIgnore = []
 
 " Ale
 let g:ale_lint_on_text_changed = 'never'
