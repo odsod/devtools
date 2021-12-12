@@ -46,12 +46,3 @@
   loop:
     - urxvtmux
   tags: [desktop]
-
-- name: Install global config files
-  become: yes
-  copy:
-    src: "{{ item }}"
-    dest: /{{ item }}
-  loop:
-    - usr/share/X11/xkb/symbols/odsod
-  tags: [desktop]
