@@ -35,11 +35,6 @@
         version: 13.0.0
 
     - import_role:
-        name: delta
-      vars:
-        version: 0.8.3
-
-    - import_role:
         name: git
 
     - import_role:
