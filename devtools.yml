@@ -19,9 +19,6 @@
         name: bash
 
     - import_role:
-        name: desktop
-
-    - import_role:
         name: dropbox
 
     - import_role:
