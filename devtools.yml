@@ -46,9 +46,6 @@
         name: spotify
 
     - import_role:
-        name: tmux
-
-    - import_role:
         name: webstorm
       vars:
         version: 2021.3
