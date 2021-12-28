@@ -25,16 +25,7 @@
     path: "{{ item }}"
     state: directory
   with_items:
-    - ~/.config/nvim
     - ~/.local/share/nvim/site/autoload
-  tags: [neovim]
-
-- name: Install dotfiles
-  copy:
-    src: "{{ item }}"
-    dest: ~/.{{ item }}
-  loop:
-    - config/nvim/init.vim
   tags: [neovim]
 
 - name: Download plug.vim
@@ -51,8 +42,8 @@
       - vim-vint
   tags: [neovim]
 
-- name: Add startup config
+- name: Add environment config
   copy:
-    content: export EDITOR=vim
-    dest: "{{ startup_dir }}/neovim"
+    content: EDITOR=vim
+    dest: ~/.config/environment.d/10-devtools-neovim.conf
   tags: [neovim]

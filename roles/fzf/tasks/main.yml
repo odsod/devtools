@@ -19,11 +19,9 @@
     state: link
   tags: [fzf]
 
-- name: Add startup config
+- name: Add environment config
   copy:
     content: |
-      export FZF_DEFAULT_OPTS="
-        --color fg:10,bg:-1,hl:4,fg+:12,bg+:-1,hl+:4
-        --color info:12,prompt:10,pointer:12,marker:12,spinner:12"
-    dest: "{{ startup_dir }}/fzf"
+      FZF_DEFAULT_OPTS="--color fg:10,bg:-1,hl:4,fg+:12,bg+:-1,hl+:4 --color info:12,prompt:10,pointer:12,marker:12,spinner:12"
+    dest: ~/.config/environment.d/10-devtools-fzf.conf
   tags: [fzf]
