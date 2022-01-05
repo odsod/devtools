@@ -16,9 +16,6 @@
       tags: [user]
 
     - import_role:
-        name: bash
-
-    - import_role:
         name: dropbox
 
     - import_role:
@@ -33,14 +30,6 @@
 
     - import_role:
         name: git
-
-    - import_role:
-        name: iosevka
-      vars:
-        version: 10.3.0
-
-    - import_role:
-        name: neovim
 
     - import_role:
         name: spotify
